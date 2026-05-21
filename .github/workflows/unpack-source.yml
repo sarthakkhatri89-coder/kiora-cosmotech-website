@@ -1,0 +1,32 @@
+name: Unpack Kiora project source
+
+on:
+  push:
+    paths:
+      - .github/workflows/unpack-source.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    if: ${{ !contains(github.event.head_commit.message, 'Unpack Kiora project source') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download and unpack source
+        run: |
+          curl -L "https://litter.catbox.moe/7s3gy1.zip" -o source.zip
+          unzip -o source.zip
+          rm -f source.zip kiora-source.zip tree-elements.json dev-server.log tsconfig.tsbuildinfo
+
+      - name: Commit project source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Unpack Kiora project source" || exit 0
+          git push
