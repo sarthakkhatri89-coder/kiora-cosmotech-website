@@ -1,0 +1,109 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
+import CTASection from "@/components/CTASection";
+import FAQAccordion from "@/components/FAQAccordion";
+import InternalLinkGrid from "@/components/InternalLinkGrid";
+import PageHero from "@/components/PageHero";
+import ProcessTimeline from "@/components/ProcessTimeline";
+import ProductSpecTable from "@/components/ProductSpecTable";
+import SchemaJsonLd from "@/components/SchemaJsonLd";
+import SectionHeading from "@/components/SectionHeading";
+import { productPages, type ProductPage } from "@/data/products";
+import { breadcrumbSchema, faqSchema, productSchema, serviceSchema } from "@/lib/schema";
+
+export default function ProductPageRenderer({ product }: { product: ProductPage }) {
+  const path = `/${product.slug}`;
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: product.name, href: path }
+  ];
+  const relatedLinks = product.related
+    .map((slug) => {
+      const relatedProduct = productPages.find((item) => item.slug === slug);
+      if (relatedProduct) {
+        return { label: relatedProduct.name, href: `/${relatedProduct.slug}`, description: relatedProduct.description };
+      }
+      const support: Record<string, { label: string; href: string; description: string }> = {
+        "custom-skincare-formulation": { label: "Custom Skincare Formulation", href: "/custom-skincare-formulation", description: "Build formulas around your brand concept." },
+        "quality-and-compliance": { label: "Quality and Compliance", href: "/quality-and-compliance", description: "Review quality-driven manufacturing support." },
+        "skincare-manufacturer-india": { label: "Skincare Manufacturer in India", href: "/skincare-manufacturer-india", description: "Explore wider skincare manufacturing capabilities." },
+        "personal-care-manufacturer-india": { label: "Personal Care Manufacturer", href: "/personal-care-manufacturer-india", description: "Daily-use personal care manufacturing." },
+        "haircare-manufacturer-india": { label: "Haircare Manufacturer", href: "/haircare-manufacturer-india", description: "Haircare product range support." }
+      };
+      return support[slug];
+    })
+    .filter(Boolean);
+
+  return (
+    <>
+      <SchemaJsonLd data={[breadcrumbSchema(crumbs), productSchema(product.name, product.description, path), serviceSchema(product.name, product.description, path), faqSchema(product.faqs)]} />
+      <Breadcrumbs crumbs={crumbs} />
+      <PageHero eyebrow={product.category} title={product.h1} intro={product.intro} ctaLabel="Get Quote on WhatsApp" />
+      <main>
+        <section className="py-16">
+          <div className="container-padded grid gap-8 lg:grid-cols-[0.82fr_1.18fr]">
+            <aside className="rounded-3xl bg-charcoal p-7 text-ivory">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-champagne">Direct answer</p>
+              <h2 className="mt-4 text-2xl font-semibold">What does a {product.name.toLowerCase()} do?</h2>
+              <p className="mt-4 leading-8 text-ivory/78">{product.directAnswer}</p>
+            </aside>
+            <ProductSpecTable product={product} />
+          </div>
+        </section>
+
+        <section className="bg-mist py-16">
+          <div className="container-padded grid gap-8 lg:grid-cols-3">
+            <article className="rounded-3xl bg-ivory p-6 shadow-sm">
+              <h2 className="text-2xl font-semibold text-charcoal">Formula Options</h2>
+              <ul className="mt-5 grid gap-3">
+                {product.formulaOptions.map((option) => (
+                  <li className="rounded-2xl bg-mist px-4 py-3 font-semibold text-ink/78" key={option}>{option}</li>
+                ))}
+              </ul>
+            </article>
+            <article className="rounded-3xl bg-ivory p-6 shadow-sm">
+              <h2 className="text-2xl font-semibold text-charcoal">Customization</h2>
+              <p className="mt-4 leading-8 text-ink/75">{product.customization}</p>
+              <h3 className="mt-6 font-semibold text-charcoal">Packaging</h3>
+              <p className="mt-2 leading-7 text-ink/70">{product.packagingOptions}</p>
+            </article>
+            <article className="rounded-3xl bg-ivory p-6 shadow-sm">
+              <h2 className="text-2xl font-semibold text-charcoal">Quality Checks</h2>
+              <ul className="mt-5 grid gap-3">
+                {product.qualityChecks.map((check) => (
+                  <li className="rounded-2xl bg-mist px-4 py-3 font-semibold text-ink/78" key={check}>{check}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="container-padded">
+            <SectionHeading eyebrow="Workflow" title={`${product.name.replace(" Manufacturer", "")} Manufacturing Workflow`} />
+            <ProcessTimeline steps={["Requirement discussion", "Formula alignment", "Packaging selection", "Sampling", "Quote approval", "Artwork coordination", "Manufacturing", "Filling and packing", "Quality check", "Dispatch"]} />
+          </div>
+        </section>
+
+        <section className="bg-mist py-16">
+          <div className="container-padded">
+            <SectionHeading eyebrow="Related pages" title="Plan the Next Product in Your Range" />
+            <InternalLinkGrid links={[
+              ...relatedLinks,
+              { label: "Private Label Cosmetics", href: "/private-label-cosmetics-manufacturer-india", description: "Launch products under your own brand name." },
+              { label: "Packaging Options", href: "/packaging-options", description: "Choose packaging suited to your formula." },
+              { label: "Request Quote", href: "/request-quote", description: "Share your product and quantity details." }
+            ].slice(0, 6)} />
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="container-padded">
+            <SectionHeading eyebrow="FAQ" title={`${product.name} FAQ`} />
+            <FAQAccordion faqs={product.faqs} />
+          </div>
+        </section>
+      </main>
+      <CTASection title={`Discuss ${product.name.replace(" Manufacturer", "")} Manufacturing`} />
+    </>
+  );
+}

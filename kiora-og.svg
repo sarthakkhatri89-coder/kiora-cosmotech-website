@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Kiora CosmoTech skincare and cosmetic manufacturer in India">
+  <rect width="1200" height="630" fill="#17201f"/>
+  <circle cx="970" cy="115" r="190" fill="#0c8078" opacity=".34"/>
+  <circle cx="170" cy="520" r="220" fill="#e9dac2" opacity=".22"/>
+  <path d="M90 118h1020v394H90z" fill="#fffdf7" opacity=".08" stroke="#e9dac2" stroke-opacity=".32"/>
+  <text x="96" y="210" fill="#e9dac2" font-family="Georgia, serif" font-size="76" font-weight="700">Kiora CosmoTech</text>
+  <text x="100" y="292" fill="#fffdf7" font-family="Arial, sans-serif" font-size="42">Skincare & Cosmetic Manufacturer in India</text>
+  <text x="102" y="362" fill="#d8e7df" font-family="Arial, sans-serif" font-size="30">Private Label • Third Party • Custom Formulation</text>
+  <text x="102" y="452" fill="#e9dac2" font-family="Arial, sans-serif" font-size="25">Where skincare science meets scalable cosmetic manufacturing.</text>
+</svg>
