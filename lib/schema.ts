@@ -6,6 +6,8 @@ export type Crumb = {
   href: string;
 };
 
+export const cleanBreadcrumbName = (name: string) => name.replace(/^[\s/]+/, "").trim();
+
 export const organizationSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -58,7 +60,7 @@ export const breadcrumbSchema = (crumbs: Crumb[]) => ({
   itemListElement: crumbs.map((crumb, index) => ({
     "@type": "ListItem",
     position: index + 1,
-    name: crumb.name,
+    name: cleanBreadcrumbName(crumb.name),
     item: absoluteUrl(siteConfig.url, crumb.href)
   }))
 });
@@ -118,7 +120,7 @@ export const articleSchema = (post: {
   dateModified: post.publishedAt,
   author: {
     "@type": "Organization",
-    name: siteConfig.name
+    name: "Kiora CosmoTech Editorial Team"
   },
   publisher: {
     "@type": "Organization",
