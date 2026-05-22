@@ -7,11 +7,23 @@ import { siteConfig, whatsappHref } from "@/data/siteConfig";
 
 export default function Footer() {
   const productLinks = navigation.find((item) => item.label === "Products")?.children ?? [];
-  const serviceLinks = navigation.find((item) => item.label === "Services")?.children ?? [];
+  const baseServiceLinks = navigation.find((item) => item.label === "Services")?.children ?? [];
+  const serviceLinks = baseServiceLinks.some((link) => link.href === "/request-quote")
+    ? baseServiceLinks
+    : [...baseServiceLinks, { label: "Request Quote", href: "/request-quote" }];
+  const companyLinks = [
+    { label: "About", href: "/about-kiora-cosmotech" },
+    { label: "Manufacturing Process", href: "/manufacturing-process" },
+    { label: "Quality and Compliance", href: "/quality-and-compliance" },
+    { label: "Startup Brand Support", href: "/startup-cosmetic-brand-support" },
+    { label: "Packaging Options", href: "/packaging-options" },
+    { label: "Request Quote", href: "/request-quote" },
+    { label: "Blog", href: "/blog" }
+  ];
 
   return (
     <footer className="bg-charcoal pb-24 pt-16 text-ivory">
-      <div className="container-padded grid gap-10 lg:grid-cols-[1.25fr_0.8fr_1fr_0.9fr]">
+      <div className="container-padded grid gap-10 lg:grid-cols-[1.15fr_0.75fr_0.95fr_1.15fr]">
         <div>
           <Link className="focus-ring inline-flex items-center gap-3 rounded-sm" href="/" aria-label="Kiora CosmoTech home">
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-champagne font-display text-xl font-semibold text-charcoal">K</span>
@@ -30,7 +42,7 @@ export default function Footer() {
               <Mail size={16} aria-hidden="true" /> {siteConfig.email}
             </a>
             <p className="inline-flex items-center gap-2">
-              <MapPin size={16} aria-hidden="true" /> Pan-India manufacturing support, India
+              <MapPin size={16} aria-hidden="true" /> Pan-India cosmetic manufacturing, India
             </p>
           </div>
         </div>
@@ -41,7 +53,6 @@ export default function Footer() {
             {serviceLinks.map((link) => (
               <li key={link.href}><Link className="hover:text-champagne" href={link.href}>{link.label}</Link></li>
             ))}
-            <li><Link className="hover:text-champagne" href="/request-quote">Request Quote</Link></li>
           </ul>
         </div>
 
@@ -56,9 +67,17 @@ export default function Footer() {
 
         <div className="grid gap-8">
           <div>
-            <h3 className="mb-4 font-semibold text-champagne">Cities</h3>
+            <h3 className="mb-4 font-semibold text-champagne">Company</h3>
             <ul className="grid gap-3 text-sm text-ivory/72 sm:grid-cols-2 lg:grid-cols-1">
-              {cities.slice(0, 8).map((city) => (
+              {companyLinks.map((link) => (
+                <li key={link.href}><Link className="hover:text-champagne" href={link.href}>{link.label}</Link></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="mb-4 font-semibold text-champagne">Cities</h3>
+            <ul className="grid gap-3 text-sm text-ivory/72 sm:grid-cols-2">
+              {cities.map((city) => (
                 <li key={city.slug}><Link className="hover:text-champagne" href={`/city/${city.slug}`}>{city.city}</Link></li>
               ))}
             </ul>
@@ -74,7 +93,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="container-padded mt-10 border-t border-ivory/15 pt-6 text-sm text-ivory/55">
-        © {new Date().getFullYear()} Kiora CosmoTech. Skincare, derma-cosmetic, haircare and personal care manufacturing support.
+        &copy; {new Date().getFullYear()} Kiora CosmoTech. Skincare, derma-cosmetic, haircare and personal care manufacturing.
       </div>
     </footer>
   );
