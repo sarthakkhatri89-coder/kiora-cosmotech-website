@@ -1,0 +1,7 @@
+.next
+.vercel
+node_modules
+*.log
+*.zip
+tree-elements.json
+tsconfig.tsbuildinfo

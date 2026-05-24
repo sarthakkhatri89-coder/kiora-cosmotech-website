@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Beaker, Droplets, FlaskConical, Leaf } from "lucide-react";
 
@@ -6,6 +7,13 @@ const icons = {
   "Derma Cosmetic": Beaker,
   Haircare: Leaf,
   "Personal Care": Droplets
+};
+
+const visuals = {
+  Skincare: "/images/skincare-formulation-lab.png",
+  "Derma Cosmetic": "/images/derma-cosmetic-development.png",
+  Haircare: "/images/haircare-manufacturing.png",
+  "Personal Care": "/images/personal-care-packaging.png"
 };
 
 export default function ProductCategoryCard({
@@ -20,10 +28,19 @@ export default function ProductCategoryCard({
   examples?: string[];
 }) {
   const Icon = icons[title as keyof typeof icons] ?? FlaskConical;
+  const visual = visuals[title as keyof typeof visuals] ?? visuals.Skincare;
 
   return (
     <Link className="focus-ring group overflow-hidden rounded-3xl border border-charcoal/10 bg-ivory shadow-sm transition hover:-translate-y-1 hover:shadow-premium" href={href}>
       <div className="cosmetic-visual relative h-48 border-b border-charcoal/10" role="img" aria-label={`${title} cosmetic product manufacturing visual`}>
+        <Image
+          className="absolute inset-0 h-full w-full object-cover opacity-85 transition duration-500 group-hover:scale-105"
+          src={visual}
+          alt={`${title} cosmetic manufacturing visual placeholder`}
+          width={900}
+          height={540}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-ivory/15 via-transparent to-charcoal/15" />
         <div className="absolute left-5 top-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-charcoal text-champagne shadow-premium">
           <Icon size={28} aria-hidden="true" />
         </div>

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   ...createMetadata({
     title: "Skincare & Cosmetic Manufacturer in India | Kiora CosmoTech",
     description:
-      "Kiora CosmoTech is a skincare-focused cosmetic manufacturer in India offering private label cosmetics, third party cosmetic manufacturing, custom formulation, packaging support and pan-India supply for beauty brands.",
+      "Kiora CosmoTech manufactures skincare, haircare and personal care products with private label, third party, custom formulation and pan-India supply.",
     path: "/"
   }),
   metadataBase: new URL(siteConfig.url)

@@ -47,7 +47,7 @@ export const productPages: ProductPage[] = [
       "Private label and third party face wash manufacturing in India with gel, foam, cream and active-led cleanser options for skincare brands.",
     h1: "Face Wash Manufacturer",
     intro:
-      "Kiora CosmoTech manufactures face wash and cleanser formats for skincare brands that need a clean, market-ready product with practical packaging and formulation support.",
+      "Kiora CosmoTech manufactures face wash and cleanser formats for skincare brands that need a clean, market-ready product with practical packaging and formula planning.",
     directAnswer:
       "A face wash manufacturer develops, produces, fills and packs facial cleanser products for beauty brands, including private label and custom active-led formulas.",
     formulaOptions: ["Gel cleanser", "Foaming face wash", "Cream cleanser", "Salicylic acid", "Vitamin C", "Tea tree", "Aloe vera"],
@@ -69,7 +69,7 @@ export const productPages: ProductPage[] = [
       "Face serum manufacturing for private label skincare brands with Vitamin C, niacinamide, hyaluronic acid, peptide and active-led options.",
     h1: "Face Serum Manufacturer",
     intro:
-      "Kiora CosmoTech supports private label and custom face serum manufacturing for brands that want lightweight textures, active-led positioning and premium packaging.",
+      "Kiora CosmoTech manufactures private label and custom face serum products for brands that want lightweight textures, active-led positioning and premium packaging.",
     directAnswer:
       "A face serum manufacturer creates concentrated skincare products with selected actives, controlled texture and suitable packaging such as droppers, pumps or airless bottles.",
     formulaOptions: ["Vitamin C", "Niacinamide", "Hyaluronic acid", "Retinol", "Peptide", "Salicylic acid"],
@@ -88,7 +88,7 @@ export const productPages: ProductPage[] = [
     category: "Skincare",
     title: "Sunscreen Manufacturer in India | Private Label SPF Products",
     description:
-      "Private label sunscreen manufacturing support for skincare brands with cream, gel and lotion textures plus packaging and quality-focused coordination.",
+      "Private label sunscreen manufacturing for skincare brands with cream, gel and lotion textures plus packaging and quality-focused batch planning.",
     h1: "Sunscreen Manufacturer",
     intro:
       "Kiora CosmoTech helps brands explore sunscreen manufacturing with SPF-focused positioning, elegant textures and packaging options suited for daily-use skincare lines.",
@@ -135,7 +135,7 @@ export const productPages: ProductPage[] = [
       "Cosmetic cream manufacturing for skincare brands including day cream, night cream, massage cream and active-led cream formats.",
     h1: "Cream Manufacturer",
     intro:
-      "Kiora CosmoTech supports cream manufacturing for brands looking for premium textures, practical MOQ planning and packaging coordination.",
+      "Kiora CosmoTech manufactures cosmetic creams for brands looking for premium textures, practical MOQ planning and packaging selection.",
     directAnswer:
       "A cream manufacturer produces cosmetic cream formats for brands, including private label ready bases and customized skincare cream concepts.",
     formulaOptions: ["Day cream", "Night cream", "Massage cream", "Brightening-positioned", "Hydrating", "Botanical extracts"],
@@ -198,10 +198,10 @@ export const productPages: ProductPage[] = [
     category: "Derma Cosmetic",
     title: "Derma Cosmetic Manufacturer in India | Private Label Derma Skincare",
     description:
-      "Derma cosmetic manufacturing support for dermatologist, clinic and active-led skincare brands with quality-driven production coordination.",
+      "Derma cosmetic manufacturing for dermatologist, clinic and active-led skincare brands with quality-driven batch planning.",
     h1: "Derma Cosmetic Manufacturer",
     intro:
-      "Kiora CosmoTech supports derma-inspired cosmetic products for clinics, dermatologists and skincare brands that need active-led, compliance-focused manufacturing.",
+      "Kiora CosmoTech manufactures derma-inspired cosmetic products for clinics, dermatologists and skincare brands that need active-led, compliance-focused manufacturing.",
     directAnswer:
       "A derma cosmetic manufacturer produces active-led cosmetic skincare products for dermatologist, clinic and professional beauty brands without making drug or cure claims.",
     formulaOptions: ["Niacinamide", "Hyaluronic acid", "Peptides", "Ceramide-inspired", "Salicylic acid", "Gentle cleanser bases"],
@@ -210,7 +210,7 @@ export const productPages: ProductPage[] = [
     customization: "Active positioning, texture, packaging, label and product range planning",
     documentation: "Product specification, batch documentation and label declaration support",
     suitableFor: "Dermatologists, clinics, derma-cosmetic startups and professional skincare brands",
-    qualityChecks: ["Raw material review", "In-process observations", "Finished product checks", "Documentation coordination"],
+    qualityChecks: ["Raw material review", "In-process observations", "Finished product checks", "Documentation inputs"],
     related: ["face-serum-manufacturer", "sunscreen-manufacturer", "quality-and-compliance"],
     faqs: sharedFaqs("Derma Cosmetic")
   },
@@ -223,7 +223,7 @@ export const productPages: ProductPage[] = [
       "Private label shampoo manufacturing for haircare brands with gentle cleanse, anti-dandruff-positioned, botanical and salon retail options.",
     h1: "Shampoo Manufacturer",
     intro:
-      "Kiora CosmoTech manufactures shampoo products for haircare brands, salons and startup personal care lines with packaging and formula guidance.",
+      "Kiora CosmoTech manufactures shampoo products for haircare brands, salons and startup personal care lines with packaging and formula planning.",
     directAnswer:
       "A shampoo manufacturer produces hair cleansing products for brands using suitable surfactant systems, actives, fragrance and bottle packaging.",
     formulaOptions: ["Gentle shampoo", "Botanical shampoo", "Salon shampoo", "Anti-dandruff-positioned", "Protein-inspired", "Onion seed-inspired"],
@@ -245,7 +245,7 @@ export const productPages: ProductPage[] = [
       "Hair serum manufacturing for private label haircare brands with shine, frizz-control, lightweight and salon-finish formats.",
     h1: "Hair Serum Manufacturer",
     intro:
-      "Kiora CosmoTech supports hair serum manufacturing for brands looking for premium finishing products, compact packaging and modern haircare positioning.",
+      "Kiora CosmoTech manufactures hair serum products for brands looking for premium finishing products, compact packaging and modern haircare positioning.",
     directAnswer:
       "A hair serum manufacturer produces leave-on hair finishing products designed for shine, smooth feel, frizz-control positioning and retail-ready packaging.",
     formulaOptions: ["Shine serum", "Frizz-control-positioned", "Lightweight serum", "Argan-inspired", "Keratin-inspired"],
@@ -267,7 +267,7 @@ export const productPages: ProductPage[] = [
       "Private label hair oil manufacturing for cosmetic haircare brands with botanical, lightweight and traditional-inspired oil blends.",
     h1: "Hair Oil Manufacturer",
     intro:
-      "Kiora CosmoTech manufactures cosmetic hair oils for brands that need flexible bottle formats, botanical positioning and scalable production support.",
+      "Kiora CosmoTech manufactures cosmetic hair oils for brands that need flexible bottle formats, botanical positioning and scalable batch production.",
     directAnswer:
       "A hair oil manufacturer blends, fills and packs cosmetic hair oil products for private label and third party haircare brands.",
     formulaOptions: ["Botanical oil blends", "Lightweight hair oil", "Onion seed-inspired", "Argan-inspired", "Amla-inspired"],
@@ -348,13 +348,18 @@ export const productPages: ProductPage[] = [
   }
 ];
 
+const dermaCosmeticPage = productPages.find((product) => product.slug === "derma-cosmetic-manufacturer");
+if (dermaCosmeticPage) {
+  dermaCosmeticPage.title = "Derma Cosmetic Manufacturer India | Private Label Skincare";
+}
+
 export const productSlugs = productPages.map((product) => product.slug);
 
 export const productCategories = [
   {
     title: "Skincare",
     href: "/skincare-manufacturer-india",
-    description: "Face care and body care manufacturing support with formula selection, batch planning and packaging guidance.",
+    description: "Face care and body care manufacturing with formula selection, batch planning and packaging selection.",
     examples: ["Face wash", "Face serum", "Sunscreen", "Moisturizer", "Cream", "Gel"]
   },
   {
@@ -372,7 +377,7 @@ export const productCategories = [
   {
     title: "Personal Care",
     href: "/personal-care-manufacturer-india",
-    description: "Daily-use personal care products with bottle, pump, refill and carton packaging coordination.",
+    description: "Daily-use personal care products with bottle, pump, refill and carton packaging planning.",
     examples: ["Body wash", "Hand wash", "Body lotion", "Bath care", "Refill packs"]
   }
 ];

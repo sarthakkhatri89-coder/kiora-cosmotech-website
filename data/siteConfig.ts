@@ -5,15 +5,15 @@ export const siteConfig = {
   tagline: "Where skincare science meets scalable cosmetic manufacturing.",
   positioning:
     "Kiora CosmoTech - Skincare & Cosmetic Manufacturer in India for Private Label, Third Party and Custom Formulation.",
-  phone: "+91XXXXXXXXXX",
+  phone: "+918076503757",
   email: "hello@kioracosmotech.com",
   address: {
     country: "IN",
     region: "India",
-    locality: "Pan-India manufacturing support"
+    locality: "Pan-India cosmetic manufacturing"
   },
-  whatsappNumber: "+91XXXXXXXXXX",
-  ogImage: "/og/kiora-og.svg",
+  whatsappNumber: "918076503757",
+  ogImage: "/og/kiora-og.png",
   socialLinks: [] as string[]
 };
 

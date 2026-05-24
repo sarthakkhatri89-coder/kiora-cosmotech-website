@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ClipboardCheck, FileText, Microscope, PackageCheck, SearchCheck, ShieldCheck } from "lucide-react";
+import { Beaker, ClipboardCheck, Factory, FileText, FlaskConical, Microscope, PackageCheck, SearchCheck, ShieldCheck, Sparkles } from "lucide-react";
 import AnswerBlocks from "@/components/AnswerBlocks";
 import BlogCard from "@/components/BlogCard";
 import CertificationStrip from "@/components/CertificationStrip";
@@ -24,7 +24,7 @@ import { breadcrumbSchema, localBusinessSchema } from "@/lib/schema";
 export const metadata = createMetadata({
   title: "Skincare & Cosmetic Manufacturer in India | Kiora CosmoTech",
   description:
-    "Kiora CosmoTech is a skincare-focused cosmetic manufacturer in India offering private label cosmetics, third party cosmetic manufacturing, custom formulation, packaging support and pan-India supply for beauty brands.",
+    "Kiora CosmoTech manufactures skincare, haircare and personal care products with private label, third party, custom formulation and pan-India supply.",
   path: "/"
 });
 
@@ -32,7 +32,7 @@ const services = [
   {
     title: "Private Label Cosmetics",
     href: "/private-label-cosmetics-manufacturer-india",
-    description: "Launch skincare, haircare and personal care products under your own brand with formula and packaging support."
+    description: "Launch skincare, haircare and personal care products under your own brand with formula selection, batch planning and packaging selection."
   },
   {
     title: "Third Party Cosmetic Manufacturing",
@@ -42,7 +42,7 @@ const services = [
   {
     title: "Contract Manufacturing",
     href: "/contract-cosmetic-manufacturer-india",
-    description: "Structured production support for repeatable cosmetic product batches and defined specifications."
+    description: "Structured cosmetic manufacturing for repeatable batches, defined specifications, filling and packing."
   },
   {
     title: "Custom Skincare Formulation",
@@ -54,10 +54,30 @@ const services = [
 const qualityItems = [
   { icon: SearchCheck, title: "Raw Material Checks", text: "Review of material inputs before manufacturing activity begins." },
   { icon: Microscope, title: "In-Process Checks", text: "Practical observations during batch manufacturing, filling and packing." },
-  { icon: ClipboardCheck, title: "Batch Documentation", text: "Documentation-supported production records and batch coordination." },
+  { icon: ClipboardCheck, title: "Batch Documentation", text: "Documentation-backed production records for traceable batch planning." },
   { icon: FileText, title: "Specification Inputs", text: "Product specification support for brand and packaging alignment." },
-  { icon: PackageCheck, title: "Label Declaration Support", text: "Ingredient and product information coordination for label artwork." },
-  { icon: ShieldCheck, title: "Finished Product Review", text: "Appearance, filling and pack review before dispatch coordination." }
+  { icon: PackageCheck, title: "Label Declaration Review", text: "Ingredient and product information inputs for packaging artwork review." },
+  { icon: ShieldCheck, title: "Finished Product Review", text: "Appearance, filling and pack review before dispatch planning." }
+];
+
+const manufacturingStrengths = [
+  { icon: FlaskConical, title: "Skincare Manufacturing", text: "Face care and body care products planned around texture, actives, packaging and batch size." },
+  { icon: Beaker, title: "Derma-Cosmetic Product Development", text: "Active-led cosmetic concepts for clinics, professional brands and focused skincare ranges." },
+  { icon: Sparkles, title: "Haircare Product Manufacturing", text: "Shampoo, hair serum, hair oil and mask batches with bottle, pump and jar packaging options." },
+  { icon: Factory, title: "Personal Care Manufacturing", text: "Body wash, hand wash and lotion manufacturing for daily-use consumer product lines." },
+  { icon: PackageCheck, title: "Filling and Packing", text: "Filling, sealing, labelling and packing workflows matched to the product and primary pack." },
+  { icon: ClipboardCheck, title: "Packaging and Label Coordination", text: "Packaging selection, artwork inputs and label declaration review before commercial batches." },
+  { icon: FileText, title: "Product Specification Support", text: "Product specification inputs for formula, packaging, documentation and launch planning." },
+  { icon: ShieldCheck, title: "Finished Product Review", text: "Finished goods review for appearance, fill, packaging and dispatch readiness." }
+];
+
+const trustReasons = [
+  { icon: FlaskConical, title: "Skincare-Focused Manufacturing Communication", text: "Discussions stay centered on skincare, derma-cosmetic, haircare and personal care products instead of unrelated categories." },
+  { icon: PackageCheck, title: "Practical MOQ and Packaging Discussion", text: "Brands can align expected quantity, pack type, fill size, label route and carton planning before quote approval." },
+  { icon: Factory, title: "Private Label and Third Party Workflows", text: "Manufacturing pathways are structured around formula selection, sampling, batch planning, filling and packing." },
+  { icon: FileText, title: "Product Specification and Documentation Inputs", text: "Product specification inputs, label declaration review and batch information help keep launch files organized." },
+  { icon: Sparkles, title: "Startup and D2C Brand Support", text: "First-time founders and growing beauty teams can plan focused product ranges without inflated claims or confusing jargon." },
+  { icon: ClipboardCheck, title: "Pan-India Dispatch Planning", text: "Dispatch planning can be discussed for approved batches across city-wise markets and nearby business areas." }
 ];
 
 export default function HomePage() {
@@ -67,6 +87,38 @@ export default function HomePage() {
       <HeroSection />
       <TrustStats />
       <main>
+        <section className="section-y">
+          <div className="container-padded">
+            <SectionHeading eyebrow="Manufacturing strengths" title="Manufacturing Strengths for Skincare-Led Brands" text="A practical manufacturing engine for formula selection, batch planning, filling, packing, product specifications and finished goods review." />
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {manufacturingStrengths.map(({ icon: Icon, title, text }) => (
+                <article className="rounded-3xl border border-charcoal/10 bg-ivory p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-premium" key={title}>
+                  <div className="mb-5 inline-flex rounded-2xl bg-mist p-3 text-teal">
+                    <Icon size={24} aria-hidden="true" />
+                  </div>
+                  <h2 className="text-xl font-semibold text-charcoal">{title}</h2>
+                  <p className="mt-3 leading-7 text-ink/72">{text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section-y bg-mist">
+          <div className="container-padded">
+            <SectionHeading eyebrow="Why Kiora" title="Why Brands Choose Kiora CosmoTech" text="Trust is built through clear manufacturing conversations, realistic timelines, practical MOQ planning and careful documentation inputs." />
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {trustReasons.map(({ icon: Icon, title, text }) => (
+                <article className="rounded-3xl border border-charcoal/10 bg-ivory p-6 shadow-sm" key={title}>
+                  <Icon className="mb-5 text-teal" size={28} aria-hidden="true" />
+                  <h2 className="text-xl font-semibold text-charcoal">{title}</h2>
+                  <p className="mt-3 leading-7 text-ink/72">{text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="section-y">
           <div className="container-padded">
             <SectionHeading eyebrow="Services" title="Manufacturing Models for Beauty Brands" text="Choose the path that fits your launch stage, product range and customization needs." />
@@ -92,7 +144,7 @@ export default function HomePage() {
 
         <section className="section-y">
           <div className="container-padded">
-            <SectionHeading eyebrow="Capabilities" title="Skincare Manufacturing Capabilities" text="Manufacturing support built around formula selection, batch planning, filling and packing, packaging selection, label coordination and dispatch coordination." />
+            <SectionHeading eyebrow="Capabilities" title="Skincare Manufacturing Capabilities" text="Cosmetic manufacturing built around formula selection, batch planning, filling and packing, packaging selection, label declaration review and dispatch planning." />
             <ManufacturingCapability />
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link className="focus-ring rounded-full bg-charcoal px-6 py-3 font-semibold text-ivory transition hover:bg-teal" href="/custom-skincare-formulation">Discuss Your Product Idea</Link>
@@ -107,7 +159,7 @@ export default function HomePage() {
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-champagne">R&D support</p>
               <h2 className="section-title font-display font-semibold">Formula thinking before factory scale</h2>
               <p className="mt-5 leading-8 text-ivory/75">
-                Kiora CosmoTech helps brands translate product ideas into practical formula directions, sampling decisions, packaging choices, manufacturing support and documentation-ready conversations.
+                Kiora CosmoTech helps brands translate product ideas into practical formula directions, sampling decisions, packaging choices, manufacturing workflows and documentation-ready product specifications.
               </p>
               <Link className="focus-ring mt-7 inline-flex rounded-full bg-champagne px-6 py-3 font-semibold text-charcoal transition hover:bg-ivory" href="/custom-skincare-formulation">
                 Explore Custom Formulation
@@ -154,7 +206,7 @@ export default function HomePage() {
 
         <section className="section-y bg-mist">
           <div className="container-padded">
-            <SectionHeading eyebrow="Quality" title="Quality-Driven and Compliance-Focused Support" text="A professional manufacturing workflow should be documentation-supported without relying on unverified certification claims." />
+            <SectionHeading eyebrow="Quality" title="Quality-Driven and Compliance-Focused Manufacturing" text="A professional manufacturing workflow should include raw material checks, in-process checks, batch documentation and finished product review without relying on unverified certification claims." />
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {qualityItems.map(({ icon: Icon, title, text }) => (
                 <article className="rounded-3xl border border-charcoal/10 bg-ivory p-6 shadow-sm" key={title}>
@@ -190,7 +242,7 @@ export default function HomePage() {
             <div>
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-teal">Startup support</p>
               <h2 className="section-title font-display font-semibold text-charcoal">Support for founders, salons, clinics and D2C teams</h2>
-              <p className="mt-5 leading-8 text-ink/75">Get guidance on product selection, low MOQ options where practical, packaging formats, quote planning, launch sequencing and manufacturing-ready product briefs.</p>
+              <p className="mt-5 leading-8 text-ink/75">Plan product selection, low MOQ options where practical, packaging formats, quote planning, launch sequencing and manufacturing-ready product briefs.</p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link className="focus-ring inline-flex rounded-full bg-teal px-6 py-3 font-semibold text-ivory transition hover:bg-charcoal" href="/startup-cosmetic-brand-support">
                   Start Your Skincare Brand
