@@ -12,8 +12,13 @@ import { breadcrumbSchema, faqSchema, productSchema, serviceSchema } from "@/lib
 
 export default function ProductPageRenderer({ product }: { product: ProductPage }) {
   const path = `/${product.slug}`;
+  const formulaDirections = product.formulaDirections ?? product.formulaOptions;
+  const packagingAdvice = product.packagingAdvice ?? product.packagingOptions;
+  const buyerMistakes = product.buyerMistakes ?? [];
+  const quoteChecklist = product.quoteChecklist ?? [];
   const crumbs = [
     { name: "Home", href: "/" },
+    { name: "Products", href: "/skincare-manufacturer-india" },
     { name: product.name, href: path }
   ];
   const relatedLinks = product.related
@@ -78,9 +83,50 @@ export default function ProductPageRenderer({ product }: { product: ProductPage 
         </section>
 
         <section className="py-16">
+          <div className="container-padded grid gap-6 lg:grid-cols-2">
+            <article className="rounded-3xl border border-charcoal/10 bg-ivory p-6 shadow-sm">
+              <h2 className="text-2xl font-semibold text-charcoal">MOQ Factors and Packaging Decisions</h2>
+              <p className="mt-4 leading-8 text-ink/75">{product.moq}</p>
+              <p className="mt-4 leading-8 text-ink/75">{packagingAdvice}</p>
+            </article>
+            <article className="rounded-3xl border border-charcoal/10 bg-ivory p-6 shadow-sm">
+              <h2 className="text-2xl font-semibold text-charcoal">What Buyers Should Share Before Quote</h2>
+              <ul className="mt-5 grid gap-3">
+                {quoteChecklist.map((item) => (
+                  <li className="rounded-2xl bg-mist px-4 py-3 font-semibold text-ink/78" key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section className="py-16">
           <div className="container-padded">
             <SectionHeading eyebrow="Workflow" title={`${product.name.replace(" Manufacturer", "")} Manufacturing Workflow`} />
             <ProcessTimeline steps={["Requirement discussion", "Formula alignment", "Packaging selection", "Sampling", "Quote approval", "Artwork coordination", "Manufacturing", "Filling and packing", "Quality check", "Dispatch"]} />
+          </div>
+        </section>
+
+        <section className="bg-mist py-16">
+          <div className="container-padded grid gap-6 lg:grid-cols-2">
+            <article className="rounded-3xl bg-ivory p-6 shadow-sm">
+              <h2 className="text-2xl font-semibold text-charcoal">Common Formula Directions</h2>
+              <ul className="mt-5 grid gap-3">
+                {formulaDirections.map((item) => (
+                  <li className="rounded-2xl bg-mist px-4 py-3 font-semibold text-ink/78" key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+            <article className="rounded-3xl bg-ivory p-6 shadow-sm">
+              <h2 className="text-2xl font-semibold text-charcoal">Common Buyer Mistakes</h2>
+              <ul className="mt-5 grid gap-3">
+                {buyerMistakes.map((item) => (
+                  <li className="rounded-2xl bg-mist px-4 py-3 font-semibold text-ink/78" key={item}>{item}</li>
+                ))}
+              </ul>
+              <h3 className="mt-6 text-lg font-semibold text-charcoal">Suitable Brands</h3>
+              <p className="mt-3 leading-8 text-ink/75">{product.suitableFor}</p>
+            </article>
           </div>
         </section>
 

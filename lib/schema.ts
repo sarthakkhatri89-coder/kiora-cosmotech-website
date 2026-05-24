@@ -14,8 +14,9 @@ export const organizationSchema = () => ({
   name: siteConfig.name,
   legalName: siteConfig.legalName,
   url: siteConfig.url,
-  logo: absoluteUrl(siteConfig.url, siteConfig.ogImage),
+  logo: absoluteUrl(siteConfig.url, siteConfig.logo),
   description: siteConfig.positioning,
+  email: siteConfig.email,
   contactPoint: {
     "@type": "ContactPoint",
     telephone: siteConfig.phone,
@@ -32,6 +33,8 @@ export const localBusinessSchema = (name = siteConfig.name, path = "/") => ({
   url: absoluteUrl(siteConfig.url, path),
   image: absoluteUrl(siteConfig.url, siteConfig.ogImage),
   telephone: siteConfig.phone,
+  email: siteConfig.email,
+  description: siteConfig.positioning,
   address: {
     "@type": "PostalAddress",
     addressCountry: siteConfig.address.country,
@@ -40,6 +43,33 @@ export const localBusinessSchema = (name = siteConfig.name, path = "/") => ({
   },
   areaServed: "India",
   priceRange: "$$"
+});
+
+export const manufacturerSchema = (name = siteConfig.name, path = "/") => ({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name,
+  url: absoluteUrl(siteConfig.url, path),
+  logo: absoluteUrl(siteConfig.url, siteConfig.logo),
+  image: absoluteUrl(siteConfig.url, siteConfig.ogImage),
+  description: siteConfig.positioning,
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: siteConfig.address.country,
+    addressRegion: siteConfig.address.region,
+    addressLocality: siteConfig.address.locality
+  },
+  areaServed: "India",
+  knowsAbout: [
+    "Private label cosmetic manufacturing",
+    "Third party cosmetic manufacturing",
+    "Contract cosmetic manufacturing",
+    "Skincare formulation",
+    "Haircare manufacturing",
+    "Personal care manufacturing"
+  ]
 });
 
 export const websiteSchema = () => ({
@@ -111,11 +141,14 @@ export const articleSchema = (post: {
   metaDescription: string;
   slug: string;
   publishedAt: string;
+  excerpt?: string;
 }) => ({
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
   headline: post.title,
   description: post.metaDescription,
+  articleSection: "Cosmetic manufacturing",
+  abstract: post.excerpt ?? post.metaDescription,
   datePublished: post.publishedAt,
   dateModified: post.publishedAt,
   author: {

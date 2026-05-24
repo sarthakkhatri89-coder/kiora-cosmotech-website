@@ -30,28 +30,49 @@ export async function generateMetadata({ params }: Params) {
 export default async function CityPage({ params }: Params) {
   const { slug } = await params;
   const city = getCity(slug);
-  if (!city) notFound();
-  const path = `/city/${city.slug}`;
+  if (!city) {
+    notFound();
+  }
+  const currentCity = city!;
+  const path = `/city/${currentCity.slug}`;
   const crumbs = [
     { name: "Home", href: "/" },
-    { name: `Cosmetic Manufacturer in ${city.city}`, href: path }
+    { name: "City-Wise Manufacturing", href: "/city/cosmetic-manufacturer-in-delhi-ncr" },
+    { name: `Cosmetic Manufacturer in ${currentCity.city}`, href: path }
   ];
 
   return (
     <>
-      <SchemaJsonLd data={[breadcrumbSchema(crumbs), localBusinessSchema(`Cosmetic Manufacturer in ${city.city}`, path), serviceSchema(`Cosmetic Manufacturer in ${city.city}`, city.description, path)]} />
+      <SchemaJsonLd data={[breadcrumbSchema(crumbs), localBusinessSchema(`Cosmetic Manufacturer in ${currentCity.city}`, path), serviceSchema(`Cosmetic Manufacturer in ${currentCity.city}`, currentCity.description, path)]} />
       <Breadcrumbs crumbs={crumbs} />
-      <PageHero eyebrow="City-wise manufacturing support" title={`Cosmetic Manufacturer in ${city.city}`} intro={city.intro} />
+      <PageHero eyebrow="City-wise manufacturing support" title={`Cosmetic Manufacturer in ${currentCity.city}`} intro={currentCity.intro} />
       <main>
         <section className="py-16">
           <div className="container-padded grid gap-6 lg:grid-cols-2">
             <article className="rounded-3xl border border-charcoal/10 bg-ivory p-6 shadow-sm">
-              <h2 className="text-2xl font-semibold text-charcoal">Private Label Cosmetic Manufacturing in {city.city}</h2>
-              <p className="mt-4 leading-8 text-ink/75">{city.privateLabel}</p>
+              <h2 className="text-2xl font-semibold text-charcoal">Private Label Cosmetic Manufacturing in {currentCity.city}</h2>
+              <p className="mt-4 leading-8 text-ink/75">{currentCity.privateLabel}</p>
             </article>
             <article className="rounded-3xl border border-charcoal/10 bg-ivory p-6 shadow-sm">
-              <h2 className="text-2xl font-semibold text-charcoal">Third Party Skincare Manufacturing in {city.city}</h2>
-              <p className="mt-4 leading-8 text-ink/75">{city.thirdParty}</p>
+              <h2 className="text-2xl font-semibold text-charcoal">Third Party Skincare Manufacturing in {currentCity.city}</h2>
+              <p className="mt-4 leading-8 text-ink/75">{currentCity.thirdParty}</p>
+            </article>
+          </div>
+        </section>
+
+        <section className="bg-mist py-16">
+          <div className="container-padded grid gap-6 lg:grid-cols-3">
+            <article className="rounded-3xl bg-ivory p-6 shadow-sm">
+              <h2 className="text-2xl font-semibold text-charcoal">Who should contact Kiora from {currentCity.city}</h2>
+              <p className="mt-4 leading-8 text-ink/75">{currentCity.audience}</p>
+            </article>
+            <article className="rounded-3xl bg-ivory p-6 shadow-sm">
+              <h2 className="text-2xl font-semibold text-charcoal">Products commonly discussed</h2>
+              <p className="mt-4 leading-8 text-ink/75">{currentCity.demand}</p>
+            </article>
+            <article className="rounded-3xl bg-ivory p-6 shadow-sm">
+              <h2 className="text-2xl font-semibold text-charcoal">Private label launch options</h2>
+              <p className="mt-4 leading-8 text-ink/75">{currentCity.launchOptions}</p>
             </article>
           </div>
         </section>
@@ -61,7 +82,7 @@ export default async function CityPage({ params }: Params) {
             <article className="rounded-3xl bg-ivory p-6 shadow-sm lg:col-span-2">
               <h2 className="text-2xl font-semibold text-charcoal">Product Categories Available</h2>
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                {city.categories.map((category) => (
+                {currentCity.categories.map((category) => (
                   <p className="rounded-2xl bg-mist px-4 py-3 font-semibold text-charcoal" key={category}>{category}</p>
                 ))}
               </div>
@@ -73,11 +94,15 @@ export default async function CityPage({ params }: Params) {
               <p className="mt-3 leading-8 text-ink/75">
                 Kiora CosmoTech supports first-time founders, salons, clinics, influencers and D2C brands with product selection, packaging guidance and quote planning.
               </p>
+              <h3 className="mt-8 text-xl font-semibold text-charcoal">Third party workflow and dispatch planning</h3>
+              <p className="mt-3 leading-8 text-ink/75">
+                {currentCity.logistics}
+              </p>
             </article>
             <aside className="rounded-3xl bg-charcoal p-6 text-ivory">
               <h2 className="text-2xl font-semibold">Nearby Areas Served</h2>
               <ul className="mt-5 grid gap-3">
-                {city.nearbyAreas.map((area) => (
+                {currentCity.nearbyAreas.map((area) => (
                   <li className="rounded-2xl bg-ivory/10 px-4 py-3 font-semibold" key={area}>{area}</li>
                 ))}
               </ul>
@@ -88,7 +113,15 @@ export default async function CityPage({ params }: Params) {
 
         <section className="py-16">
           <div className="container-padded">
-            <SectionHeading eyebrow="Related pages" title={`Manufacturing Support for ${city.city} Brands`} />
+            <SectionHeading eyebrow="City demand" title={`Popular Product Directions for ${currentCity.city}`} />
+            <div className="mb-10 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+              {currentCity.productHighlights?.map((item) => (
+                <div className="rounded-2xl border border-charcoal/10 bg-ivory px-4 py-4 font-semibold text-charcoal shadow-sm" key={item}>
+                  {item}
+                </div>
+              ))}
+            </div>
+            <SectionHeading eyebrow="Related pages" title={`Manufacturing Support for ${currentCity.city} Brands`} />
             <InternalLinkGrid links={[
               { label: "Private Label Cosmetics", href: "/private-label-cosmetics-manufacturer-india", description: "Launch products under your brand name." },
               { label: "Third Party Manufacturing", href: "/third-party-cosmetic-manufacturing-india", description: "Outsource production, filling and packing." },
@@ -100,12 +133,12 @@ export default async function CityPage({ params }: Params) {
 
         <section className="bg-mist py-16">
           <div className="container-padded">
-            <SectionHeading eyebrow="FAQ" title={`Cosmetic Manufacturing in ${city.city} FAQ`} />
-            <FAQAccordion faqs={city.faq} />
+            <SectionHeading eyebrow="FAQ" title={`Cosmetic Manufacturing in ${currentCity.city} FAQ`} />
+            <FAQAccordion faqs={currentCity.faq} />
           </div>
         </section>
       </main>
-      <CTASection title={`Request a Cosmetic Manufacturing Quote for ${city.city}`} />
+      <CTASection title={`Request a Cosmetic Manufacturing Quote for ${currentCity.city}`} />
     </>
   );
 }

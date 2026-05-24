@@ -13,10 +13,15 @@ import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 
 export default function ContentPageRenderer({ page }: { page: ContentPage }) {
   const path = `/${page.slug}`;
-  const crumbs = [
-    { name: "Home", href: "/" },
-    { name: page.h1, href: path }
-  ];
+  const parentCrumb = (() => {
+    if (page.kind === "service") return { name: "Services", href: "/private-label-cosmetics-manufacturer-india" };
+    if (page.kind === "category") return { name: "Products", href: "/skincare-manufacturer-india" };
+    if (page.slug === "request-quote") return { name: "Request Quote", href: path };
+    return null;
+  })();
+  const crumbs = parentCrumb
+    ? [{ name: "Home", href: "/" }, parentCrumb, { name: page.h1, href: path }]
+    : [{ name: "Home", href: "/" }, { name: page.h1, href: path }];
 
   return (
     <>
@@ -54,6 +59,30 @@ export default function ContentPageRenderer({ page }: { page: ContentPage }) {
             <div className="container-padded">
               <SectionHeading eyebrow="AIO answers" title="Clear Answers for Manufacturing Decisions" />
               <AnswerBlocks />
+            </div>
+          </section>
+        ) : null}
+
+        {page.kind === "service" || page.slug === "startup-cosmetic-brand-support" ? (
+          <section className="py-16">
+            <div className="container-padded">
+              <SectionHeading
+                eyebrow="Process overview"
+                title="A Practical Route from Product Brief to Finished Goods"
+                text="Manufacturing discussions usually move faster when product type, formula direction, pack choice and quantity are aligned early."
+              />
+              <ProcessTimeline
+                steps={[
+                  "Requirement and category discussion",
+                  "Formula selection or development direction",
+                  "Packaging and label planning",
+                  "Sampling and approval",
+                  "RM and PM planning",
+                  "Manufacturing and filling",
+                  "Packing and quality checks",
+                  "Dispatch planning"
+                ]}
+              />
             </div>
           </section>
         ) : null}

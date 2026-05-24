@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -25,10 +26,16 @@ export const metadata: Metadata = {
   ...createMetadata({
     title: "Skincare & Cosmetic Manufacturer in India | Kiora CosmoTech",
     description:
-      "Kiora CosmoTech manufactures skincare, haircare and personal care products with private label, third party, custom formulation and pan-India supply.",
+      "Kiora CosmoTech manufactures skincare, haircare and personal care products in India for private label, third party and custom formulation brands.",
     path: "/"
   }),
   metadataBase: new URL(siteConfig.url)
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#122223"
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

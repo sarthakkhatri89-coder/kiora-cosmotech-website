@@ -18,6 +18,10 @@ export type ProductPage = {
   qualityChecks: string[];
   related: string[];
   faqs: FAQ[];
+  formulaDirections?: string[];
+  packagingAdvice?: string;
+  buyerMistakes?: string[];
+  quoteChecklist?: string[];
 };
 
 const sharedFaqs = (product: string): FAQ[] => [
@@ -352,6 +356,80 @@ const dermaCosmeticPage = productPages.find((product) => product.slug === "derma
 if (dermaCosmeticPage) {
   dermaCosmeticPage.title = "Derma Cosmetic Manufacturer India | Private Label Skincare";
 }
+
+const defaultBuyerMistakes = [
+  "Finalizing artwork before pack size and label area are approved",
+  "Comparing prices without matching formula, fill size and carton scope",
+  "Choosing premium packaging before confirming MOQ and availability",
+  "Using aggressive claims without checking cosmetic communication limits"
+];
+
+const defaultQuoteChecklist = [
+  "Product category and product type",
+  "Expected quantity or target MOQ",
+  "Packaging format and fill size",
+  "Ready formula or custom formula direction",
+  "Target launch city and timeline",
+  "Any benchmark, active preference or carton requirement"
+];
+
+productPages.forEach((product) => {
+  if (!product.h1.includes("India")) {
+    product.h1 = `${product.name} in India`;
+  }
+  product.formulaDirections ??= product.formulaOptions.slice(0, 5);
+  product.packagingAdvice ??=
+    `${product.name.replace(" Manufacturer", "")} packaging should be selected after aligning formula texture, fill size, label area, carton requirement and channel positioning so production planning stays practical.`;
+  product.buyerMistakes ??= defaultBuyerMistakes;
+  product.quoteChecklist ??= defaultQuoteChecklist;
+});
+
+const updateProductPage = (slug: string, updates: Partial<ProductPage>) => {
+  const page = productPages.find((item) => item.slug === slug);
+  if (page) Object.assign(page, updates);
+};
+
+updateProductPage("sunscreen-manufacturer", {
+  formulaDirections: [
+    "Gel sunscreen for light skin feel",
+    "Cream sunscreen for richer daily-use positioning",
+    "Matte sunscreen for oily-skin routines",
+    "Mineral or hybrid direction depending on brand brief",
+    "SPF and PA claims only after relevant testing support"
+  ],
+  packagingAdvice:
+    "Sunscreen packaging often works best in tubes, pumps or airless packs because daily-use SPF products need easy dispensing, controlled fill size and practical travel handling.",
+  buyerMistakes: [
+    "Treating SPF numbers as a marketing choice without discussing formula and testing implications",
+    "Choosing pack format before the texture and fill style are aligned",
+    "Using medical or guaranteed protection language in cosmetic communication",
+    "Skipping early discussion on label space for SPF, usage and caution information"
+  ]
+});
+
+updateProductPage("face-serum-manufacturer", {
+  formulaDirections: [
+    "Niacinamide serum for oil-balance and texture-led positioning",
+    "Vitamin C serum for radiance-focused communication",
+    "Hyaluronic acid serum for hydration-led routines",
+    "Peptide serum for premium age-support positioning",
+    "Barrier repair serum with a calm, non-greasy skin feel"
+  ],
+  packagingAdvice:
+    "Serum packaging should match viscosity, oxidation sensitivity and price positioning. Droppers work for premium ritual-led use, while pumps and airless bottles support controlled dispensing and cleaner handling."
+});
+
+updateProductPage("face-wash-manufacturer", {
+  formulaDirections: [
+    "Gel face wash for everyday skincare routines",
+    "Foaming face wash for a lighter cleanse feel",
+    "Salicylic acid face wash for acne-prone cosmetic positioning",
+    "Vitamin C face wash for brightening-led communication",
+    "Gentle cleanser for low-fragrance or daily-use concepts"
+  ],
+  packagingAdvice:
+    "Face wash packaging usually starts with tubes for compact retail ranges, but pump and flip-top bottles can work for larger fills or salon and family-use products."
+});
 
 export const productSlugs = productPages.map((product) => product.slug);
 

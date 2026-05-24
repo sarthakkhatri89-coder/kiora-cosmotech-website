@@ -1,7 +1,9 @@
+const defaultSiteUrl = "https://kiora-cosmotech-website.vercel.app";
+
 export const siteConfig = {
   name: "Kiora CosmoTech",
   legalName: "Kiora CosmoTech",
-  url: "https://www.kioracosmotech.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || defaultSiteUrl,
   tagline: "Where skincare science meets scalable cosmetic manufacturing.",
   positioning:
     "Kiora CosmoTech - Skincare & Cosmetic Manufacturer in India for Private Label, Third Party and Custom Formulation.",
@@ -14,6 +16,7 @@ export const siteConfig = {
   },
   whatsappNumber: "918076503757",
   ogImage: "/og/kiora-og.png",
+  logo: "/images/kiora-logo-main.png",
   socialLinks: [] as string[]
 };
 

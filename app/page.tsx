@@ -19,12 +19,12 @@ import { blogPosts } from "@/data/blogPosts";
 import { coreFaqs } from "@/data/faqs";
 import { productCategories, productPages } from "@/data/products";
 import { createMetadata } from "@/lib/seo";
-import { breadcrumbSchema, localBusinessSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, localBusinessSchema, manufacturerSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
   title: "Skincare & Cosmetic Manufacturer in India | Kiora CosmoTech",
   description:
-    "Kiora CosmoTech manufactures skincare, haircare and personal care products with private label, third party, custom formulation and pan-India supply.",
+    "Kiora CosmoTech manufactures skincare, haircare and personal care products in India for private label, third party and custom formulation brands.",
   path: "/"
 });
 
@@ -83,10 +83,31 @@ const trustReasons = [
 export default function HomePage() {
   return (
     <>
-      <SchemaJsonLd data={[localBusinessSchema(), breadcrumbSchema([{ name: "Home", href: "/" }])]} />
+      <SchemaJsonLd data={[localBusinessSchema(), manufacturerSchema(), breadcrumbSchema([{ name: "Home", href: "/" }]), faqSchema(coreFaqs)]} />
       <HeroSection />
       <TrustStats />
       <main>
+        <section className="py-12">
+          <div className="container-padded grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <article className="rounded-3xl border border-charcoal/10 bg-ivory p-6 shadow-sm">
+              <h2 className="text-3xl font-semibold text-charcoal">What Kiora CosmoTech does</h2>
+              <p className="mt-4 leading-8 text-ink/75">
+                Kiora CosmoTech helps startups, D2C beauty brands, salon brands, influencers, derma-cosmetic businesses, distributors and marketing companies launch skincare, haircare and personal care products through private label, third-party and contract manufacturing support.
+              </p>
+              <p className="mt-4 leading-8 text-ink/75">
+                We help brands plan formulas, packaging, MOQ, filling, packing, documentation inputs and launch-ready product ranges with a practical manufacturing workflow.
+              </p>
+            </article>
+            <article className="rounded-3xl bg-charcoal p-6 text-ivory shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-champagne">Direct answer</p>
+              <h2 className="mt-4 text-2xl font-semibold">Cosmetic manufacturing partner in India</h2>
+              <p className="mt-4 leading-8 text-ivory/78">
+                Kiora CosmoTech is a cosmetic and skincare manufacturing partner in India offering private label, third-party and contract manufacturing support for face wash, serums, sunscreens, moisturizers, creams, gels, lotions, shampoos, haircare and personal care products.
+              </p>
+            </article>
+          </div>
+        </section>
+
         <section className="section-y">
           <div className="container-padded">
             <SectionHeading eyebrow="Manufacturing strengths" title="Manufacturing Strengths for Skincare-Led Brands" text="A practical manufacturing engine for formula selection, batch planning, filling, packing, product specifications and finished goods review." />
@@ -259,6 +280,31 @@ export default function HomePage() {
           <div className="container-padded">
             <SectionHeading eyebrow="AIO answers" title="Direct Answers for AI Search and Buyers" />
             <AnswerBlocks />
+          </div>
+        </section>
+
+        <section className="section-y bg-charcoal text-ivory">
+          <div className="container-padded grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <div>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-champagne">Why choose Kiora</p>
+              <h2 className="section-title font-display font-semibold">Built for practical product launch planning</h2>
+              <p className="mt-5 leading-8 text-ivory/76">
+                Share your product idea, category, quantity and packaging preference. Our team will help you understand the practical manufacturing path for your brand, from formula direction and pack selection to batch planning, filling, packing and dispatch readiness.
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                "Practical product launch guidance",
+                "Startup-friendly manufacturing discussion",
+                "Category-wise product planning",
+                "Packaging and MOQ guidance",
+                "Batch-wise documentation approach",
+                "Quality-focused manufacturing coordination",
+                "Transparent communication"
+              ].map((item) => (
+                <div className="rounded-2xl bg-ivory/10 px-4 py-4 font-semibold text-ivory/88" key={item}>{item}</div>
+              ))}
+            </div>
           </div>
         </section>
 

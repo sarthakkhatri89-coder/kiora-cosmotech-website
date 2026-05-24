@@ -11,6 +11,11 @@ export type CityPage = {
   nearbyAreas: string[];
   categories: string[];
   faq: FAQ[];
+  audience?: string;
+  demand?: string;
+  launchOptions?: string;
+  logistics?: string;
+  productHighlights?: string[];
 };
 
 const cityFaq = (city: string): FAQ[] => [
@@ -243,6 +248,80 @@ export const cities: CityPage[] = [
 cities.forEach((city) => {
   city.title = `Cosmetic Manufacturer in ${city.city} | Private Label Skincare`;
   city.description = `Private label and third party cosmetic manufacturing for skincare, haircare and personal care brands in ${city.city}.`;
+  city.audience ??=
+    `Kiora CosmoTech works with founders, salons, clinics, influencers, distributors and D2C beauty teams in ${city.city} that need practical cosmetic manufacturing communication.`;
+  city.demand ??=
+    `Common product discussions in ${city.city} include face wash, face serum, sunscreen, moisturizer, shampoo, body lotion and personal care products that can be positioned for retail, clinics or online-first launches.`;
+  city.launchOptions ??=
+    `Brands in ${city.city} can begin with focused private label ranges, selected packaging formats and realistic MOQ planning before widening the portfolio.`;
+  city.logistics ??=
+    `Dispatch planning for ${city.city} can be discussed after formula, packaging, batch quantity and commercial approval are aligned.`;
+  city.productHighlights ??= city.categories;
+});
+
+const updateCity = (slug: string, updates: Partial<CityPage>) => {
+  const city = cities.find((item) => item.slug === slug);
+  if (city) Object.assign(city, updates);
+};
+
+updateCity("cosmetic-manufacturer-in-delhi-ncr", {
+  audience:
+    "Delhi NCR enquiries often come from D2C skincare founders, dermatology clinics, salon chains, traders and distributors that need fast communication, packaging sourcing clarity and launch planning across NCR.",
+  demand:
+    "Demand in Delhi NCR is often shaped by active-led serums, sunscreen, cleansers, clinic-led skincare, salon retail products and practical personal care lines for online and offline channels.",
+  launchOptions:
+    "Private label launches for Delhi NCR brands usually move best with tight SKUs, clear target price, ready formula direction where suitable and packaging decisions made early enough for label and carton planning.",
+  logistics:
+    "With Noida, Gurugram, Faridabad, Ghaziabad, South Delhi, West Delhi, Rohini, Dwarka, Bawana and Narela in the business mix, brands often need clear dispatch planning and responsive production communication.",
+  productHighlights: ["Face serum", "Sunscreen", "Face wash", "Clinic skincare", "Shampoo", "Body lotion"]
+});
+
+updateCity("cosmetic-manufacturer-in-mumbai", {
+  audience:
+    "Mumbai works well for beauty startups, influencer-led brands, salon groups, aesthetic clinics and marketplace-first teams looking for premium skincare and personal care manufacturing direction.",
+  demand:
+    "Common Mumbai requests include premium serums, sunscreen, moisturizers, body care, shampoo and polished packaging formats suited to content-led and retail-first launches.",
+  launchOptions:
+    "Private label launches from Mumbai often need premium pack selection, compact hero-SKU ranges and clear customer-facing positioning before commercial batches are planned.",
+  logistics:
+    "Mumbai brands usually value smooth coordination around packaging, dispatch planning and reorder clarity because speed to online marketplaces and content launches matters.",
+  productHighlights: ["Face serum", "Sunscreen", "Moisturizer", "Body wash", "Shampoo", "Hair serum"]
+});
+
+updateCity("cosmetic-manufacturer-in-bangalore", {
+  audience:
+    "Bangalore enquiries often come from D2C brands, wellness startups, performance skincare teams and digital-first cosmetic founders planning premium product positioning.",
+  demand:
+    "Performance-led skincare, modern serums, sunscreen, gentle cleansers, moisturizer concepts and founder-led haircare products are common discussion points in Bangalore.",
+  launchOptions:
+    "Bangalore brands often begin with fewer, better-explained products and prefer a manufacturing partner who can translate a detailed product brief into a clear formula and pack plan.",
+  logistics:
+    "Digital-first brands in Bangalore typically need dispatch planning that supports e-commerce operations, repeat batch thinking and clean communication around changes or reorders.",
+  productHighlights: ["Niacinamide serum", "Sunscreen", "Moisturizer", "Gentle face wash", "Hair serum", "Body wash"]
+});
+
+updateCity("cosmetic-manufacturer-in-hyderabad", {
+  audience:
+    "Hyderabad is a practical market for derma clinics, pharma-linked entrepreneurs, personal care startups and regional distribution brands looking for a cosmetic manufacturing partner.",
+  demand:
+    "Derma-inspired skincare, face wash, serum, sunscreen, shampoo and personal care products are frequently discussed by Hyderabad businesses planning retail and professional channels.",
+  launchOptions:
+    "Private label launches in Hyderabad often combine clinic-oriented or pharmacy-adjacent product ideas with realistic packaging and batch planning.",
+  logistics:
+    "Brands in Hyderabad often need clear production and dispatch planning so they can balance city demand with regional distribution opportunities.",
+  productHighlights: ["Derma cosmetic", "Face wash", "Face serum", "Sunscreen", "Shampoo", "Hand wash"]
+});
+
+updateCity("cosmetic-manufacturer-in-ahmedabad", {
+  audience:
+    "Ahmedabad enquiries often come from traders, distributors, business families entering cosmetics and personal care brands planning private label expansion.",
+  demand:
+    "Ahmedabad discussions commonly cover face wash, cream, haircare, body care and practical packaging choices that fit wholesale and regional retail channels.",
+  launchOptions:
+    "Private label expansion in Ahmedabad works best when the product mix is commercially sensible, packaging supply is practical and reorder planning is discussed early.",
+  logistics:
+    "Businesses in Ahmedabad and wider Gujarat often look for reliable dispatch planning because distribution-led growth matters as much as product positioning.",
+  productHighlights: ["Face wash", "Cream", "Hair oil", "Body lotion", "Shampoo", "Hand wash"]
 });
 
 export const citySlugs = cities.map((city) => city.slug);

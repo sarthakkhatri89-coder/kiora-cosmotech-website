@@ -17,14 +17,14 @@ export default function HeroSection() {
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-champagne">Kiora CosmoTech</p>
           <h1 className="hero-title max-w-4xl font-display font-semibold">Skincare & Cosmetic Manufacturer in India</h1>
           <p className="mt-6 max-w-2xl text-[1.08rem] leading-8 text-ivory/84 md:text-xl">
-            Private label, third party and custom formulation support for skincare, derma-cosmetic, haircare and personal care brands.
+            Kiora CosmoTech helps startups, D2C beauty brands, salon brands, influencers, derma-cosmetic businesses, distributors and marketing companies launch skincare, haircare and personal care products through private label, third-party and contract manufacturing support.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-champagne px-6 py-3 text-center font-semibold leading-tight text-charcoal transition hover:bg-ivory sm:min-w-[230px]" href="/request-quote">
               Request Manufacturing Quote <ArrowRight size={18} aria-hidden="true" />
             </Link>
             <Link className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ivory/35 px-6 py-3 text-center font-semibold leading-tight transition hover:bg-ivory/10 sm:min-w-[210px]" href="/skincare-manufacturer-india">
-              Explore Product Range
+              Explore Product Categories
             </Link>
           </div>
           <div className="mt-6 flex flex-wrap gap-2">

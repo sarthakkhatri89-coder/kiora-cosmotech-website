@@ -1078,6 +1078,72 @@ enrichContentPage("request-quote", {
   ]
 });
 
+enrichContentPage("contract-cosmetic-manufacturer-india", {
+  additions: [
+    {
+      heading: "Who contract manufacturing is for",
+      body:
+        "Contract manufacturing is useful for brands that already know their product category, want tighter production planning and need a partner who can work around batch size, packaging format, product specifications and dispatch expectations.",
+      points: ["Existing brands and marketers", "Distributor-led product ranges", "Planned repeat-batch programs", "Clinic and salon retail lines"]
+    },
+    {
+      heading: "Common mistakes buyers make",
+      body:
+        "Buyers often compare prices without matching the fill size, carton scope or formula direction. Another common issue is starting artwork before the actual pack, label size and packaging decoration route are confirmed."
+    },
+    {
+      heading: "Documentation-oriented production approach",
+      body:
+        "A contract manufacturing discussion should cover product specifications, pack configuration, label declaration inputs, batch-wise records and any product-specific review needed before finished goods are dispatched."
+    }
+  ]
+});
+
+enrichContentPage("custom-skincare-formulation", {
+  additions: [
+    {
+      heading: "What founders should prepare before formulation discussion",
+      body:
+        "A useful formulation brief includes product type, target user, desired texture, active direction, fragrance preference, expected fill size, preferred packaging style, target selling price and launch timeline."
+    },
+    {
+      heading: "Where custom formulation adds value",
+      body:
+        "Custom formulation is most useful when the brand wants a more ownable product feel, a stronger active story, a premium texture or packaging compatibility that does not fit a standard ready formula."
+    },
+    {
+      heading: "Common formulation mistakes",
+      body:
+        "Brands lose time when they ask for many conflicting features in one formula, copy competitor claims too closely or delay packaging decisions until late in the process. Formula planning works better when the product brief is narrow and realistic."
+    }
+  ]
+});
+
+enrichContentPage("about-kiora-cosmotech", {
+  additions: [
+    {
+      heading: "Why Kiora CosmoTech was created",
+      body:
+        "Kiora CosmoTech was built around a simple idea: many beauty brands do not only need production capacity, they need a clearer manufacturing conversation. Founders often need help converting product ideas into formula direction, packaging choices, MOQ understanding and launch-ready batch planning."
+    },
+    {
+      heading: "Manufacturing approach note",
+      body:
+        "At Kiora CosmoTech, our focus is not only to manufacture cosmetic products, but to help brands launch practical, market-ready skincare, haircare and personal care products. We support founders with formula selection, packaging planning, MOQ understanding, product brief preparation and manufacturing coordination so that the launch process becomes structured and clear."
+    },
+    {
+      heading: "Quality-driven and documentation-aware mindset",
+      body:
+        "The company approach is centered on quality-focused workflow, batch-wise checks, raw material and packing material verification, in-process monitoring, finished product review and documentation support where applicable to the project scope."
+    },
+    {
+      heading: "Contact and business presence",
+      body:
+        "Kiora CosmoTech currently presents itself as a pan-India cosmetic manufacturing partner. If you are planning a product launch, use the quote page or WhatsApp CTA to share category, pack type, quantity and city so the discussion can start with practical details."
+    }
+  ]
+});
+
 export const getContentPage = (slug: string) => contentPages.find((page) => page.slug === slug);
 
 export const contentPageSlugs = contentPages.map((page) => page.slug);

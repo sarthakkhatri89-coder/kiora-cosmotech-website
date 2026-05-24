@@ -9,6 +9,7 @@ export type BlogPost = {
   publishedAt: string;
   links: { label: string; href: string }[];
   sections: { heading: string; body: string }[];
+  faqs?: { question: string; answer: string }[];
 };
 
 const date = "2026-05-21";
@@ -734,6 +735,71 @@ updateBlogPost("moq-in-cosmetic-manufacturing", {
       heading: "Internal Links for MOQ Planning",
       body:
         "Review Private Label Cosmetics for launch model planning, Packaging Options for pack decisions, Skincare Manufacturer in India for product categories and Request Quote when you are ready to share product type, quantity, packaging preference and city."
+    }
+  ]
+});
+
+updateBlogPost("how-to-start-skincare-brand-india", {
+  faqs: [
+    {
+      question: "Which products should a new skincare brand launch first?",
+      answer: "A focused launch often starts with face wash, serum, moisturizer and sunscreen, or another small routine that is easy to explain and reorder."
+    },
+    {
+      question: "Should a startup choose ready formula or custom formulation?",
+      answer: "Ready formulas usually help launch faster, while custom formulation is more useful when the brand needs stronger differentiation in texture, actives or product story."
+    }
+  ]
+});
+
+updateBlogPost("private-label-vs-third-party-cosmetic-manufacturing", {
+  faqs: [
+    {
+      question: "Is private label faster than third party manufacturing?",
+      answer: "Private label is often faster when the formula direction and packaging are straightforward, while third party manufacturing may involve deeper production planning."
+    },
+    {
+      question: "Can a brand start with private label and later move to contract manufacturing?",
+      answer: "Yes. Many brands begin with private label launches and later move into repeat-batch or more structured contract manufacturing as they scale."
+    }
+  ]
+});
+
+updateBlogPost("cost-of-starting-cosmetic-brand-india", {
+  faqs: [
+    {
+      question: "What affects cosmetic startup cost the most?",
+      answer: "Formula complexity, packaging style, quantity, label and carton scope, and the number of products in the first launch all shape startup cost."
+    },
+    {
+      question: "Does premium packaging increase launch cost?",
+      answer: "Yes. Airless packs, droppers, special pumps and mono cartons can raise the initial budget, so packaging should match the target selling price."
+    }
+  ]
+});
+
+updateBlogPost("how-to-choose-cosmetic-manufacturer-india", {
+  faqs: [
+    {
+      question: "What should I ask a cosmetic manufacturer before requesting a quote?",
+      answer: "Ask about category focus, MOQ logic, packaging options, sampling process, documentation inputs, batch planning and how they handle filling, packing and dispatch."
+    },
+    {
+      question: "How can I compare manufacturers fairly?",
+      answer: "Compare them only after aligning product type, formula direction, fill size, packaging style, label scope and expected quantity."
+    }
+  ]
+});
+
+updateBlogPost("moq-in-cosmetic-manufacturing", {
+  faqs: [
+    {
+      question: "Why does MOQ change from one cosmetic product to another?",
+      answer: "MOQ changes because formulas, raw materials, bottle or tube choices, label decoration and production setup requirements are different across products."
+    },
+    {
+      question: "Can startups reduce MOQ by choosing simpler packaging?",
+      answer: "Often yes. Practical pack formats and a tighter initial SKU plan can make the manufacturing discussion simpler for a startup launch."
     }
   ]
 });
