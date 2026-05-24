@@ -18,7 +18,7 @@ type HairSerumConcept = {
   name: string;
   description: string;
   activeOptions: string[];
-  tags: string[];
+  positioning: string;
   alt: string;
   image: string;
   group: string;
@@ -55,13 +55,7 @@ const concepts: HairSerumConcept[] = [
       "Panthenol",
       "Niacinamide"
     ],
-    tags: [
-      "Redensyl hair serum manufacturer",
-      "Redensyl hair growth serum manufacturer",
-      "Hair density serum manufacturer India",
-      "Private label Redensyl hair serum",
-      "Third party hair serum manufacturer"
-    ],
+    positioning: "Best suited for premium scalp density, fuller-looking hair and active-led private label launches.",
     alt: "3D render of premium Redensyl hair density serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/redensyl-hair-density-serum.webp",
     group: "Hair Density & Growth Support Serums"
@@ -78,13 +72,7 @@ const concepts: HairSerumConcept[] = [
       "Caffeine",
       "Panthenol"
     ],
-    tags: [
-      "Capixyl hair serum manufacturer",
-      "Acetyl Tetrapeptide-3 hair serum manufacturer",
-      "Peptide hair fall serum manufacturer",
-      "Capixyl peptide serum manufacturer",
-      "Hair fall control serum manufacturer"
-    ],
+    positioning: "A strong fit for breakage-control, root-focused and peptide-positioned hair-care ranges.",
     alt: "3D render of Capixyl peptide hair fall control serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/capixyl-peptide-hair-fall-control-serum.webp",
     group: "Hair Density & Growth Support Serums"
@@ -102,13 +90,7 @@ const concepts: HairSerumConcept[] = [
       "Niacinamide",
       "Panthenol"
     ],
-    tags: [
-      "Procapil hair serum manufacturer",
-      "Biotinoyl Tripeptide-1 hair serum manufacturer",
-      "Root activating hair serum manufacturer",
-      "Procapil scalp serum manufacturer",
-      "Hair root strengthening serum manufacturer"
-    ],
+    positioning: "Recommended for brands building root support, scalp vitality and thinning-concern concepts.",
     alt: "3D render of Procapil root activating hair serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/procapil-root-activating-serum.webp",
     group: "Hair Density & Growth Support Serums"
@@ -126,13 +108,7 @@ const concepts: HairSerumConcept[] = [
       "Aloe Vera",
       "Panthenol"
     ],
-    tags: [
-      "Baicapil hair serum manufacturer",
-      "Botanical hair growth serum manufacturer",
-      "Scutellaria Baicalensis hair serum manufacturer",
-      "Baicalin hair serum manufacturer",
-      "Plant based hair serum manufacturer"
-    ],
+    positioning: "Works well for plant-powered, premium botanical and clean-positioned hair serum portfolios.",
     alt: "3D render of Baicapil botanical hair growth serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/baicapil-botanical-hair-growth-serum.webp",
     group: "Hair Density & Growth Support Serums"
@@ -150,13 +126,7 @@ const concepts: HairSerumConcept[] = [
       "Baicapil",
       "Peptide complex"
     ],
-    tags: [
-      "Redensyl Capixyl Procapil hair serum manufacturer",
-      "18% hair growth active serum manufacturer",
-      "Multi active hair growth serum manufacturer",
-      "Redensyl Capixyl Procapil Anagain Baicapil hair serum",
-      "Advanced hair serum manufacturer"
-    ],
+    positioning: "Designed for advanced hero-product launches with a high-performance, multi-active story.",
     alt: "3D render of 18 percent multi active hair growth serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/multi-active-hair-growth-serum.webp",
     group: "Hair Density & Growth Support Serums"
@@ -174,13 +144,7 @@ const concepts: HairSerumConcept[] = [
       "Myristoyl Pentapeptide-17",
       "Caffeine"
     ],
-    tags: [
-      "Multi peptide hair serum manufacturer",
-      "Peptide hair density serum manufacturer",
-      "Copper Tripeptide-1 hair serum manufacturer",
-      "GHK-Cu hair serum manufacturer",
-      "Biomimetic peptide hair serum manufacturer"
-    ],
+    positioning: "Ideal for derma-cosmetic, performance haircare and peptide-led premium brand concepts.",
     alt: "3D render of multi peptide hair density serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/multi-peptide-hair-density-serum.webp",
     group: "Peptide & Biotech Scalp Serums"
@@ -198,13 +162,7 @@ const concepts: HairSerumConcept[] = [
       "Zinc PCA",
       "Allantoin"
     ],
-    tags: [
-      "Copper Tripeptide-1 GHK-Cu hair serum manufacturer",
-      "Copper Peptide 1 hair serum manufacturer",
-      "GHK-Cu scalp serum manufacturer",
-      "Copper peptide hair serum manufacturer",
-      "Blue copper peptide scalp serum manufacturer"
-    ],
+    positioning: "Suitable for premium scalp repair positioning with a modern copper peptide ingredient story.",
     alt: "3D render of copper peptide scalp repair serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/copper-peptide-scalp-repair-serum.webp",
     group: "Peptide & Biotech Scalp Serums"
@@ -222,13 +180,7 @@ const concepts: HairSerumConcept[] = [
       "Niacinamide",
       "Panthenol"
     ],
-    tags: [
-      "Rosemary peptide hair serum manufacturer",
-      "Rosemary hair serum manufacturer",
-      "Peptide rosemary scalp serum manufacturer",
-      "Acetyl Tetrapeptide-3 rosemary hair serum",
-      "Rosemary root revival serum manufacturer"
-    ],
+    positioning: "A balanced choice for brands combining modern peptide positioning with botanical scalp care.",
     alt: "3D render of peptide and rosemary root revival hair serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/peptide-rosemary-root-revival-serum.webp",
     group: "Peptide & Biotech Scalp Serums"
@@ -246,13 +198,7 @@ const concepts: HairSerumConcept[] = [
       "Panthenol",
       "Amino acids"
     ],
-    tags: [
-      "Caffeine hair serum manufacturer",
-      "Caffeine scalp serum manufacturer",
-      "Caffeine niacinamide hair serum manufacturer",
-      "Energizing scalp serum manufacturer",
-      "Caffeine hair growth serum manufacturer"
-    ],
+    positioning: "Well matched to daily-use scalp care ranges focused on freshness, energy and root support.",
     alt: "3D render of caffeine energizing scalp serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/caffeine-energizing-scalp-serum.webp",
     group: "Scalp Health & Barrier Serums"
@@ -269,13 +215,7 @@ const concepts: HairSerumConcept[] = [
       "Niacinamide",
       "Amino acids"
     ],
-    tags: [
-      "Anagain hair serum manufacturer",
-      "Pea sprout extract hair serum manufacturer",
-      "Pisum Sativum hair serum manufacturer",
-      "Plant stem cell hair serum manufacturer",
-      "Botanical hair growth serum manufacturer"
-    ],
+    positioning: "A natural fit for clean beauty, botanical and plant-powered hair growth support positioning.",
     alt: "3D render of Anagain pea sprout hair growth serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/anagain-pea-sprout-hair-growth-serum.webp",
     group: "Herbal / Ayurveda-Inspired Hair Serums"
@@ -292,13 +232,7 @@ const concepts: HairSerumConcept[] = [
       "Amino acid complex",
       "Hydrolyzed Protein"
     ],
-    tags: [
-      "Biotin hair serum manufacturer",
-      "Biotinoyl Tripeptide-1 hair serum manufacturer",
-      "Biotin peptide hair serum manufacturer",
-      "Hair strengthening serum manufacturer",
-      "Anti breakage hair serum manufacturer"
-    ],
+    positioning: "Best for strengthening-led launches targeting brittle, weak-looking and breakage-prone hair.",
     alt: "3D render of biotin and tripeptide strengthening hair serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/biotin-tripeptide-strengthening-serum.webp",
     group: "Hair Strength & Repair Serums"
@@ -316,13 +250,7 @@ const concepts: HairSerumConcept[] = [
       "Prebiotic Inulin",
       "Aloe Vera"
     ],
-    tags: [
-      "Niacinamide scalp serum manufacturer",
-      "Scalp barrier serum manufacturer",
-      "Zinc PCA scalp serum manufacturer",
-      "Oily scalp balancing serum manufacturer",
-      "Sensitive scalp serum manufacturer"
-    ],
+    positioning: "Great for balanced scalp-care concepts aimed at oily, sensitive or comfort-focused routines.",
     alt: "3D render of niacinamide scalp barrier serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/niacinamide-scalp-barrier-serum.webp",
     group: "Scalp Health & Barrier Serums"
@@ -340,13 +268,7 @@ const concepts: HairSerumConcept[] = [
       "Aloe Vera",
       "Panthenol"
     ],
-    tags: [
-      "Prebiotic scalp serum manufacturer",
-      "Microbiome scalp serum manufacturer",
-      "Inulin scalp serum manufacturer",
-      "Alpha-Glucan Oligosaccharide scalp serum manufacturer",
-      "Scalp microbiome balancing serum manufacturer"
-    ],
+    positioning: "Recommended for premium scalp comfort ranges with a microbiome and long-term care story.",
     alt: "3D render of prebiotic microbiome scalp serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/prebiotic-microbiome-scalp-serum.webp",
     group: "Scalp Health & Barrier Serums"
@@ -363,13 +285,7 @@ const concepts: HairSerumConcept[] = [
       "Tea Tree Extract",
       "Panthenol"
     ],
-    tags: [
-      "Salicylic acid scalp serum manufacturer",
-      "BHA scalp serum manufacturer",
-      "Oily scalp serum manufacturer",
-      "Scalp buildup serum manufacturer",
-      "Clarifying scalp serum manufacturer"
-    ],
+    positioning: "A practical option for clarifying scalp-care concepts focused on visible build-up and freshness.",
     alt: "3D render of salicylic acid clarifying scalp serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/salicylic-acid-clarifying-scalp-serum.webp",
     group: "Scalp Health & Barrier Serums"
@@ -387,13 +303,7 @@ const concepts: HairSerumConcept[] = [
       "Niacinamide",
       "Panthenol"
     ],
-    tags: [
-      "Anti dandruff scalp serum manufacturer",
-      "Piroctone Olamine scalp serum manufacturer",
-      "Climbazole scalp serum manufacturer",
-      "Flaky scalp serum manufacturer",
-      "Cosmetic anti dandruff serum manufacturer"
-    ],
+    positioning: "Suitable for cosmetic flaky-scalp and scalp-freshness ranges for regular care positioning.",
     alt: "3D render of anti dandruff cosmetic scalp serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/anti-dandruff-cosmetic-scalp-serum.webp",
     group: "Scalp Health & Barrier Serums"
@@ -412,14 +322,7 @@ const concepts: HairSerumConcept[] = [
       "Hibiscus Extract",
       "Fenugreek Extract"
     ],
-    tags: [
-      "Ayurvedic hair serum manufacturer",
-      "Bhringraj hair serum manufacturer",
-      "Amla hair serum manufacturer",
-      "Brahmi hair serum manufacturer",
-      "Herbal hair growth serum manufacturer",
-      "Ayurvedic hair growth serum manufacturer"
-    ],
+    positioning: "Ideal for Ayurveda-inspired, herbal and premium Indian hair-care storytelling.",
     alt: "3D render of Ayurvedic botanical hair growth serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/ayurvedic-botanical-hair-growth-serum.webp",
     group: "Herbal / Ayurveda-Inspired Hair Serums"
@@ -437,13 +340,7 @@ const concepts: HairSerumConcept[] = [
       "Panthenol",
       "Niacinamide"
     ],
-    tags: [
-      "Rosemary mint scalp serum manufacturer",
-      "Rosemary hair serum manufacturer",
-      "Peppermint scalp serum manufacturer",
-      "Menthyl Lactate scalp serum manufacturer",
-      "Cooling scalp serum manufacturer"
-    ],
+    positioning: "A strong choice for cooling scalp-care launches with herbal freshness and root support appeal.",
     alt: "3D render of rosemary mint cooling scalp serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/rosemary-mint-cooling-scalp-serum.webp",
     group: "Herbal / Ayurveda-Inspired Hair Serums"
@@ -461,13 +358,7 @@ const concepts: HairSerumConcept[] = [
       "Caffeine",
       "Panthenol"
     ],
-    tags: [
-      "Onion hair serum manufacturer",
-      "Onion black seed hair serum manufacturer",
-      "Allium Cepa hair serum manufacturer",
-      "Nigella Sativa hair serum manufacturer",
-      "Herbal hair fall control serum manufacturer"
-    ],
+    positioning: "Works well for mass-premium herbal concepts inspired by popular onion and black seed trends.",
     alt: "3D render of onion black seed hair fall control serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/onion-black-seed-hair-fall-control-serum.webp",
     group: "Herbal / Ayurveda-Inspired Hair Serums"
@@ -485,13 +376,7 @@ const concepts: HairSerumConcept[] = [
       "Panthenol",
       "Amino acids"
     ],
-    tags: [
-      "Exosome scalp serum manufacturer",
-      "Plant exosome hair serum manufacturer",
-      "Exosome inspired scalp serum manufacturer",
-      "Bioactive peptide scalp serum manufacturer",
-      "Biotech hair serum manufacturer"
-    ],
+    positioning: "Best suited for futuristic biotech-led launches with an elevated scalp-care positioning angle.",
     alt: "3D render of exosome inspired bioactive scalp serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/exosome-inspired-bioactive-scalp-serum.webp",
     group: "Peptide & Biotech Scalp Serums"
@@ -509,14 +394,7 @@ const concepts: HairSerumConcept[] = [
       "Hair repair peptide systems",
       "Conditioning polymers"
     ],
-    tags: [
-      "Bond repair hair serum manufacturer",
-      "Anti breakage hair serum manufacturer",
-      "Hydrolyzed Keratin hair serum manufacturer",
-      "Ceramide NP hair serum manufacturer",
-      "Hair repair peptide serum manufacturer",
-      "Damaged hair serum manufacturer"
-    ],
+    positioning: "Recommended for salon-style repair ranges focused on damage care and anti-breakage support.",
     alt: "3D render of bond repair anti breakage hair serum bottle and box labeled Your Brand.",
     image: "/images/hair-serums/bond-repair-anti-breakage-hair-serum.webp",
     group: "Hair Strength & Repair Serums"
@@ -838,15 +716,9 @@ export default function Page() {
                       ))}
                     </div>
                   </div>
-                  <div className="mt-5">
-                    <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-charcoal/72">SEO keyword tags</h4>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {concept.tags.map((tag) => (
-                        <span className="rounded-full border border-charcoal/10 bg-white px-3 py-2 text-xs text-ink/75" key={tag}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="mt-5 rounded-3xl border border-charcoal/10 bg-white p-4">
+                    <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-charcoal/72">Positioning direction</h4>
+                    <p className="mt-3 text-sm leading-7 text-ink/74">{concept.positioning}</p>
                   </div>
                   <Link
                     className="focus-ring mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-charcoal px-5 py-3 text-center font-semibold text-ivory transition hover:bg-teal"
