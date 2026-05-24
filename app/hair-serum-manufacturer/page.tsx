@@ -575,16 +575,16 @@ function HairSerumVisual({ concept }: { concept: HairSerumConcept }) {
 
   return (
     <div
-      className="cosmetic-visual relative aspect-[4/5] overflow-hidden rounded-[1.6rem] border border-charcoal/10 p-5"
+      className="cosmetic-visual relative aspect-[5/4] overflow-hidden rounded-[1.35rem] border border-charcoal/10 p-4 sm:aspect-[4/5] sm:rounded-[1.6rem] sm:p-5"
       role="img"
       aria-label={concept.alt}
     >
       <div className="product-bottle left-[14%] h-44" />
       <div className="product-bottle left-[42%] h-52" />
       <div className="texture-swatch right-8 top-10 h-20 w-20" />
-      <div className="absolute bottom-5 left-5 right-5 rounded-3xl bg-ivory/92 p-4 shadow-premium">
+      <div className="absolute bottom-4 left-4 right-4 rounded-[1.4rem] bg-ivory/92 p-3.5 shadow-premium sm:bottom-5 sm:left-5 sm:right-5 sm:rounded-3xl sm:p-4">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">Your Brand</p>
-        <h3 className="mt-2 text-lg font-semibold text-charcoal">{concept.name}</h3>
+        <h3 className="mt-2 text-base font-semibold leading-snug text-charcoal sm:text-lg">{concept.name}</h3>
       </div>
     </div>
   );
@@ -605,16 +605,16 @@ export default function Page() {
       <Breadcrumbs crumbs={crumbs} />
       <main>
         <section className="overflow-hidden bg-white">
-          <div className="container-padded grid gap-10 py-16 md:grid-cols-[1.04fr_0.96fr] md:items-center md:py-20">
+          <div className="container-padded grid gap-8 py-12 md:grid-cols-[1.04fr_0.96fr] md:items-center md:gap-10 md:py-20">
             <div>
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-teal">Premium hair-care manufacturing</p>
-              <h1 className="font-display text-[clamp(2.9rem,7vw,6rem)] font-semibold leading-none text-charcoal">
+              <h1 className="font-display text-[clamp(2.35rem,9vw,6rem)] font-semibold leading-[0.94] text-charcoal">
                 Hair Serum Manufacturer in India
               </h1>
-              <p className="mt-6 max-w-3xl text-[1.08rem] leading-8 text-ink/78 md:text-xl">
+              <p className="mt-5 max-w-3xl text-[1rem] leading-7 text-ink/78 sm:text-[1.04rem] md:mt-6 md:text-xl md:leading-8">
                 Private label and third-party manufacturing for premium hair growth, scalp care, peptide, botanical, anti-dandruff, and derma-cosmetic hair serum concepts.
               </p>
-              <p className="mt-5 max-w-3xl leading-8 text-ink/72">
+              <p className="mt-4 max-w-3xl text-[0.98rem] leading-7 text-ink/72 md:mt-5 md:text-base md:leading-8">
                 Kiora CosmoTech develops customized hair serum concepts for modern cosmetic and derma-care brands, including active-led scalp serums, peptide hair density serums, botanical hair growth support serums, anti-breakage serums, scalp barrier serums, and luxury herbal hair-care products.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -627,21 +627,21 @@ export default function Page() {
               </div>
               <div className="mt-6 flex flex-wrap gap-2">
                 {trustBadges.map((badge) => (
-                  <span className="rounded-full border border-charcoal/10 bg-mist px-3 py-2 text-xs font-semibold text-charcoal" key={badge}>
+                  <span className="rounded-full border border-charcoal/10 bg-mist px-3 py-1.5 text-[11px] font-semibold text-charcoal sm:py-2 sm:text-xs" key={badge}>
                     {badge}
                   </span>
                 ))}
               </div>
             </div>
-            <div className="cosmetic-visual relative min-h-[420px] overflow-hidden rounded-[2rem] border border-charcoal/10 p-5 shadow-premium">
+            <div className="cosmetic-visual relative min-h-[320px] overflow-hidden rounded-[1.6rem] border border-charcoal/10 p-4 shadow-premium sm:min-h-[380px] sm:rounded-[2rem] sm:p-5 md:min-h-[420px]">
               <div className="product-bottle left-[14%] h-44" />
               <div className="product-bottle left-[38%] h-60" />
               <div className="product-bottle left-[66%] h-40" />
               <div className="texture-swatch right-8 top-12 h-28 w-28" />
               <div className="texture-swatch bottom-20 left-10 h-16 w-16" />
-              <div className="absolute bottom-5 left-5 right-5 rounded-[1.8rem] bg-charcoal/94 p-5 text-ivory shadow-premium">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-champagne">Hair serum concept library</p>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="absolute bottom-4 left-4 right-4 rounded-[1.4rem] bg-charcoal/94 p-4 text-ivory shadow-premium sm:bottom-5 sm:left-5 sm:right-5 sm:rounded-[1.8rem] sm:p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-champagne sm:text-sm">Hair serum concept library</p>
+                <div className="mt-3 grid gap-2.5 sm:mt-4 sm:gap-3 sm:grid-cols-2">
                   {[
                     "Peptide and density-positioned serum concepts",
                     "Scalp comfort and barrier support concepts",
@@ -661,25 +661,25 @@ export default function Page() {
 
         <section className="section-y bg-mist">
           <div className="container-padded grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-            <article className="rounded-3xl bg-charcoal p-7 text-ivory shadow-sm">
-              <h2 className="text-3xl font-semibold">Private Label Hair Serum Manufacturing for Modern Hair Care Brands</h2>
-              <p className="mt-4 leading-8 text-ivory/78">
+            <article className="rounded-[1.6rem] bg-charcoal p-5 text-ivory shadow-sm sm:rounded-3xl sm:p-7">
+              <h2 className="text-[1.8rem] font-semibold leading-tight sm:text-3xl">Private Label Hair Serum Manufacturing for Modern Hair Care Brands</h2>
+              <p className="mt-4 text-[0.98rem] leading-7 text-ivory/78 md:leading-8">
                 Kiora CosmoTech helps brands develop premium hair serum products based on trending cosmetic actives, branded ingredient positioning, botanical extracts, peptides, scalp-care actives and derma-cosmetic concepts.
               </p>
-              <p className="mt-4 leading-8 text-ivory/78">
+              <p className="mt-4 text-[0.98rem] leading-7 text-ivory/78 md:leading-8">
                 The company supports brands from product concept to formulation development, packaging direction and manufacturing support so the final range feels premium, commercially relevant and launch-ready.
               </p>
-              <p className="mt-4 leading-8 text-ivory/78">
+              <p className="mt-4 text-[0.98rem] leading-7 text-ivory/78 md:leading-8">
                 For founders and established buyers alike, the focus stays on practical positioning: ingredient story, target audience, pricing band, packaging direction, claim language, batch planning and a product concept that can make sense for your category strategy.
               </p>
             </article>
-            <article className="rounded-3xl border border-charcoal/10 bg-ivory p-7 shadow-sm">
+            <article className="rounded-[1.6rem] border border-charcoal/10 bg-ivory p-5 shadow-sm sm:rounded-3xl sm:p-7">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal">Direct answer</p>
-              <h2 className="mt-3 text-3xl font-semibold text-charcoal">Hair serum manufacturing for B2B brand builders</h2>
-              <p className="mt-4 leading-8 text-ink/74">
+              <h2 className="mt-3 text-[1.8rem] font-semibold leading-tight text-charcoal sm:text-3xl">Hair serum manufacturing for B2B brand builders</h2>
+              <p className="mt-4 text-[0.98rem] leading-7 text-ink/74 md:leading-8">
                 This page is designed for cosmetic brand owners, derma marketing companies, D2C beauty brands, influencers launching hair care brands, private label buyers, salon brands, Ayurvedic and herbal cosmetic brands, pharma-cosmetic marketing companies and export-oriented cosmetic buyers looking for a premium hair serum manufacturer in India.
               </p>
-              <p className="mt-4 leading-8 text-ink/74">
+              <p className="mt-4 text-[0.98rem] leading-7 text-ink/74 md:leading-8">
                 From scalp serums positioned around peptides and density support to botanical, anti-dandruff and bond-repair concepts, the page is structured to help you shortlist a practical direction before you move into formula discussion, sampling and packaging planning.
               </p>
             </article>
@@ -693,35 +693,35 @@ export default function Page() {
               <h2 className="section-title mt-3 font-display font-semibold text-charcoal">
                 Trending Hair Serum Formulation Concepts We Can Develop
               </h2>
-              <p className="mt-5 leading-8 text-ink/74">
+              <p className="mt-4 text-[0.98rem] leading-7 text-ink/74 md:mt-5 md:leading-8">
                 Explore premium hair serum concepts that can be customized for your brand based on target audience, price segment, ingredient positioning, packaging style and regulatory category.
               </p>
             </div>
-            <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-2 md:gap-6 xl:grid-cols-3">
               {concepts.map((concept) => (
-                <article className="rounded-[2rem] border border-charcoal/10 bg-ivory p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-premium" id={concept.id} key={concept.id}>
+                <article className="rounded-[1.6rem] border border-charcoal/10 bg-ivory p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-premium sm:rounded-[2rem] sm:p-5" id={concept.id} key={concept.id}>
                   <HairSerumVisual concept={concept} />
                   <div className="mt-5">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">{concept.group}</p>
-                    <h3 className="mt-2 text-2xl font-semibold text-charcoal">{concept.name}</h3>
-                    <p className="mt-3 leading-7 text-ink/74">{concept.description}</p>
+                    <h3 className="mt-2 text-[1.35rem] font-semibold leading-tight text-charcoal sm:text-2xl">{concept.name}</h3>
+                    <p className="mt-3 text-[0.95rem] leading-6 text-ink/74 sm:text-base sm:leading-7">{concept.description}</p>
                   </div>
                   <div className="mt-5">
-                    <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-charcoal/72">Key active options</h4>
+                    <h4 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-charcoal/72 sm:text-sm">Key active options</h4>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {concept.activeOptions.map((item) => (
-                        <span className="rounded-full bg-mist px-3 py-2 text-xs font-semibold text-charcoal" key={item}>
+                        <span className="rounded-full bg-mist px-2.5 py-1.5 text-[11px] font-semibold text-charcoal sm:px-3 sm:py-2 sm:text-xs" key={item}>
                           {item}
                         </span>
                       ))}
                     </div>
                   </div>
-                  <div className="mt-5 rounded-3xl border border-charcoal/10 bg-white p-4">
-                    <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-charcoal/72">Positioning direction</h4>
-                    <p className="mt-3 text-sm leading-7 text-ink/74">{concept.positioning}</p>
+                  <div className="mt-5 rounded-[1.4rem] border border-charcoal/10 bg-white p-3.5 sm:rounded-3xl sm:p-4">
+                    <h4 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-charcoal/72 sm:text-sm">Positioning direction</h4>
+                    <p className="mt-2.5 text-[0.92rem] leading-6 text-ink/74 sm:mt-3 sm:text-sm sm:leading-7">{concept.positioning}</p>
                   </div>
                   <Link
-                    className="focus-ring mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-charcoal px-5 py-3 text-center font-semibold text-ivory transition hover:bg-teal"
+                    className="focus-ring mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-charcoal px-4 py-3 text-center text-sm font-semibold text-ivory transition hover:bg-teal sm:mt-6 sm:min-h-12 sm:px-5"
                     href={`/request-quote?product=${encodeURIComponent(concept.name)}`}
                   >
                     Develop This Product With Your Brand
@@ -736,19 +736,19 @@ export default function Page() {
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal">Product grouping</p>
-              <h2 className="mt-3 text-[clamp(2.2rem,4.5vw,4.3rem)] font-display font-semibold leading-none text-charcoal">
+              <h2 className="mt-3 text-[clamp(1.95rem,6vw,4.3rem)] font-display font-semibold leading-[0.98] text-charcoal">
                 Organize your launch around the right serum category
               </h2>
             </div>
             <div className="mt-10 grid gap-5 lg:grid-cols-2">
               {groupedConcepts.map((group) => (
-                <article className="rounded-3xl border border-charcoal/10 bg-ivory p-6 shadow-sm" key={group.title}>
-                  <h3 className="text-2xl font-semibold text-charcoal">{group.title}</h3>
-                  <div className="mt-5 flex flex-wrap gap-3">
+                <article className="rounded-[1.6rem] border border-charcoal/10 bg-ivory p-5 shadow-sm sm:rounded-3xl sm:p-6" key={group.title}>
+                  <h3 className="text-[1.35rem] font-semibold leading-tight text-charcoal sm:text-2xl">{group.title}</h3>
+                  <div className="mt-4 flex flex-wrap gap-2.5 sm:mt-5 sm:gap-3">
                     {group.ids.map((id) => {
                       const concept = concepts.find((item) => item.id === id)!;
                       return (
-                        <a className="rounded-full bg-mist px-4 py-3 text-sm font-semibold text-charcoal transition hover:bg-charcoal hover:text-ivory" href={`#${concept.id}`} key={concept.id}>
+                        <a className="rounded-full bg-mist px-3 py-2.5 text-[13px] font-semibold text-charcoal transition hover:bg-charcoal hover:text-ivory sm:px-4 sm:py-3 sm:text-sm" href={`#${concept.id}`} key={concept.id}>
                           {concept.name}
                         </a>
                       );
@@ -764,16 +764,16 @@ export default function Page() {
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal">Active customization</p>
-              <h2 className="mt-3 text-[clamp(2.2rem,4.5vw,4.3rem)] font-display font-semibold leading-none text-charcoal">
+              <h2 className="mt-3 text-[clamp(1.95rem,6vw,4.3rem)] font-display font-semibold leading-[0.98] text-charcoal">
                 Available Active &amp; INCI-Based Customization Options
               </h2>
-              <p className="mt-5 leading-8 text-ink/74">
+              <p className="mt-4 text-[0.98rem] leading-7 text-ink/74 md:mt-5 md:leading-8">
                 Kiora CosmoTech can develop customized hair serum formulations using trending cosmetic actives such as Copper Tripeptide-1 / GHK-Cu, Acetyl Tetrapeptide-3, Biotinoyl Tripeptide-1, caffeine, niacinamide, zinc PCA, rosemary extract, pea sprout extract, prebiotic inulin, botanical extracts, amino acids and advanced hair-repair peptide systems depending on brand positioning, regulatory category and target price.
               </p>
             </div>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-2.5 sm:gap-3">
               {activeChips.map((chip) => (
-                <span className="rounded-full border border-charcoal/10 bg-mist px-4 py-3 text-sm font-semibold text-charcoal" key={chip}>
+                <span className="rounded-full border border-charcoal/10 bg-mist px-3 py-2.5 text-[13px] font-semibold text-charcoal sm:px-4 sm:py-3 sm:text-sm" key={chip}>
                   {chip}
                 </span>
               ))}
@@ -785,20 +785,20 @@ export default function Page() {
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal">Why Kiora</p>
-              <h2 className="mt-3 text-[clamp(2.2rem,4.5vw,4.3rem)] font-display font-semibold leading-none text-charcoal">
+              <h2 className="mt-3 text-[clamp(1.95rem,6vw,4.3rem)] font-display font-semibold leading-[0.98] text-charcoal">
                 Why Choose Kiora CosmoTech for Hair Serum Manufacturing?
               </h2>
-              <p className="mt-5 leading-8 text-ink/74">
+              <p className="mt-4 text-[0.98rem] leading-7 text-ink/74 md:mt-5 md:leading-8">
                 The category needs more than a generic serum base and a label. Brands usually need help narrowing the right active story, mapping price-point expectations, aligning packaging to audience and preparing a concept that can work across D2C, salon, derma-care or export-led briefs.
               </p>
             </div>
-            <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-2 md:gap-5 xl:grid-cols-4">
               {whyChooseCards.map((item) => (
-                <article className="rounded-3xl border border-charcoal/10 bg-ivory p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-premium" key={item}>
+                <article className="rounded-[1.6rem] border border-charcoal/10 bg-ivory p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-premium sm:rounded-3xl sm:p-6" key={item}>
                   <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-teal font-semibold text-ivory">
                     <CheckCircle2 size={20} aria-hidden="true" />
                   </div>
-                  <h3 className="text-xl font-semibold text-charcoal">{item}</h3>
+                  <h3 className="text-lg font-semibold leading-tight text-charcoal sm:text-xl">{item}</h3>
                 </article>
               ))}
             </div>
@@ -809,14 +809,14 @@ export default function Page() {
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal">Process</p>
-              <h2 className="mt-3 text-[clamp(2.2rem,4.5vw,4.3rem)] font-display font-semibold leading-none text-charcoal">
+              <h2 className="mt-3 text-[clamp(1.95rem,6vw,4.3rem)] font-display font-semibold leading-[0.98] text-charcoal">
                 From Concept to Finished Hair Serum
               </h2>
-              <p className="mt-5 leading-8 text-ink/74">
+              <p className="mt-4 text-[0.98rem] leading-7 text-ink/74 md:mt-5 md:leading-8">
                 Our workflow is built for private label and third-party launches where formula direction, ingredient story, packaging planning and dispatch timing all need to stay aligned for a smoother brand launch.
               </p>
             </div>
-            <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-2 xl:grid-cols-4">
               {[
                 "Product concept finalization",
                 "Active and claim positioning",
@@ -826,11 +826,11 @@ export default function Page() {
                 "Quality checks",
                 "Filling, packing and dispatch"
               ].map((step, index) => (
-                <article className="rounded-3xl border border-charcoal/10 bg-ivory p-5 shadow-sm" key={step}>
+                <article className="rounded-[1.6rem] border border-charcoal/10 bg-ivory p-4 shadow-sm sm:rounded-3xl sm:p-5" key={step}>
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-charcoal font-semibold text-ivory">
                     {index + 1}
                   </div>
-                  <h3 className="text-lg font-semibold text-charcoal">{step}</h3>
+                  <h3 className="text-base font-semibold leading-snug text-charcoal sm:text-lg">{step}</h3>
                 </article>
               ))}
             </div>
@@ -839,9 +839,9 @@ export default function Page() {
 
         <section className="pb-16">
           <div className="container-padded">
-            <article className="rounded-3xl border border-charcoal/10 bg-mist p-6 shadow-sm">
-              <h2 className="text-2xl font-semibold text-charcoal">Claim and customization note</h2>
-              <p className="mt-4 leading-8 text-ink/75">
+            <article className="rounded-[1.6rem] border border-charcoal/10 bg-mist p-5 shadow-sm sm:rounded-3xl sm:p-6">
+              <h2 className="text-[1.35rem] font-semibold leading-tight text-charcoal sm:text-2xl">Claim and customization note</h2>
+              <p className="mt-4 text-[0.98rem] leading-7 text-ink/75 md:leading-8">
                 All product concepts shown are customizable private label / third-party manufacturing possibilities. Final formulation, ingredient percentage, claim language, fragrance, packaging and regulatory positioning can be customized as per your brand requirement and applicable cosmetic regulations.
               </p>
             </article>
@@ -852,7 +852,7 @@ export default function Page() {
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal">FAQ</p>
-              <h2 className="mt-3 text-[clamp(2.2rem,4.5vw,4.3rem)] font-display font-semibold leading-none text-charcoal">
+              <h2 className="mt-3 text-[clamp(1.95rem,6vw,4.3rem)] font-display font-semibold leading-[0.98] text-charcoal">
                 Hair Serum Manufacturing FAQ
               </h2>
             </div>
@@ -866,7 +866,7 @@ export default function Page() {
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal">Internal links</p>
-              <h2 className="mt-3 text-[clamp(2.2rem,4.5vw,4.3rem)] font-display font-semibold leading-none text-charcoal">
+              <h2 className="mt-3 text-[clamp(1.95rem,6vw,4.3rem)] font-display font-semibold leading-[0.98] text-charcoal">
                 Continue planning your manufacturing range
               </h2>
             </div>
@@ -883,7 +883,7 @@ export default function Page() {
               <h2 className="section-title mt-3 font-display font-semibold">
                 Launch Your Own Hair Serum Brand With Kiora CosmoTech
               </h2>
-              <p className="mt-5 text-[1.05rem] leading-8 text-ivory/78">
+              <p className="mt-4 text-[0.98rem] leading-7 text-ivory/78 md:mt-5 md:text-[1.05rem] md:leading-8">
                 Whether you want to launch a Redensyl hair serum, peptide scalp serum, rosemary serum, anti-dandruff scalp serum, Ayurvedic hair serum or luxury bond repair serum, Kiora CosmoTech can help you convert your product idea into a premium private label hair-care range.
               </p>
             </div>
