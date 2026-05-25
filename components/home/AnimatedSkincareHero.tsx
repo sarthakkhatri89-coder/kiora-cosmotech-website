@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import HomeScrollReveal from "@/components/home/HomeScrollReveal";
 
@@ -13,12 +14,12 @@ const trustItems = [
 export default function AnimatedSkincareHero() {
   return (
     <section className="overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(232,217,189,0.35),transparent_26rem),radial-gradient(circle_at_top_right,rgba(143,174,155,0.22),transparent_24rem),linear-gradient(180deg,#fffdf9_0%,#f7f1e7_100%)]">
-      <div className="container-padded grid min-h-[520px] gap-7 py-8 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:gap-12 lg:py-14">
+      <div className="container-padded grid min-h-[520px] gap-7 py-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:gap-12 lg:py-14">
         <HomeScrollReveal className="relative z-[1]">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.26em] text-teal">
             Kiora CosmoTech
           </p>
-          <h1 className="max-w-[8.8ch] font-display text-[clamp(2.8rem,12vw,4rem)] font-semibold leading-[0.96] text-charcoal lg:text-[clamp(3.8rem,6vw,6.5rem)]">
+          <h1 className="max-w-[8.8ch] font-display text-[clamp(2.7rem,11vw,3.8rem)] font-semibold leading-[0.96] text-charcoal lg:text-[clamp(3.5rem,5.5vw,6rem)]">
             Skincare &amp; Cosmetic Manufacturer in India
           </h1>
           <p className="mt-6 max-w-[35rem] text-[1rem] leading-8 text-ink/78 md:text-[1.06rem]">
@@ -54,25 +55,23 @@ export default function AnimatedSkincareHero() {
         </HomeScrollReveal>
 
         <HomeScrollReveal className="relative" delay={120}>
-          <div className="relative overflow-hidden rounded-[2.1rem] border border-charcoal/8 bg-[linear-gradient(180deg,rgba(255,253,247,0.95),rgba(247,241,231,0.92))] p-4 shadow-[0_28px_80px_rgba(23,33,29,0.10)] lg:p-6">
+          <div className="relative rounded-[2.1rem] border border-charcoal/8 bg-[linear-gradient(180deg,rgba(255,253,247,0.95),rgba(247,241,231,0.92))] p-4 shadow-[0_28px_80px_rgba(23,33,29,0.10)] lg:p-6">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(255,255,255,0.92),transparent_22%),radial-gradient(circle_at_82%_18%,rgba(143,174,155,0.20),transparent_24%),radial-gradient(circle_at_72%_82%,rgba(232,217,189,0.44),transparent_22%)]" />
-            <div className="relative rounded-[1.7rem] border border-white/70 bg-[linear-gradient(145deg,rgba(255,255,255,0.88),rgba(243,236,224,0.86))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.84)] lg:p-8">
-              <div className="min-h-[240px] rounded-[1.45rem] border border-white/70 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.95),transparent_18rem),linear-gradient(135deg,rgba(251,247,239,0.98),rgba(232,217,189,0.72)_58%,rgba(143,174,155,0.32))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] lg:min-h-[380px] lg:p-8">
-                <div className="flex h-full flex-col justify-between rounded-[1.3rem] border border-white/65 bg-white/40 p-4 backdrop-blur-sm lg:p-6">
-                  <div>
-                    <p className="text-[0.82rem] font-semibold uppercase tracking-[0.24em] text-teal">
-                      Kiora CosmoTech
-                    </p>
-                    <h2 className="mt-4 max-w-[14ch] text-[1.35rem] font-semibold leading-[1.2] text-charcoal md:text-[1.75rem]">
-                      Formula, Packaging &amp; Production Planning
-                    </h2>
-                  </div>
-                  <div className="mt-5 rounded-[1.2rem] border border-charcoal/8 bg-white/70 px-4 py-3 shadow-sm">
-                    <p className="text-sm font-medium leading-7 text-ink/76">
-                      Formula &bull; Packaging &bull; Filling &bull; Quality &bull; Dispatch
-                    </p>
-                  </div>
-                </div>
+            <div className="relative rounded-[1.7rem] border border-white/70 bg-[linear-gradient(145deg,rgba(255,255,255,0.88),rgba(243,236,224,0.86))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.84)] lg:p-5">
+              <div className="relative min-h-[240px] overflow-hidden rounded-[1.45rem] border border-white/70 shadow-[0_18px_42px_rgba(23,33,29,0.10)] lg:min-h-[390px]">
+                <Image
+                  src="/images/HERO IMAGE.jpg"
+                  alt="Kiora CosmoTech skincare and cosmetic manufacturing hero image"
+                  fill
+                  className="object-contain bg-[linear-gradient(135deg,rgba(251,247,239,0.98),rgba(232,217,189,0.72)_58%,rgba(143,174,155,0.24))]"
+                  sizes="(max-width: 1024px) 100vw, 32rem"
+                  priority
+                />
+              </div>
+              <div className="mt-4 rounded-[1.2rem] border border-charcoal/8 bg-white/76 px-4 py-3 shadow-sm">
+                <p className="text-center text-sm font-medium leading-7 text-ink/76">
+                  Formula &bull; Packaging &bull; Filling &bull; Quality &bull; Dispatch
+                </p>
               </div>
             </div>
           </div>

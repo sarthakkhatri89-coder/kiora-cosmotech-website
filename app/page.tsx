@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Beaker,
   ClipboardCheck,
@@ -75,24 +76,32 @@ const categoryHighlights = {
   Skincare: {
     description:
       "Face wash, serum, sunscreen, moisturizer, creams and gels shaped for premium cosmetic launches.",
-    examples: ["Face wash", "Serum", "Sunscreen", "Moisturizer", "Creams", "Gels"]
+    examples: ["Face wash", "Serum", "Sunscreen", "Moisturizer", "Creams", "Gels"],
+    image: "/images/skincare-formulation-lab.png",
+    alt: "Private label skincare manufacturing support"
   },
   "Derma Cosmetic": {
     description:
       "Acne care, barrier care, brightening, anti-ageing and soothing cosmetic concepts for modern active-led ranges.",
-    examples: ["Acne care", "Brightening", "Barrier repair", "Anti-ageing", "Soothing"]
+    examples: ["Acne care", "Brightening", "Barrier repair", "Anti-ageing", "Soothing"],
+    image: "/images/derma-cosmetic-development.png",
+    alt: "Derma cosmetic product development and formulation"
   },
   Haircare: {
     description:
       "Shampoo, hair serum, hair oil and hair mask concepts for D2C, salon and performance-led haircare brands.",
-    examples: ["Shampoo", "Hair serum", "Hair oil", "Hair mask", "Scalp care"]
+    examples: ["Shampoo", "Hair serum", "Hair oil", "Hair mask", "Scalp care"],
+    image: "/images/haircare-manufacturing.png",
+    alt: "Haircare product manufacturing for beauty brands"
   },
   "Personal Care": {
     description:
       "Body wash, hand wash, body lotion and daily-use hygiene categories with retail-ready packaging discussions.",
-    examples: ["Body wash", "Hand wash", "Body lotion", "Daily care", "Hygiene"]
+    examples: ["Body wash", "Hand wash", "Body lotion", "Daily care", "Hygiene"],
+    image: "/images/personal-care-packaging.png",
+    alt: "Personal care packaging and manufacturing support"
   }
-} satisfies Record<string, { description: string; examples: string[] }>;
+} satisfies Record<string, { description: string; examples: string[]; image: string; alt: string }>;
 
 const formulationCards = [
   {
@@ -266,13 +275,25 @@ export default function HomePage() {
                   <HomeScrollReveal delay={index * 60} key={category.href}>
                     <article className="rounded-[1.9rem] border border-charcoal/8 bg-ivory shadow-[0_22px_54px_rgba(23,33,29,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_rgba(23,33,29,0.09)]">
                       <div className="rounded-t-[1.9rem] border-b border-charcoal/8 bg-[radial-gradient(circle_at_top_left,rgba(232,217,189,0.56),transparent_18rem),linear-gradient(135deg,rgba(255,253,247,0.98),rgba(245,239,229,0.9),rgba(143,174,155,0.18))] p-5">
-                        <div className="rounded-[1.4rem] border border-white/70 bg-white/62 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
+                        <div className="overflow-hidden rounded-[1.4rem] border border-white/70 bg-white/62 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
+                          <div className="relative aspect-[4/3]">
+                            <Image
+                              src={visual.image}
+                              alt={visual.alt}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                            />
+                            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,33,29,0.08),rgba(23,33,29,0.14))]" />
+                          </div>
+                          <div className="p-5">
                           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
                             Category
                           </p>
                           <h3 className="mt-3 text-2xl font-semibold text-charcoal">
                             {category.title}
                           </h3>
+                        </div>
                         </div>
                       </div>
                       <div className="p-5">
