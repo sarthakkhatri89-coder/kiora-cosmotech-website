@@ -9,7 +9,6 @@ import FAQAccordion from "@/components/FAQAccordion";
 import InternalLinkGrid from "@/components/InternalLinkGrid";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import { siteConfig, whatsappHref } from "@/data/siteConfig";
-import { createMetadata } from "@/lib/seo";
 import { breadcrumbSchema, faqSchema, manufacturerSchema, serviceSchema } from "@/lib/schema";
 import { absoluteUrl } from "@/lib/utils";
 
@@ -25,14 +24,62 @@ type HairSerumConcept = {
 };
 
 const pagePath = "/hair-serum-manufacturer";
+const pageTitle = "Hair Serum Manufacturer in India | Private Label Hair Growth & Scalp Serum Manufacturing";
+const pageDescription =
+  "Kiora CosmoTech offers private label and third-party hair serum manufacturing in India, including Redensyl, Capixyl, Procapil, peptide, copper peptide, rosemary, niacinamide, prebiotic, anti-dandruff, Ayurvedic and bond repair hair serum concepts for modern cosmetic brands.";
+const ogTitle = "Hair Serum Manufacturer in India | Kiora CosmoTech";
+const ogDescription =
+  "Explore premium private label hair serum concepts including Redensyl, Capixyl, Procapil, peptide, copper peptide, rosemary, scalp barrier, anti-dandruff, Ayurvedic and bond repair serums.";
+const preferredOgImage = "/images/hair-serums/multi-active-hair-growth-serum.webp";
 
-export const metadata: Metadata = createMetadata({
-  title: "Hair Serum Manufacturer in India | Private Label Hair Growth & Scalp Serum Manufacturing",
-  description:
-    "Kiora CosmoTech offers private label and third-party hair serum manufacturing in India, including Redensyl, Capixyl, Procapil, peptide, copper peptide, rosemary, niacinamide, prebiotic, anti-dandruff, Ayurvedic and bond repair hair serum concepts for modern cosmetic brands.",
-  path: pagePath,
-  image: "/og/kiora-og.png"
-});
+function publicAssetExists(src: string) {
+  return fs.existsSync(path.join(process.cwd(), "public", src.replace(/^\//, "")));
+}
+
+function resolvePublicAsset(src: string) {
+  if (publicAssetExists(src)) {
+    return src;
+  }
+
+  const pngFallback = `${src}.png`;
+  if (publicAssetExists(pngFallback)) {
+    return pngFallback;
+  }
+
+  return null;
+}
+
+const resolvedOgImage = resolvePublicAsset(preferredOgImage) ?? siteConfig.ogImage;
+
+export const metadata: Metadata = {
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: absoluteUrl(siteConfig.url, pagePath)
+  },
+  openGraph: {
+    title: ogTitle,
+    description: ogDescription,
+    url: absoluteUrl(siteConfig.url, pagePath),
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: absoluteUrl(siteConfig.url, resolvedOgImage),
+        width: 1200,
+        height: 630,
+        alt: "Hair serum manufacturer in India product concept visual"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: ogTitle,
+    description: ogDescription,
+    images: [absoluteUrl(siteConfig.url, resolvedOgImage)]
+  }
+};
 
 const trustBadges = [
   "Private Label Manufacturing",
@@ -521,6 +568,29 @@ const faqs = [
   }
 ];
 
+const keywordTagMap: Record<string, string[]> = {
+  "redensyl-hair-density-serum": ["Redensyl hair serum manufacturer", "Hair density serum manufacturer India", "Private label hair serum manufacturer"],
+  "capixyl-peptide-hair-fall-control-serum": ["Capixyl hair serum manufacturer", "Peptide hair fall serum manufacturer", "Third party hair serum manufacturer"],
+  "procapil-root-activating-serum": ["Procapil hair serum manufacturer", "Root activating hair serum manufacturer", "Scalp serum manufacturer"],
+  "baicapil-botanical-hair-growth-serum": ["Baicapil hair serum manufacturer", "Botanical hair growth serum manufacturer", "Plant based hair serum manufacturer"],
+  "multi-active-hair-growth-serum": ["Advanced hair serum manufacturer", "Multi active hair growth serum manufacturer", "Cosmeceutical hair serum manufacturer"],
+  "multi-peptide-hair-density-serum": ["Multi peptide hair serum manufacturer", "Peptide hair density serum manufacturer", "Derma hair serum manufacturer"],
+  "copper-peptide-scalp-repair-serum": ["Copper peptide hair serum manufacturer", "GHK-Cu hair serum manufacturer", "Scalp repair serum manufacturer"],
+  "peptide-rosemary-root-revival-serum": ["Rosemary hair serum manufacturer", "Peptide rosemary scalp serum manufacturer", "Private label hair serum manufacturer"],
+  "caffeine-energizing-scalp-serum": ["Caffeine scalp serum manufacturer", "Energizing scalp serum manufacturer", "Hair care manufacturing in India"],
+  "anagain-pea-sprout-hair-growth-serum": ["Anagain hair serum manufacturer", "Pea sprout extract hair serum manufacturer", "Botanical hair growth serum manufacturer"],
+  "biotin-tripeptide-strengthening-serum": ["Biotin hair serum manufacturer", "Hair strengthening serum manufacturer", "Anti breakage hair serum manufacturer"],
+  "niacinamide-scalp-barrier-serum": ["Niacinamide scalp serum manufacturer", "Scalp barrier serum manufacturer", "Sensitive scalp serum manufacturer"],
+  "prebiotic-microbiome-scalp-serum": ["Microbiome scalp serum manufacturer", "Prebiotic scalp serum manufacturer", "Scalp comfort serum manufacturer"],
+  "salicylic-acid-clarifying-scalp-serum": ["Salicylic acid scalp serum manufacturer", "Clarifying scalp serum manufacturer", "Oily scalp serum manufacturer"],
+  "anti-dandruff-cosmetic-scalp-serum": ["Anti dandruff scalp serum manufacturer", "Flaky scalp serum manufacturer", "Cosmetic scalp serum manufacturer"],
+  "ayurvedic-botanical-hair-growth-serum": ["Ayurvedic hair serum manufacturer", "Herbal hair growth serum manufacturer", "Bhringraj hair serum manufacturer"],
+  "rosemary-mint-cooling-scalp-serum": ["Rosemary mint scalp serum manufacturer", "Cooling scalp serum manufacturer", "Herbal scalp serum manufacturer"],
+  "onion-black-seed-hair-fall-control-serum": ["Onion black seed hair serum manufacturer", "Herbal hair fall control serum manufacturer", "Private label hair serum manufacturer"],
+  "exosome-inspired-bioactive-scalp-serum": ["Exosome scalp serum manufacturer", "Biotech hair serum manufacturer", "Premium scalp serum manufacturer"],
+  "bond-repair-anti-breakage-hair-serum": ["Bond repair hair serum manufacturer", "Damaged hair serum manufacturer", "Salon hair serum manufacturer"]
+};
+
 const internalLinks = [
   { label: "Cosmetic Manufacturing", href: "/contract-cosmetic-manufacturer-india", description: "Review structured manufacturing support for premium cosmetic categories." },
   { label: "Private Label Manufacturing", href: "/private-label-cosmetics-manufacturer-india", description: "Explore launch-ready private label manufacturing for your brand." },
@@ -530,6 +600,17 @@ const internalLinks = [
   { label: "Sunscreen Manufacturing", href: "/sunscreen-manufacturer", description: "Review another premium cosmetic category with product-led manufacturing detail." },
   { label: "Shampoo Manufacturing", href: "/shampoo-manufacturer", description: "Extend a scalp-care or salon range with shampoo manufacturing." },
   { label: "Contact Page", href: "/request-quote", description: "Share your product idea, quantity and launch plan with the Kiora team." }
+];
+
+const relatedCategories = [
+  { label: "Face Serum Manufacturing", href: "/face-serum-manufacturer", description: "Extend your active-led range into premium skincare serums." },
+  { label: "Sunscreen Manufacturing", href: "/sunscreen-manufacturer", description: "Build a derma-cosmetic routine with sunscreen concepts." },
+  { label: "Shampoo Manufacturing", href: "/shampoo-manufacturer", description: "Pair scalp serum launches with shampoo manufacturing support." },
+  { label: "Conditioner Manufacturing", href: "/request-quote?product=Conditioner%20Manufacturing", description: "Discuss conditioner concepts under the same hair-care program." },
+  { label: "Hair Oil Manufacturing", href: "/hair-oil-manufacturer", description: "Add herbal or premium hair oil concepts to your brand range." },
+  { label: "Face Wash Manufacturing", href: "/face-wash-manufacturer", description: "Explore adjacent cosmetic categories for D2C growth." },
+  { label: "Moisturizer Manufacturing", href: "/moisturizer-manufacturer", description: "Plan wider skincare and personal care manufacturing." },
+  { label: "Cosmetic Manufacturing", href: "/contract-cosmetic-manufacturer-india", description: "See broader cosmetic manufacturing support for India-focused brands." }
 ];
 
 const crumbs = [
@@ -552,22 +633,56 @@ const webPageSchema = {
   }
 };
 
-function hasPublicImage(src: string) {
-  return fs.existsSync(path.join(process.cwd(), "public", src.replace(/^\//, "")));
-}
+const pageOrganizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteConfig.name,
+  industry: "Private Label Cosmetic Manufacturing",
+  url: siteConfig.url,
+  logo: absoluteUrl(siteConfig.url, siteConfig.logo),
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    telephone: siteConfig.phone,
+    areaServed: "India"
+  },
+  contactPage: absoluteUrl(siteConfig.url, "/request-quote")
+};
+
+const detailedServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Hair Serum Manufacturing",
+  provider: {
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url
+  },
+  areaServed: "India",
+  serviceType: [
+    "Private Label Hair Serum Manufacturing",
+    "Third Party Hair Serum Manufacturing",
+    "Cosmetic Hair Serum Manufacturing"
+  ],
+  description:
+    "Kiora CosmoTech offers private label and third-party manufacturing support for hair serum concepts including peptide hair serums, scalp serums, botanical serums, anti-dandruff cosmetic scalp serums, Ayurvedic hair serums and bond repair hair serums.",
+  url: absoluteUrl(siteConfig.url, pagePath)
+};
 
 function HairSerumVisual({ concept }: { concept: HairSerumConcept }) {
-  const imageExists = hasPublicImage(concept.image);
+  const resolvedImage = resolvePublicAsset(concept.image);
 
-  if (imageExists) {
+  if (resolvedImage) {
     return (
       <div className="relative aspect-[4/5] overflow-hidden rounded-[1.6rem] border border-charcoal/10 bg-white">
         <Image
-          src={concept.image}
+          src={resolvedImage}
           alt={concept.alt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+          width={960}
+          height={1200}
+          loading="lazy"
+          className="h-full w-full object-contain p-3 sm:p-4"
+          sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1279px) calc(50vw - 40px), 320px"
         />
       </div>
     );
@@ -595,9 +710,11 @@ export default function Page() {
     <>
       <SchemaJsonLd
         data={[
+          pageOrganizationSchema,
           manufacturerSchema(siteConfig.name, pagePath),
           breadcrumbSchema(crumbs),
-          serviceSchema("Hair Serum Manufacturing", metadata.description as string, pagePath),
+          serviceSchema("Hair Serum Manufacturing", pageDescription, pagePath),
+          detailedServiceSchema,
           faqSchema(faqs),
           webPageSchema
         ]}
@@ -624,6 +741,9 @@ export default function Page() {
                 <a className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-charcoal/12 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-mist sm:min-w-[220px]" href="#hair-serum-concepts">
                   Explore Hair Serum Concepts
                 </a>
+                <Link className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full border border-charcoal/12 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-mist sm:min-w-[250px]" href="/custom-skincare-formulation">
+                  Request Custom Hair Serum Formulation
+                </Link>
               </div>
               <div className="mt-6 flex flex-wrap gap-2">
                 {trustBadges.map((badge) => (
@@ -633,27 +753,16 @@ export default function Page() {
                 ))}
               </div>
             </div>
-            <div className="cosmetic-visual relative min-h-[320px] overflow-hidden rounded-[1.6rem] border border-charcoal/10 p-4 shadow-premium sm:min-h-[380px] sm:rounded-[2rem] sm:p-5 md:min-h-[420px]">
-              <div className="product-bottle left-[14%] h-44" />
-              <div className="product-bottle left-[38%] h-60" />
-              <div className="product-bottle left-[66%] h-40" />
-              <div className="texture-swatch right-8 top-12 h-28 w-28" />
-              <div className="texture-swatch bottom-20 left-10 h-16 w-16" />
-              <div className="absolute bottom-4 left-4 right-4 rounded-[1.4rem] bg-charcoal/94 p-4 text-ivory shadow-premium sm:bottom-5 sm:left-5 sm:right-5 sm:rounded-[1.8rem] sm:p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-champagne sm:text-sm">Hair serum concept library</p>
-                <div className="mt-3 grid gap-2.5 sm:mt-4 sm:gap-3 sm:grid-cols-2">
-                  {[
-                    "Peptide and density-positioned serum concepts",
-                    "Scalp comfort and barrier support concepts",
-                    "Botanical and Ayurveda-inspired launches",
-                    "Packaging, positioning and scale-up support"
-                  ].map((item) => (
-                    <div className="flex items-start gap-2 text-sm text-ivory/82" key={item}>
-                      <CheckCircle2 className="mt-0.5 text-champagne" size={16} aria-hidden="true" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
+            <div className="relative min-h-[320px] overflow-hidden rounded-[1.6rem] border border-charcoal/10 bg-[linear-gradient(135deg,#fffdf7_0%,#edf4ee_48%,#dfcfb4_100%)] p-3 shadow-premium sm:min-h-[380px] sm:rounded-[2rem] sm:p-4 md:min-h-[420px]">
+              <div className="relative h-full min-h-[292px] overflow-hidden rounded-[1.2rem] sm:min-h-[348px] sm:rounded-[1.6rem]">
+                <Image
+                  src="/images/hair-serum-hero-science.png"
+                  alt="Professional hair science visual showing scalp follicles, serum dropper and molecular active network"
+                  fill
+                  priority
+                  className="object-cover object-center"
+                  sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) 46vw, 520px"
+                />
               </div>
             </div>
           </div>
@@ -667,7 +776,7 @@ export default function Page() {
                 Kiora CosmoTech helps brands develop premium hair serum products based on trending cosmetic actives, branded ingredient positioning, botanical extracts, peptides, scalp-care actives and derma-cosmetic concepts.
               </p>
               <p className="mt-4 text-[0.98rem] leading-7 text-ivory/78 md:leading-8">
-                The company supports brands from product concept to formulation development, packaging direction and manufacturing support so the final range feels premium, commercially relevant and launch-ready.
+                The company supports brands from product concept to formulation development, packaging direction and manufacturing support so the final range feels premium, commercially relevant and launch-ready. Buyers exploring <Link className="font-semibold text-champagne underline decoration-champagne/40 underline-offset-4" href="/private-label-cosmetics-manufacturer-india">private label cosmetic manufacturing</Link> or <Link className="font-semibold text-champagne underline decoration-champagne/40 underline-offset-4" href="/third-party-cosmetic-manufacturing-india">third party hair care manufacturing</Link> can use this page to shortlist commercially viable serum directions.
               </p>
               <p className="mt-4 text-[0.98rem] leading-7 text-ivory/78 md:leading-8">
                 For founders and established buyers alike, the focus stays on practical positioning: ingredient story, target audience, pricing band, packaging direction, claim language, batch planning and a product concept that can make sense for your category strategy.
@@ -680,7 +789,7 @@ export default function Page() {
                 This page is designed for cosmetic brand owners, derma marketing companies, D2C beauty brands, influencers launching hair care brands, private label buyers, salon brands, Ayurvedic and herbal cosmetic brands, pharma-cosmetic marketing companies and export-oriented cosmetic buyers looking for a premium hair serum manufacturer in India.
               </p>
               <p className="mt-4 text-[0.98rem] leading-7 text-ink/74 md:leading-8">
-                From scalp serums positioned around peptides and density support to botanical, anti-dandruff and bond-repair concepts, the page is structured to help you shortlist a practical direction before you move into formula discussion, sampling and packaging planning.
+                From scalp serums positioned around peptides and density support to botanical, anti-dandruff and bond-repair concepts, the page is structured to help you shortlist a practical direction before you move into formula discussion, sampling and packaging planning. It also connects naturally with <Link className="font-semibold text-teal underline decoration-teal/35 underline-offset-4" href="/shampoo-manufacturer">shampoo manufacturing</Link>, <Link className="font-semibold text-teal underline decoration-teal/35 underline-offset-4" href="/face-serum-manufacturer">face serum manufacturing</Link>, <Link className="font-semibold text-teal underline decoration-teal/35 underline-offset-4" href="/sunscreen-manufacturer">sunscreen manufacturing</Link> and wider <Link className="font-semibold text-teal underline decoration-teal/35 underline-offset-4" href="/contract-cosmetic-manufacturer-india">cosmetic manufacturing in India</Link>.
               </p>
             </article>
           </div>
@@ -716,6 +825,16 @@ export default function Page() {
                       ))}
                     </div>
                   </div>
+                  <div className="mt-5">
+                    <h4 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-charcoal/72 sm:text-sm">Keyword themes</h4>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {(keywordTagMap[concept.id] ?? []).map((tag) => (
+                        <span className="rounded-full border border-charcoal/10 bg-white px-2.5 py-1.5 text-[11px] text-ink/78 sm:px-3 sm:py-2 sm:text-xs" key={tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                   <div className="mt-5 rounded-[1.4rem] border border-charcoal/10 bg-white p-3.5 sm:rounded-3xl sm:p-4">
                     <h4 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-charcoal/72 sm:text-sm">Positioning direction</h4>
                     <p className="mt-2.5 text-[0.92rem] leading-6 text-ink/74 sm:mt-3 sm:text-sm sm:leading-7">{concept.positioning}</p>
@@ -728,6 +847,25 @@ export default function Page() {
                   </Link>
                 </article>
               ))}
+            </div>
+            <div className="mt-8 rounded-[1.8rem] border border-charcoal/10 bg-charcoal p-5 text-ivory shadow-premium sm:mt-10 sm:p-6">
+              <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-champagne">Custom development CTA</p>
+                  <h2 className="mt-3 text-[1.7rem] font-semibold leading-tight sm:text-[2.15rem]">Need a custom scalp-care or peptide-led serum direction?</h2>
+                  <p className="mt-3 text-[0.98rem] leading-7 text-ivory/78">
+                    Share your target audience, packaging idea and price band. The Kiora team can help you move from concept shortlisting into a more structured private label hair serum brief.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+                  <Link className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full bg-champagne px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-ivory" href="/request-quote">
+                    Request Hair Serum Manufacturing Quote
+                  </Link>
+                  <Link className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full border border-ivory/20 px-6 py-3 text-center font-semibold text-ivory transition hover:bg-ivory/10" href="/custom-skincare-formulation">
+                    Request Custom Hair Serum Formulation
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -876,6 +1014,23 @@ export default function Page() {
           </div>
         </section>
 
+        <section className="section-y bg-mist">
+          <div className="container-padded">
+            <div className="max-w-4xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal">Related categories</p>
+              <h2 className="mt-3 text-[clamp(1.95rem,6vw,4.3rem)] font-display font-semibold leading-[0.98] text-charcoal">
+                Related Product Categories
+              </h2>
+              <p className="mt-4 text-[0.98rem] leading-7 text-ink/74 md:leading-8">
+                Hair serum projects often sit inside a larger brand range. Use these routes to plan adjacent categories or contact Kiora CosmoTech for a multi-product manufacturing brief.
+              </p>
+            </div>
+            <div className="mt-10">
+              <InternalLinkGrid links={relatedCategories} />
+            </div>
+          </div>
+        </section>
+
         <section className="section-y bg-charcoal pb-24 text-ivory">
           <div className="container-padded grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div className="max-w-3xl">
@@ -894,6 +1049,9 @@ export default function Page() {
               <a className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ivory/30 px-6 py-3 text-center font-semibold text-ivory transition hover:bg-ivory/10" href={whatsappHref("Hello Kiora CosmoTech, I want to discuss a private label hair serum concept for my brand.")}>
                 <MessageCircle size={18} aria-hidden="true" /> Talk on WhatsApp
               </a>
+              <Link className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full border border-ivory/30 px-6 py-3 text-center font-semibold text-ivory transition hover:bg-ivory/10" href="/custom-skincare-formulation">
+                Request Custom Hair Serum Formulation
+              </Link>
               <Link className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full border border-ivory/30 px-6 py-3 text-center font-semibold text-ivory transition hover:bg-ivory/10" href="/haircare-manufacturer-india">
                 Explore More Product Categories
               </Link>
