@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle, Menu, Phone, X } from "lucide-react";
 import { useState } from "react";
@@ -14,7 +15,16 @@ export default function Header() {
     <header className="sticky top-0 z-40 border-b border-charcoal/10 bg-ivory/96 shadow-[0_10px_30px_rgba(23,32,31,0.06)] backdrop-blur-xl">
       <div className="container-padded flex min-h-[76px] items-center justify-between gap-4">
         <Link className="focus-ring flex items-center gap-3 rounded-sm" href="/" aria-label="Kiora CosmoTech home">
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-charcoal font-display text-xl font-semibold text-champagne">K</span>
+          <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-2xl border border-charcoal/10 bg-ivory shadow-sm">
+            <Image
+              src={siteConfig.logo}
+              alt="Kiora CosmoTech logo"
+              fill
+              className="object-contain p-1.5"
+              sizes="48px"
+              priority
+            />
+          </span>
           <span>
             <span className="block font-display text-[1.55rem] font-semibold leading-none text-charcoal">Kiora CosmoTech</span>
             <span className="mt-1 block text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-teal">Cosmetic Manufacturing</span>
@@ -27,12 +37,14 @@ export default function Header() {
                 {item.label === "Quality & Compliance" ? "Quality" : item.label}
               </Link>
               {item.children ? (
-                <div className="invisible absolute left-0 top-full z-50 grid w-72 translate-y-2 gap-1 rounded-3xl border border-charcoal/10 bg-ivory p-3 opacity-0 shadow-premium transition group-hover:visible group-hover:translate-y-4 group-hover:opacity-100">
-                  {item.children.map((child) => (
-                    <Link className="focus-ring rounded-2xl px-4 py-3 text-sm font-semibold text-ink hover:bg-mist hover:text-teal" href={child.href} key={child.href}>
-                      {child.label}
-                    </Link>
-                  ))}
+                <div className="invisible pointer-events-none absolute left-0 top-full z-50 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+                  <div className="grid w-72 gap-1 rounded-3xl border border-charcoal/10 bg-ivory p-3 shadow-premium">
+                    {item.children.map((child) => (
+                      <Link className="focus-ring rounded-2xl px-4 py-3 text-sm font-semibold text-ink hover:bg-mist hover:text-teal" href={child.href} key={child.href}>
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               ) : null}
             </div>

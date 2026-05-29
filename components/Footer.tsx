@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
@@ -26,7 +27,15 @@ export default function Footer() {
       <div className="container-padded grid gap-10 lg:grid-cols-[1.15fr_0.75fr_0.95fr_1.15fr]">
         <div>
           <Link className="focus-ring inline-flex items-center gap-3 rounded-sm" href="/" aria-label="Kiora CosmoTech home">
-            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-champagne font-display text-xl font-semibold text-charcoal">K</span>
+            <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-2xl border border-champagne/30 bg-ivory shadow-sm">
+              <Image
+                src={siteConfig.logo}
+                alt="Kiora CosmoTech logo"
+                fill
+                className="object-contain p-1.5"
+                sizes="48px"
+              />
+            </span>
             <span>
               <span className="block font-display text-3xl font-semibold">{siteConfig.name}</span>
               <span className="mt-1 block text-xs font-semibold uppercase tracking-[0.18em] text-champagne">Cosmetic Manufacturing</span>

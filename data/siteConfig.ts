@@ -16,7 +16,7 @@ export const siteConfig = {
   },
   whatsappNumber: "918076503757",
   ogImage: "/og/kiora-og.png",
-  logo: "/images/kiora-logo-main.png",
+  logo: "/images/logo-kiora-main.png",
   socialLinks: [] as string[]
 };
 
