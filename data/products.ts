@@ -22,6 +22,10 @@ export type ProductPage = {
   packagingAdvice?: string;
   buyerMistakes?: string[];
   quoteChecklist?: string[];
+  heroImage?: string;
+  heroImageAlt?: string;
+  heroImageCaption?: string;
+  heroTags?: string[];
 };
 
 const sharedFaqs = (product: string): FAQ[] => [
@@ -383,6 +387,133 @@ productPages.forEach((product) => {
   product.buyerMistakes ??= defaultBuyerMistakes;
   product.quoteChecklist ??= defaultQuoteChecklist;
 });
+
+const setProductHero = (
+  slug: string,
+  heroImage: string,
+  heroImageAlt: string,
+  heroImageCaption: string,
+  heroTags: string[]
+) => {
+  const page = productPages.find((item) => item.slug === slug);
+  if (!page) return;
+  page.heroImage = heroImage;
+  page.heroImageAlt = heroImageAlt;
+  page.heroImageCaption = heroImageCaption;
+  page.heroTags = heroTags;
+};
+
+setProductHero(
+  "face-wash-manufacturer",
+  "/images/products/face-wash-hero.webp",
+  "Premium face wash manufacturing hero visual for private label skincare brands",
+  "Cleanser Formula • Tube/Bottle Packaging • Filling • Packing • Dispatch",
+  ["Private Label", "Custom Formula", "Tube Packaging", "Bottle Packaging", "MOQ Discussion", "Skincare Brands"]
+);
+
+setProductHero(
+  "face-serum-manufacturer",
+  "/images/products/face-serum-hero.webp",
+  "Premium face serum manufacturing hero visual for private label skincare brands",
+  "Formula • Dropper/Pump Packaging • Filling • Quality • Dispatch",
+  ["Private Label", "Custom Formula", "Dropper Bottle", "Pump Bottle", "MOQ Discussion", "Skincare Brands"]
+);
+
+setProductHero(
+  "sunscreen-manufacturer",
+  "/images/products/sunscreen-hero.webp",
+  "Premium sunscreen manufacturing hero visual for private label skincare brands",
+  "Formula Direction • SPF Claim Planning • Tube/Airless Packaging • Quality Review",
+  ["SPF Positioning", "Tube Packaging", "Airless Pump", "Matte Finish", "Hybrid Formula", "Brand Launch"]
+);
+
+setProductHero(
+  "moisturizer-manufacturer",
+  "/images/products/moisturizer-hero.webp",
+  "Premium moisturizer manufacturing hero visual for private label skincare brands",
+  "Formula • Jar/Pump Packaging • Filling • Quality Review • Dispatch",
+  ["Private Label", "Hydration Range", "Jar Packaging", "Pump Bottle", "MOQ Planning", "Skincare Launch"]
+);
+
+setProductHero(
+  "cream-manufacturer",
+  "/images/products/cream-hero.webp",
+  "Premium cream manufacturing hero visual for private label cosmetic brands",
+  "Cream Formula • Jar/Tube Packaging • Filling • Quality Review • Dispatch",
+  ["Private Label", "Cream Formula", "Jar Packaging", "Tube Packaging", "MOQ Discussion", "Retail Range"]
+);
+
+setProductHero(
+  "gel-manufacturer",
+  "/images/products/gel-hero.webp",
+  "Premium skincare gel manufacturing hero visual for private label brands",
+  "Gel Formula • Tube/Jar Packaging • Filling • Quality Review • Dispatch",
+  ["Private Label", "Gel Texture", "Tube Packaging", "Jar Packaging", "MOQ Planning", "Skincare Brands"]
+);
+
+setProductHero(
+  "body-lotion-manufacturer",
+  "/images/products/body-lotion-hero.webp",
+  "Premium body lotion manufacturing hero visual for private label body care brands",
+  "Lotion Formula • Bottle/Pump Packaging • Filling • Packing • Dispatch",
+  ["Private Label", "Body Care", "Pump Bottle", "Bottle Packaging", "MOQ Discussion", "Daily Use Range"]
+);
+
+setProductHero(
+  "derma-cosmetic-manufacturer",
+  "/images/products/derma-cosmetic-hero.webp",
+  "Premium derma cosmetic manufacturing hero visual for active-led skincare brands",
+  "Active-Led Formula • Airless/Tube Packaging • Quality Review • Dispatch",
+  ["Derma Cosmetic", "Active-Led", "Airless Packaging", "Tube Packaging", "MOQ Planning", "Clinic Brands"]
+);
+
+setProductHero(
+  "shampoo-manufacturer",
+  "/images/products/shampoo-hero.webp",
+  "Premium shampoo manufacturing hero visual for private label haircare brands",
+  "Haircare Formula • Bottle Packaging • Filling • Quality Review • Dispatch",
+  ["Haircare", "Bottle Packaging", "Private Label", "Fragrance Selection", "MOQ Planning", "Salon Retail"]
+);
+
+setProductHero(
+  "hair-serum-manufacturer",
+  "/images/products/hair-serum-hero.webp",
+  "Premium hair serum manufacturing hero visual for private label haircare brands",
+  "Hair Serum Formula • Pump/Bottle Packaging • Filling • Quality Review • Dispatch",
+  ["Haircare", "Private Label", "Pump Bottle", "Bottle Packaging", "MOQ Discussion", "Salon Brands"]
+);
+
+setProductHero(
+  "hair-oil-manufacturer",
+  "/images/products/hair-oil-hero.webp",
+  "Premium hair oil manufacturing hero visual for private label haircare brands",
+  "Oil Blend • Bottle Packaging • Filling • Quality Review • Dispatch",
+  ["Haircare", "Private Label", "Bottle Packaging", "Applicator Options", "MOQ Planning", "Retail Range"]
+);
+
+setProductHero(
+  "hair-mask-manufacturer",
+  "/images/products/hair-mask-hero.webp",
+  "Premium hair mask manufacturing hero visual for private label haircare brands",
+  "Mask Formula • Jar/Tube Packaging • Filling • Quality Review • Dispatch",
+  ["Haircare", "Private Label", "Jar Packaging", "Tube Packaging", "MOQ Discussion", "Salon Care"]
+);
+
+setProductHero(
+  "body-wash-manufacturer",
+  "/images/products/body-wash-hero.webp",
+  "Premium body wash manufacturing hero visual for private label personal care brands",
+  "Body Wash Formula • Bottle/Pump Packaging • Filling • Packing • Dispatch",
+  ["Personal Care", "Private Label", "Bottle Packaging", "Pump Format", "MOQ Planning", "Daily Use Range"]
+);
+
+setProductHero(
+  "hand-wash-manufacturer",
+  "/images/products/hand-wash-hero.webp",
+  "Premium hand wash manufacturing hero visual for private label personal care brands",
+  "Hand Wash Formula • Pump/Refill Packaging • Filling • Quality Review • Dispatch",
+  ["Personal Care", "Private Label", "Pump Bottle", "Refill Options", "MOQ Discussion", "Institutional Supply"]
+);
 
 const updateProductPage = (slug: string, updates: Partial<ProductPage>) => {
   const page = productPages.find((item) => item.slug === slug);
