@@ -405,7 +405,7 @@ const setProductHero = (
 
 setProductHero(
   "face-wash-manufacturer",
-  "/images/products/face-wash-hero.webp",
+  "/images/product/face-wash-hero.webp",
   "Premium face wash manufacturing hero visual for private label skincare brands",
   "Cleanser Formula • Tube/Bottle Packaging • Filling • Packing • Dispatch",
   ["Private Label", "Custom Formula", "Tube Packaging", "Bottle Packaging", "MOQ Discussion", "Skincare Brands"]
@@ -413,7 +413,7 @@ setProductHero(
 
 setProductHero(
   "face-serum-manufacturer",
-  "/images/products/face-serum-hero.webp",
+  "/images/product/face-serum-hero.webp",
   "Premium face serum manufacturing hero visual for private label skincare brands",
   "Formula • Dropper/Pump Packaging • Filling • Quality • Dispatch",
   ["Private Label", "Custom Formula", "Dropper Bottle", "Pump Bottle", "MOQ Discussion", "Skincare Brands"]
@@ -477,7 +477,7 @@ setProductHero(
 
 setProductHero(
   "hair-serum-manufacturer",
-  "/images/products/hair-serum-hero.webp",
+  "/images/product/hair-serum-hero.webp",
   "Premium hair serum manufacturing hero visual for private label haircare brands",
   "Hair Serum Formula • Pump/Bottle Packaging • Filling • Quality Review • Dispatch",
   ["Haircare", "Private Label", "Pump Bottle", "Bottle Packaging", "MOQ Discussion", "Salon Brands"]
