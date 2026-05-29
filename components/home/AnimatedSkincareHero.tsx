@@ -13,9 +13,36 @@ const trustItems = [
 
 export default function AnimatedSkincareHero() {
   return (
-    <section className="overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(232,217,189,0.35),transparent_26rem),radial-gradient(circle_at_top_right,rgba(143,174,155,0.22),transparent_24rem),linear-gradient(180deg,#fffdf9_0%,#f7f1e7_100%)]">
-      <div className="container-padded grid min-h-[520px] gap-7 py-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:gap-12 lg:py-14">
-        <HomeScrollReveal className="relative z-[1]">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#fffdf9_0%,#f7f1e7_100%)]">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 md:hidden">
+          <Image
+            src="/images/home/kiora-hero-mobile.webp.png"
+            alt=""
+            fill
+            priority
+            aria-hidden="true"
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </div>
+        <div className="absolute inset-0 hidden md:block">
+          <Image
+            src="/images/home/kiora-hero-desktop.webp.png"
+            alt=""
+            fill
+            priority
+            aria-hidden="true"
+            className="object-cover object-[72%_center]"
+            sizes="100vw"
+          />
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,253,249,0.96)_0%,rgba(255,253,249,0.9)_26%,rgba(255,253,249,0.74)_46%,rgba(255,253,249,0.16)_68%,rgba(255,253,249,0.08)_100%)] md:bg-[linear-gradient(90deg,rgba(255,253,249,0.96)_0%,rgba(255,253,249,0.92)_28%,rgba(255,253,249,0.72)_44%,rgba(255,253,249,0.18)_64%,rgba(255,253,249,0.06)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(232,217,189,0.28),transparent_22rem),radial-gradient(circle_at_top_right,rgba(143,174,155,0.16),transparent_20rem)]" />
+      </div>
+
+      <div className="container-padded relative min-h-[560px] py-8 md:min-h-[640px] lg:min-h-[720px] lg:py-14">
+        <HomeScrollReveal className="relative z-[1] max-w-[39rem] pt-4 md:pt-10 lg:pt-14">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.26em] text-teal">
             Kiora CosmoTech
           </p>
@@ -51,29 +78,6 @@ export default function AnimatedSkincareHero() {
                 {item}
               </span>
             ))}
-          </div>
-        </HomeScrollReveal>
-
-        <HomeScrollReveal className="relative" delay={120}>
-          <div className="relative rounded-[2.1rem] border border-charcoal/8 bg-[linear-gradient(180deg,rgba(255,253,247,0.95),rgba(247,241,231,0.92))] p-4 shadow-[0_28px_80px_rgba(23,33,29,0.10)] lg:p-6">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(255,255,255,0.92),transparent_22%),radial-gradient(circle_at_82%_18%,rgba(143,174,155,0.20),transparent_24%),radial-gradient(circle_at_72%_82%,rgba(232,217,189,0.44),transparent_22%)]" />
-            <div className="relative rounded-[1.7rem] border border-white/70 bg-[linear-gradient(145deg,rgba(255,255,255,0.88),rgba(243,236,224,0.86))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.84)] lg:p-5">
-              <div className="relative min-h-[240px] overflow-hidden rounded-[1.45rem] border border-white/70 shadow-[0_18px_42px_rgba(23,33,29,0.10)] lg:min-h-[390px]">
-                <Image
-                  src="/images/HERO IMAGE.jpg"
-                  alt="Kiora CosmoTech skincare and cosmetic manufacturing hero image"
-                  fill
-                  className="object-contain bg-[linear-gradient(135deg,rgba(251,247,239,0.98),rgba(232,217,189,0.72)_58%,rgba(143,174,155,0.24))]"
-                  sizes="(max-width: 1024px) 100vw, 32rem"
-                  priority
-                />
-              </div>
-              <div className="mt-4 rounded-[1.2rem] border border-charcoal/8 bg-white/76 px-4 py-3 shadow-sm">
-                <p className="text-center text-sm font-medium leading-7 text-ink/76">
-                  Formula &bull; Packaging &bull; Filling &bull; Quality &bull; Dispatch
-                </p>
-              </div>
-            </div>
           </div>
         </HomeScrollReveal>
       </div>
