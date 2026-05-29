@@ -7,6 +7,7 @@ import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQAccordion from "@/components/FAQAccordion";
 import InternalLinkGrid from "@/components/InternalLinkGrid";
+import ProductHeroBackground from "@/components/ProductHeroBackground";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import { siteConfig, whatsappHref } from "@/data/siteConfig";
 import { breadcrumbSchema, faqSchema, manufacturerSchema, serviceSchema } from "@/lib/schema";
@@ -50,7 +51,7 @@ function resolvePublicAsset(src: string) {
 }
 
 const resolvedOgImage = resolvePublicAsset(preferredOgImage) ?? siteConfig.ogImage;
-const resolvedHeroImage = resolvePublicAsset("/images/face-serums/vitamin-c-glutathione-radiance-serum.webp");
+const resolvedHeroImage = resolvePublicAsset("/images/product/face-serum-hero.webp.png");
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -596,62 +597,37 @@ export default function Page() {
       />
       <Breadcrumbs crumbs={crumbs} />
       <main>
-        <section className="overflow-hidden bg-white">
-          <div className="container-padded grid gap-8 py-12 md:grid-cols-[1.04fr_0.96fr] md:items-center md:gap-10 md:py-20">
-            <div>
-              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-teal">Premium serum manufacturing</p>
-              <h1 className="font-display text-[clamp(2.35rem,9vw,6rem)] font-semibold leading-[0.94] text-charcoal">
-                Face Serum Manufacturer in India
-              </h1>
-              <p className="mt-5 max-w-3xl text-[1rem] leading-7 text-ink/78 sm:text-[1.04rem] md:mt-6 md:text-xl md:leading-8">
-                Private label and third-party manufacturing for premium brightening, pigmentation, peptide, hydration, barrier repair, anti-ageing, microbiome, biotech and luxury botanical face serum concepts.
-              </p>
-              <p className="mt-4 max-w-3xl text-[0.98rem] leading-7 text-ink/72 md:mt-5 md:text-base md:leading-8">
-                Kiora CosmoTech develops customized face serum concepts for modern cosmetic and derma-care brands, including active-led brightening serums, niacinamide serums, peptide serums, copper peptide serums, retinal alternatives, hydration serums, barrier repair serums, PDRN-inspired serums, exosome-inspired serums and luxury botanical face serums.
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-teal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-charcoal sm:min-w-[250px]" href="/request-quote">
-                  Request Face Serum Manufacturing Quote <ArrowRight size={18} aria-hidden="true" />
-                </Link>
-                <a className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-charcoal/12 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-mist sm:min-w-[220px]" href="#face-serum-concepts">
-                  Explore Face Serum Concepts
-                </a>
-              </div>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {trustBadges.map((badge) => (
-                  <span className="rounded-full border border-charcoal/10 bg-mist px-3 py-1.5 text-[11px] font-semibold text-charcoal sm:py-2 sm:text-xs" key={badge}>
-                    {badge}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="relative min-h-[320px] overflow-hidden rounded-[1.6rem] border border-charcoal/10 bg-[linear-gradient(135deg,#fffdf7_0%,#edf4ee_48%,#dfcfb4_100%)] p-3 shadow-premium sm:min-h-[380px] sm:rounded-[2rem] sm:p-4 md:min-h-[420px]">
-              {resolvedHeroImage ? (
-                <div className="relative h-full min-h-[292px] overflow-hidden rounded-[1.2rem] bg-white sm:min-h-[348px] sm:rounded-[1.6rem]">
-                  <Image
-                    src={resolvedHeroImage}
-                    alt="Premium face serum bottle and box mockup labeled Your Brand"
-                    fill
-                    priority
-                    className="object-contain p-4"
-                    sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) 46vw, 520px"
-                  />
-                </div>
-              ) : (
-                <div className="cosmetic-visual relative flex h-full min-h-[292px] flex-col justify-between overflow-hidden rounded-[1.2rem] p-5 sm:min-h-[348px] sm:rounded-[1.6rem] sm:p-6">
-                  <div className="product-bottle left-[14%] top-[16%] h-40" />
-                  <div className="product-bottle left-[44%] top-[10%] h-52" />
-                  <div className="texture-swatch right-8 top-12 h-24 w-24" />
-                  <div className="relative z-10 mt-auto rounded-[1.4rem] bg-ivory/92 p-4 shadow-premium sm:rounded-3xl sm:p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">Your Brand</p>
-                    <h2 className="mt-2 text-[1.5rem] font-semibold leading-tight text-charcoal sm:text-[1.8rem]">Premium face serum concepts</h2>
-                    <p className="mt-2 text-sm leading-6 text-ink/74">Brightening, peptide, hydration, barrier repair and luxury botanical serum directions for modern skincare launches.</p>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
+        <ProductHeroBackground
+          eyebrow="Premium serum manufacturing"
+          title="Face Serum Manufacturer in India"
+          description={
+            <p>
+              Private label and third-party manufacturing for premium brightening, pigmentation, peptide, hydration, barrier repair, anti-ageing, microbiome, biotech and luxury botanical face serum concepts.
+            </p>
+          }
+          detail={
+            <p>
+              Kiora CosmoTech develops customized face serum concepts for modern cosmetic and derma-care brands, including active-led brightening serums, niacinamide serums, peptide serums, copper peptide serums, retinal alternatives, hydration serums, barrier repair serums, PDRN-inspired serums, exosome-inspired serums and luxury botanical face serums.
+            </p>
+          }
+          actions={
+            <>
+              <Link className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-teal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-charcoal sm:min-w-[250px]" href="/request-quote">
+                Request Face Serum Manufacturing Quote <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+              <a className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-charcoal/12 bg-white/84 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-white sm:min-w-[220px]" href="#face-serum-concepts">
+                Explore Face Serum Concepts
+              </a>
+            </>
+          }
+          tags={trustBadges}
+          imageSrc={resolvedHeroImage}
+          imageAlt="Premium face serum bottle and box mockup labeled Your Brand"
+          imageCaption="Serum Formula • Dropper/Pump Packaging • Filling • Quality • Dispatch"
+          fallbackTitle="Premium face serum concepts"
+          fallbackDescription="Brightening, peptide, hydration, barrier repair and luxury botanical serum directions for modern skincare launches."
+          titleClassName="font-display text-[clamp(2.35rem,9vw,6rem)] font-semibold leading-[0.94] text-charcoal"
+        />
 
         <section className="section-y bg-mist">
           <div className="container-padded grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">

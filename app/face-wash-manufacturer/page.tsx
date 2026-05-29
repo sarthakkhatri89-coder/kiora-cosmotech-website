@@ -7,6 +7,7 @@ import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQAccordion from "@/components/FAQAccordion";
 import InternalLinkGrid from "@/components/InternalLinkGrid";
+import ProductHeroBackground from "@/components/ProductHeroBackground";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import { siteConfig, whatsappHref } from "@/data/siteConfig";
 import { breadcrumbSchema, faqSchema, manufacturerSchema, serviceSchema } from "@/lib/schema";
@@ -50,7 +51,7 @@ function resolvePublicAsset(src: string) {
 }
 
 const resolvedOgImage = resolvePublicAsset(preferredOgImage) ?? siteConfig.ogImage;
-const resolvedHeroImage = resolvePublicAsset("/images/face-wash/barrier-repair-cream-cleanser.webp");
+const resolvedHeroImage = resolvePublicAsset("/images/product/face-wash-hero.webp.png");
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -643,64 +644,37 @@ export default function Page() {
       />
       <Breadcrumbs crumbs={crumbs} />
       <main>
-        <section className="overflow-hidden bg-white">
-          <div className="container-padded grid gap-8 py-12 md:grid-cols-[1.04fr_0.96fr] md:items-center md:gap-10 md:py-20">
-            <div>
-              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-teal">Premium cleanser manufacturing</p>
-              <h1 className="font-display text-[clamp(2.35rem,9vw,6rem)] font-semibold leading-[0.94] text-charcoal">
-                Face Wash Manufacturer in India
-              </h1>
-              <p className="mt-5 max-w-3xl text-[1rem] leading-7 text-ink/78 sm:text-[1.04rem] md:mt-6 md:text-xl md:leading-8">
-                Private label and third-party manufacturing for modern face wash, cream cleanser, non-foaming cleanser, gel cleanser, oil-to-milk cleanser, cleansing balm, mousse cleanser, enzyme cleanser and derma-cosmetic cleanser concepts.
-              </p>
-              <p className="mt-4 max-w-3xl text-[0.98rem] leading-7 text-ink/72 md:mt-5 md:text-base md:leading-8">
-                Kiora CosmoTech develops customized face wash and cleanser concepts for modern cosmetic, derma-care, herbal, premium skincare and D2C beauty brands. From barrier repair cream cleansers and oat milk non-foaming cleansers to salicylic acid acne-control face wash, gel-to-foam cleansers, cleansing balms, microbiome cleansers and luxury botanical face washes, we help brands build market-ready cleanser ranges.
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-teal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-charcoal sm:min-w-[250px]" href="/request-quote">
-                  Request Face Wash Manufacturing Quote <ArrowRight size={18} aria-hidden="true" />
-                </Link>
-                <a className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-charcoal/12 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-mist sm:min-w-[220px]" href="#face-wash-concepts">
-                  Explore Cleanser Concepts
-                </a>
-              </div>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {trustBadges.map((badge) => (
-                  <span className="rounded-full border border-charcoal/10 bg-mist px-3 py-1.5 text-[11px] font-semibold text-charcoal sm:py-2 sm:text-xs" key={badge}>
-                    {badge}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="relative min-h-[320px] overflow-hidden rounded-[1.6rem] border border-charcoal/10 bg-[linear-gradient(135deg,#fffdf7_0%,#edf4ee_48%,#dfcfb4_100%)] p-3 shadow-premium sm:min-h-[380px] sm:rounded-[2rem] sm:p-4 md:min-h-[420px]">
-              {resolvedHeroImage ? (
-                <div className="relative h-full min-h-[292px] overflow-hidden rounded-[1.2rem] bg-white sm:min-h-[348px] sm:rounded-[1.6rem]">
-                  <Image
-                    src={resolvedHeroImage}
-                    alt="Premium face wash and cleanser bottle mockup labeled Your Brand"
-                    fill
-                    priority
-                    className="object-contain p-4"
-                    sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) 46vw, 520px"
-                  />
-                </div>
-              ) : (
-                <div className="relative flex h-full min-h-[292px] flex-col justify-between overflow-hidden rounded-[1.2rem] bg-white/86 p-5 sm:min-h-[348px] sm:rounded-[1.6rem] sm:p-6">
-                  <span className="inline-flex w-fit rounded-full bg-mist px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-teal">
-                    Modern cleanser portfolio
-                  </span>
-                  <div className="rounded-[1.4rem] bg-ivory/92 p-4 shadow-premium sm:rounded-3xl sm:p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">Your Brand</p>
-                    <h2 className="mt-2 text-[1.5rem] font-semibold leading-tight text-charcoal sm:text-[1.8rem]">Premium face wash concepts</h2>
-                    <p className="mt-2 text-sm leading-6 text-ink/74">
-                      Cream cleansers, gel cleansers, balm cleansers, microbiome-friendly face wash and luxury botanical cleanser directions for premium skincare launches.
-                    </p>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
+        <ProductHeroBackground
+          eyebrow="Premium cleanser manufacturing"
+          title="Face Wash Manufacturer in India"
+          description={
+            <p>
+              Private label and third-party manufacturing for modern face wash, cream cleanser, non-foaming cleanser, gel cleanser, oil-to-milk cleanser, cleansing balm, mousse cleanser, enzyme cleanser and derma-cosmetic cleanser concepts.
+            </p>
+          }
+          detail={
+            <p>
+              Kiora CosmoTech develops customized face wash and cleanser concepts for modern cosmetic, derma-care, herbal, premium skincare and D2C beauty brands. From barrier repair cream cleansers and oat milk non-foaming cleansers to salicylic acid acne-control face wash, gel-to-foam cleansers, cleansing balms, microbiome cleansers and luxury botanical face washes, we help brands build market-ready cleanser ranges.
+            </p>
+          }
+          actions={
+            <>
+              <Link className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-teal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-charcoal sm:min-w-[250px]" href="/request-quote">
+                Request Face Wash Manufacturing Quote <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+              <a className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-charcoal/12 bg-white/84 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-white sm:min-w-[220px]" href="#face-wash-concepts">
+                Explore Cleanser Concepts
+              </a>
+            </>
+          }
+          tags={trustBadges}
+          imageSrc={resolvedHeroImage}
+          imageAlt="Premium face wash and cleanser bottle mockup labeled Your Brand"
+          imageCaption="Cleanser Formula • Tube/Bottle Packaging • Filling • Packing • Dispatch"
+          fallbackTitle="Premium face wash concepts"
+          fallbackDescription="Cream cleansers, gel cleansers, balm cleansers, microbiome-friendly face wash and luxury botanical cleanser directions for premium skincare launches."
+          titleClassName="font-display text-[clamp(2.2rem,8vw,5.5rem)] font-semibold leading-[0.94] text-charcoal"
+        />
 
         <section className="section-y bg-mist">
           <div className="container-padded grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">

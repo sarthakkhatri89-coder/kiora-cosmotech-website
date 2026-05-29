@@ -7,6 +7,7 @@ import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQAccordion from "@/components/FAQAccordion";
 import InternalLinkGrid from "@/components/InternalLinkGrid";
+import ProductHeroBackground from "@/components/ProductHeroBackground";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import { siteConfig, whatsappHref } from "@/data/siteConfig";
 import { breadcrumbSchema, faqSchema, manufacturerSchema, serviceSchema } from "@/lib/schema";
@@ -50,6 +51,7 @@ function resolvePublicAsset(src: string) {
 }
 
 const resolvedOgImage = resolvePublicAsset(preferredOgImage) ?? siteConfig.ogImage;
+const resolvedHeroImage = resolvePublicAsset("/images/product/hair-serum-hero.webp.png");
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -721,52 +723,40 @@ export default function Page() {
       />
       <Breadcrumbs crumbs={crumbs} />
       <main>
-        <section className="overflow-hidden bg-white">
-          <div className="container-padded grid gap-8 py-12 md:grid-cols-[1.04fr_0.96fr] md:items-center md:gap-10 md:py-20">
-            <div>
-              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-teal">Premium hair-care manufacturing</p>
-              <h1 className="font-display text-[clamp(2.35rem,9vw,6rem)] font-semibold leading-[0.94] text-charcoal">
-                Hair Serum Manufacturer in India
-              </h1>
-              <p className="mt-5 max-w-3xl text-[1rem] leading-7 text-ink/78 sm:text-[1.04rem] md:mt-6 md:text-xl md:leading-8">
-                Private label and third-party manufacturing for premium hair growth, scalp care, peptide, botanical, anti-dandruff, and derma-cosmetic hair serum concepts.
-              </p>
-              <p className="mt-4 max-w-3xl text-[0.98rem] leading-7 text-ink/72 md:mt-5 md:text-base md:leading-8">
-                Kiora CosmoTech develops customized hair serum concepts for modern cosmetic and derma-care brands, including active-led scalp serums, peptide hair density serums, botanical hair growth support serums, anti-breakage serums, scalp barrier serums, and luxury herbal hair-care products.
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-teal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-charcoal sm:min-w-[250px]" href="/request-quote">
-                  Request Hair Serum Manufacturing Quote <ArrowRight size={18} aria-hidden="true" />
-                </Link>
-                <a className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-charcoal/12 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-mist sm:min-w-[220px]" href="#hair-serum-concepts">
-                  Explore Hair Serum Concepts
-                </a>
-                <Link className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full border border-charcoal/12 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-mist sm:min-w-[250px]" href="/custom-skincare-formulation">
-                  Request Custom Hair Serum Formulation
-                </Link>
-              </div>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {trustBadges.map((badge) => (
-                  <span className="rounded-full border border-charcoal/10 bg-mist px-3 py-1.5 text-[11px] font-semibold text-charcoal sm:py-2 sm:text-xs" key={badge}>
-                    {badge}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="relative min-h-[320px] overflow-hidden rounded-[1.6rem] border border-charcoal/10 bg-[linear-gradient(135deg,#fffdf7_0%,#edf4ee_48%,#dfcfb4_100%)] p-3 shadow-premium sm:min-h-[380px] sm:rounded-[2rem] sm:p-4 md:min-h-[420px]">
-              <div className="relative h-full min-h-[292px] overflow-hidden rounded-[1.2rem] sm:min-h-[348px] sm:rounded-[1.6rem]">
-                <Image
-                  src="/images/hair-serum-hero-science.png"
-                  alt="Professional hair science visual showing scalp follicles, serum dropper and molecular active network"
-                  fill
-                  priority
-                  className="object-cover object-center"
-                  sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) 46vw, 520px"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <ProductHeroBackground
+          eyebrow="Premium hair-care manufacturing"
+          title="Hair Serum Manufacturer in India"
+          description={
+            <p>
+              Private label and third-party manufacturing for premium hair growth, scalp care, peptide, botanical, anti-dandruff, and derma-cosmetic hair serum concepts.
+            </p>
+          }
+          detail={
+            <p>
+              Kiora CosmoTech develops customized hair serum concepts for modern cosmetic and derma-care brands, including active-led scalp serums, peptide hair density serums, botanical hair growth support serums, anti-breakage serums, scalp barrier serums, and luxury herbal hair-care products.
+            </p>
+          }
+          actions={
+            <>
+              <Link className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-teal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-charcoal sm:min-w-[250px]" href="/request-quote">
+                Request Hair Serum Manufacturing Quote <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+              <a className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-charcoal/12 bg-white/84 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-white sm:min-w-[220px]" href="#hair-serum-concepts">
+                Explore Hair Serum Concepts
+              </a>
+              <Link className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full border border-charcoal/12 bg-white/84 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-white sm:min-w-[250px]" href="/custom-skincare-formulation">
+                Request Custom Hair Serum Formulation
+              </Link>
+            </>
+          }
+          tags={trustBadges}
+          imageSrc={resolvedHeroImage}
+          imageAlt="Premium hair serum packaging visual for private label haircare manufacturing"
+          imageCaption="Haircare Formula • Serum/Oil Packaging • Filling • Quality Review • Dispatch"
+          fallbackTitle="Premium hair serum concepts"
+          fallbackDescription="Scalp serums, peptide density concepts, botanical actives and luxury hair-care directions for modern brand launches."
+          titleClassName="font-display text-[clamp(2.35rem,9vw,6rem)] font-semibold leading-[0.94] text-charcoal"
+        />
 
         <section className="section-y bg-mist">
           <div className="container-padded grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">

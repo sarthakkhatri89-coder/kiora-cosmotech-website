@@ -1,11 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
-import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CTASection from "@/components/CTASection";
 import FAQAccordion from "@/components/FAQAccordion";
 import InternalLinkGrid from "@/components/InternalLinkGrid";
 import ProcessTimeline from "@/components/ProcessTimeline";
+import ProductHeroBackground from "@/components/ProductHeroBackground";
 import ProductSpecTable from "@/components/ProductSpecTable";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import SectionHeading from "@/components/SectionHeading";
@@ -61,78 +61,35 @@ export default function ProductPageRenderer({ product }: { product: ProductPage 
       <SchemaJsonLd data={[breadcrumbSchema(crumbs), productSchema(product.name, product.description, path), serviceSchema(product.name, product.description, path), faqSchema(product.faqs)]} />
       <Breadcrumbs crumbs={crumbs} />
       <main>
-        <section className="overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(232,217,189,0.35),transparent_26rem),radial-gradient(circle_at_top_right,rgba(143,174,155,0.22),transparent_24rem),linear-gradient(180deg,#fffdf9_0%,#f7f1e7_100%)]">
-          <div className="container-padded grid gap-8 py-12 md:grid-cols-[1.04fr_0.96fr] md:items-center md:gap-10 md:py-20">
-            <div>
-              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-teal">{product.category}</p>
-              <h1 className="max-w-[10ch] font-display text-[clamp(2.35rem,9vw,6rem)] font-semibold leading-[0.94] text-charcoal">
-                {product.h1}
-              </h1>
-              <p className="mt-5 max-w-3xl text-[1rem] leading-7 text-ink/78 sm:text-[1.04rem] md:mt-6 md:text-xl md:leading-8">
-                {product.intro}
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <a
-                  className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-charcoal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-teal sm:min-w-[230px]"
-                  href="/request-quote"
-                >
-                  Request Manufacturing Quote
-                </a>
-                <a
-                  className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-charcoal/12 bg-white/80 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-white sm:min-w-[210px]"
-                  href={whatsappHref(`Hello Kiora CosmoTech, I want to discuss ${product.name.replace(" Manufacturer", "")} manufacturing for my brand.`)}
-                >
-                  <MessageCircle size={18} aria-hidden="true" />
-                  Discuss on WhatsApp
-                </a>
-              </div>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {heroTags.map((tag) => (
-                  <span
-                    className="rounded-full border border-charcoal/8 bg-white/75 px-3.5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.11em] text-ink/72 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]"
-                    key={tag}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="relative rounded-[2.1rem] border border-charcoal/8 bg-[linear-gradient(180deg,rgba(255,253,247,0.95),rgba(247,241,231,0.92))] p-4 shadow-[0_28px_80px_rgba(23,33,29,0.10)] lg:p-6">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(255,255,255,0.92),transparent_22%),radial-gradient(circle_at_82%_18%,rgba(143,174,155,0.20),transparent_24%),radial-gradient(circle_at_72%_82%,rgba(232,217,189,0.44),transparent_22%)]" />
-              <div className="relative rounded-[1.7rem] border border-white/70 bg-[linear-gradient(145deg,rgba(255,255,255,0.88),rgba(243,236,224,0.86))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.84)] lg:p-5">
-                <div className="relative min-h-[240px] overflow-hidden rounded-[1.45rem] border border-white/70 bg-[linear-gradient(135deg,rgba(251,247,239,0.98),rgba(232,217,189,0.72)_58%,rgba(143,174,155,0.24))] shadow-[0_18px_42px_rgba(23,33,29,0.10)] lg:min-h-[390px]">
-                  {heroImageSrc ? (
-                    <Image
-                      src={heroImageSrc}
-                      alt={product.heroImageAlt ?? `${product.name} hero image`}
-                      fill
-                      priority
-                      className="object-cover object-center"
-                      sizes="(max-width: 1024px) 100vw, 32rem"
-                    />
-                  ) : (
-                    <div className="flex h-full flex-col justify-end p-6 lg:p-8">
-                      <div className="max-w-[18rem] rounded-[1.4rem] bg-ivory/92 p-4 shadow-premium sm:rounded-3xl sm:p-5">
-                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">Kiora CosmoTech</p>
-                        <h2 className="mt-2 text-[1.45rem] font-semibold leading-tight text-charcoal sm:text-[1.8rem]">
-                          {product.name}
-                        </h2>
-                        <p className="mt-2 text-sm leading-6 text-ink/74">
-                          {product.category} manufacturing support for private label and third-party brand launches.
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <div className="mt-4 rounded-[1.2rem] border border-charcoal/8 bg-white/76 px-4 py-3 shadow-sm">
-                  <p className="text-center text-sm font-medium leading-7 text-ink/76">
-                    {product.heroImageCaption ?? "Formula • Packaging • Filling • Quality • Dispatch"}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ProductHeroBackground
+          eyebrow={product.category}
+          title={product.h1}
+          description={<p>{product.intro}</p>}
+          actions={
+            <>
+              <a
+                className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-charcoal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-teal sm:min-w-[230px]"
+                href="/request-quote"
+              >
+                Request Manufacturing Quote
+              </a>
+              <a
+                className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-charcoal/12 bg-white/84 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-white sm:min-w-[210px]"
+                href={whatsappHref(`Hello Kiora CosmoTech, I want to discuss ${product.name.replace(" Manufacturer", "")} manufacturing for my brand.`)}
+              >
+                <MessageCircle size={18} aria-hidden="true" />
+                Discuss on WhatsApp
+              </a>
+            </>
+          }
+          tags={heroTags}
+          imageSrc={heroImageSrc}
+          imageAlt={product.heroImageAlt ?? `${product.name} hero image`}
+          imageCaption={product.heroImageCaption ?? "Formula • Packaging • Filling • Quality • Dispatch"}
+          fallbackTitle={product.name}
+          fallbackDescription={`${product.category} manufacturing support for private label and third-party brand launches.`}
+          titleClassName="max-w-[10ch] font-display text-[clamp(2.35rem,9vw,6rem)] font-semibold leading-[0.94] text-charcoal"
+        />
         <section className="py-16">
           <div className="container-padded grid gap-8 lg:grid-cols-[0.82fr_1.18fr]">
             <aside className="rounded-3xl bg-charcoal p-7 text-ivory">
