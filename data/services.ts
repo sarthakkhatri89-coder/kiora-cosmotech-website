@@ -711,7 +711,7 @@ updateContentPage("private-label-cosmetics-manufacturer-india", {
     "Kiora CosmoTech manufactures private label cosmetics for skincare, haircare, derma-cosmetic and personal care brands that want to sell products under their own brand name. The private label route helps founders plan product selection, formulas, packaging, MOQ, filling, packing, documentation inputs and launch-ready ranges with a practical manufacturing workflow.",
   sections: [
     {
-      heading: "What is private label cosmetic manufacturing?",
+      heading: "How Private Label Cosmetic Manufacturing Works at Kiora CosmoTech",
       body:
         "Private label cosmetic manufacturing means a brand sells cosmetic products under its own label while a manufacturing partner produces, fills and packs the products. The brand controls its positioning, packaging artwork and product range, while the manufacturer handles the agreed formula, batch plan and production workflow."
     },
