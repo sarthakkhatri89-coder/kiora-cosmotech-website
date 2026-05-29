@@ -5,7 +5,6 @@ import { staticRoutes } from "@/data/seo";
 import { siteConfig } from "@/data/siteConfig";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   const routes = [
     ...staticRoutes,
     ...citySlugs.map((slug) => `/city/${slug}`),
@@ -14,7 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return routes.map((route) => ({
     url: `${siteConfig.url}${route}`,
-    lastModified: now,
     changeFrequency: route === "/" ? "weekly" : "monthly",
     priority: route === "/" ? 1 : route.startsWith("/blog/") ? 0.6 : 0.8
   }));

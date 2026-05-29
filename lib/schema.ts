@@ -38,16 +38,14 @@ export const localBusinessSchema = (name = siteConfig.name, path = "/") => ({
   address: {
     "@type": "PostalAddress",
     addressCountry: siteConfig.address.country,
-    addressRegion: siteConfig.address.region,
-    addressLocality: siteConfig.address.locality
+    addressRegion: siteConfig.address.region
   },
-  areaServed: "India",
-  priceRange: "$$"
+  areaServed: "India"
 });
 
 export const manufacturerSchema = (name = siteConfig.name, path = "/") => ({
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "Manufacturer"],
   name,
   url: absoluteUrl(siteConfig.url, path),
   logo: absoluteUrl(siteConfig.url, siteConfig.logo),
@@ -58,8 +56,7 @@ export const manufacturerSchema = (name = siteConfig.name, path = "/") => ({
   address: {
     "@type": "PostalAddress",
     addressCountry: siteConfig.address.country,
-    addressRegion: siteConfig.address.region,
-    addressLocality: siteConfig.address.locality
+    addressRegion: siteConfig.address.region
   },
   areaServed: "India",
   knowsAbout: [
@@ -76,12 +73,7 @@ export const websiteSchema = () => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: siteConfig.name,
-  url: siteConfig.url,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${siteConfig.url}/blog?query={search_term_string}`,
-    "query-input": "required name=search_term_string"
-  }
+  url: siteConfig.url
 });
 
 export const breadcrumbSchema = (crumbs: Crumb[]) => ({
