@@ -18,10 +18,10 @@ export default function AnimatedSkincareHero() {
         <div className="absolute inset-0 md:hidden">
           <Image
             src="/images/home/kiora-hero-mobile.webp"
-            alt=""
+            alt="Premium skincare and cosmetic manufacturing visual by Kiora CosmoTech"
             fill
             priority
-            aria-hidden="true"
+            fetchPriority="high"
             className="object-cover object-center"
             sizes="100vw"
           />
@@ -29,12 +29,12 @@ export default function AnimatedSkincareHero() {
         <div className="absolute inset-0 hidden md:block">
           <Image
             src="/images/home/kiora-hero-desktop.webp"
-            alt=""
+            alt="Premium skincare and cosmetic manufacturing visual by Kiora CosmoTech"
             fill
             priority
-            aria-hidden="true"
+            fetchPriority="high"
             className="object-cover object-[72%_center]"
-            sizes="100vw"
+            sizes="72vw"
           />
         </div>
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,253,249,0.96)_0%,rgba(255,253,249,0.9)_26%,rgba(255,253,249,0.74)_46%,rgba(255,253,249,0.16)_68%,rgba(255,253,249,0.08)_100%)] md:bg-[linear-gradient(90deg,rgba(255,253,249,0.96)_0%,rgba(255,253,249,0.92)_28%,rgba(255,253,249,0.72)_44%,rgba(255,253,249,0.18)_64%,rgba(255,253,249,0.06)_100%)]" />
