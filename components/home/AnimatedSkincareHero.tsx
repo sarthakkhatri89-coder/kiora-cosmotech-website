@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import HomeScrollReveal from "@/components/home/HomeScrollReveal";
 
@@ -15,28 +14,24 @@ export default function AnimatedSkincareHero() {
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(180deg,#fffdf9_0%,#f7f1e7_100%)]">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 md:hidden">
-          <Image
-            src="/images/home/kiora-hero-mobile.webp"
-            alt="Premium skincare and cosmetic manufacturing visual by Kiora CosmoTech"
-            fill
-            priority
-            fetchPriority="high"
-            className="object-cover object-center"
-            sizes="100vw"
+        <picture className="absolute inset-0 block h-full w-full">
+          <source
+            media="(max-width: 767px)"
+            srcSet="/images/home/kiora-hero-mobile.webp"
           />
-        </div>
-        <div className="absolute inset-0 hidden md:block">
-          <Image
+          <source
+            media="(min-width: 768px)"
+            srcSet="/images/home/kiora-hero-desktop.webp"
+          />
+          <img
             src="/images/home/kiora-hero-desktop.webp"
-            alt="Premium skincare and cosmetic manufacturing visual by Kiora CosmoTech"
-            fill
-            priority
+            alt="Kiora CosmoTech skincare and cosmetic manufacturing"
             fetchPriority="high"
-            className="object-cover object-[72%_center]"
-            sizes="72vw"
+            loading="eager"
+            decoding="async"
+            className="h-full w-full object-cover object-center md:object-[72%_center]"
           />
-        </div>
+        </picture>
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,253,249,0.96)_0%,rgba(255,253,249,0.9)_26%,rgba(255,253,249,0.74)_46%,rgba(255,253,249,0.16)_68%,rgba(255,253,249,0.08)_100%)] md:bg-[linear-gradient(90deg,rgba(255,253,249,0.96)_0%,rgba(255,253,249,0.92)_28%,rgba(255,253,249,0.72)_44%,rgba(255,253,249,0.18)_64%,rgba(255,253,249,0.06)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(232,217,189,0.28),transparent_22rem),radial-gradient(circle_at_top_right,rgba(143,174,155,0.16),transparent_20rem)]" />
       </div>
