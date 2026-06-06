@@ -10,7 +10,7 @@ import ProductSpecTable from "@/components/ProductSpecTable";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import SectionHeading from "@/components/SectionHeading";
 import { productPages, type ProductPage } from "@/data/products";
-import { breadcrumbSchema, faqSchema, productSchema, serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 import { whatsappHref } from "@/data/siteConfig";
 import { MessageCircle } from "lucide-react";
 
@@ -58,7 +58,7 @@ export default function ProductPageRenderer({ product }: { product: ProductPage 
 
   return (
     <>
-      <SchemaJsonLd data={[breadcrumbSchema(crumbs), productSchema(product.name, product.description, path), serviceSchema(product.name, product.description, path), faqSchema(product.faqs)]} />
+      <SchemaJsonLd data={[breadcrumbSchema(crumbs), serviceSchema(product.name, product.description, path), faqSchema(product.faqs)]} />
       <Breadcrumbs crumbs={crumbs} />
       <main>
         <ProductHeroBackground

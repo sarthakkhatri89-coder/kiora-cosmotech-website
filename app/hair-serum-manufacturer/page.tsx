@@ -31,7 +31,7 @@ const pageDescription =
 const ogTitle = "Hair Serum Manufacturer in India | Kiora CosmoTech";
 const ogDescription =
   "Explore premium private label hair serum concepts including Redensyl, Capixyl, Procapil, peptide, copper peptide, rosemary, scalp barrier, anti-dandruff, Ayurvedic and bond repair serums.";
-const preferredOgImage = "/images/hair-serums/multi-active-hair-growth-serum.webp";
+const preferredOgImage = "/images/product/hair-serum-hero.webp";
 
 function publicAssetExists(src: string) {
   return fs.existsSync(path.join(process.cwd(), "public", src.replace(/^\//, "")));
@@ -51,7 +51,7 @@ function resolvePublicAsset(src: string) {
 }
 
 const resolvedOgImage = resolvePublicAsset(preferredOgImage) ?? siteConfig.ogImage;
-const resolvedHeroImage = resolvePublicAsset("/images/product/hair-serum-hero.webp.png");
+const resolvedHeroImage = resolvePublicAsset("/images/product/hair-serum-hero.webp");
 
 export const metadata: Metadata = {
   title: pageTitle,

@@ -17,7 +17,7 @@ export default function AnimatedSkincareHero() {
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 md:hidden">
           <Image
-            src="/images/home/kiora-hero-mobile.webp.png"
+            src="/images/home/kiora-hero-mobile.webp"
             alt=""
             fill
             priority
@@ -28,7 +28,7 @@ export default function AnimatedSkincareHero() {
         </div>
         <div className="absolute inset-0 hidden md:block">
           <Image
-            src="/images/home/kiora-hero-desktop.webp.png"
+            src="/images/home/kiora-hero-desktop.webp"
             alt=""
             fill
             priority

@@ -31,7 +31,7 @@ const pageDescription =
 const ogTitle = "Face Wash Manufacturer in India | Kiora CosmoTech";
 const ogDescription =
   "Explore premium private label face wash and cleanser concepts including cream cleansers, non-foaming cleansers, gel-to-foam cleansers, oil-to-milk cleansers, cleansing balms, enzyme cleansers, microbiome cleansers, acne-control face wash and luxury botanical face washes.";
-const preferredOgImage = "/images/face-wash/barrier-repair-cream-cleanser.webp";
+const preferredOgImage = "/images/product/face-wash-hero.webp";
 
 function publicAssetExists(src: string) {
   return fs.existsSync(path.join(process.cwd(), "public", src.replace(/^\//, "")));
@@ -51,7 +51,7 @@ function resolvePublicAsset(src: string) {
 }
 
 const resolvedOgImage = resolvePublicAsset(preferredOgImage) ?? siteConfig.ogImage;
-const resolvedHeroImage = resolvePublicAsset("/images/product/face-wash-hero.webp.png");
+const resolvedHeroImage = resolvePublicAsset("/images/product/face-wash-hero.webp");
 
 export const metadata: Metadata = {
   title: pageTitle,

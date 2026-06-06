@@ -31,7 +31,7 @@ const pageDescription =
 const ogTitle = "Face Serum Manufacturer in India | Kiora CosmoTech";
 const ogDescription =
   "Explore premium private label face serum concepts including vitamin C, niacinamide, pigmentation, peptide, copper peptide, retinal, hydration, barrier repair, PDRN, exosome-inspired, microbiome, snail mucin and kumkumadi serums.";
-const preferredOgImage = "/images/face-serums/vitamin-c-glutathione-radiance-serum.webp";
+const preferredOgImage = "/images/product/face-serum-hero.webp";
 
 function publicAssetExists(src: string) {
   return fs.existsSync(path.join(process.cwd(), "public", src.replace(/^\//, "")));
@@ -51,7 +51,7 @@ function resolvePublicAsset(src: string) {
 }
 
 const resolvedOgImage = resolvePublicAsset(preferredOgImage) ?? siteConfig.ogImage;
-const resolvedHeroImage = resolvePublicAsset("/images/product/face-serum-hero.webp.png");
+const resolvedHeroImage = resolvePublicAsset("/images/product/face-serum-hero.webp");
 
 export const metadata: Metadata = {
   title: pageTitle,
