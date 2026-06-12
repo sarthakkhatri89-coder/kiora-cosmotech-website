@@ -725,6 +725,8 @@ export default function Page() {
           imageSrc={resolvedHeroImage}
           imageAlt="Premium sunscreen product concept bottle and tube mockup labeled Your Brand"
           imageCaption="Formula Direction • SPF Claim Planning • Tube/Airless Packaging • Quality Review"
+          imageLayerClassName="absolute inset-x-4 bottom-0 h-[34%] md:inset-y-0 md:left-[43%] md:right-[2%] md:h-auto lg:left-[46%] lg:right-[4%]"
+          imageClassName="object-contain object-center-bottom md:object-right-center"
           fallbackTitle="Premium sunscreen concepts"
           fallbackDescription="Gel sunscreen, tinted sunscreen, mineral sunscreen, sunscreen sticks, family sun-care and specialized SPF directions for private label brand launches."
           titleClassName="font-display text-[clamp(2.2rem,8vw,5.5rem)] font-semibold leading-[0.94] text-charcoal"

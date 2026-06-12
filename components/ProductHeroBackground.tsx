@@ -14,6 +14,8 @@ type ProductHeroBackgroundProps = {
   fallbackTitle?: string;
   fallbackDescription?: string;
   titleClassName?: string;
+  imageLayerClassName?: string;
+  imageClassName?: string;
 };
 
 export default function ProductHeroBackground({
@@ -28,7 +30,9 @@ export default function ProductHeroBackground({
   imageCaption,
   fallbackTitle,
   fallbackDescription,
-  titleClassName
+  titleClassName,
+  imageLayerClassName,
+  imageClassName
 }: ProductHeroBackgroundProps) {
   const caption = imageCaption ?? "Formula • Packaging • Filling • Quality • Dispatch";
 
@@ -36,13 +40,13 @@ export default function ProductHeroBackground({
     <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(232,217,189,0.34),transparent_25rem),radial-gradient(circle_at_top_right,rgba(143,174,155,0.22),transparent_26rem),linear-gradient(180deg,#fffdf9_0%,#f7f1e7_100%)]">
       {imageSrc ? (
         <div aria-hidden="true" className="absolute inset-0">
-          <div className="absolute inset-x-0 bottom-0 h-[36%] md:inset-y-0 md:left-[48%] md:h-auto">
+          <div className={imageLayerClassName ?? "absolute inset-x-0 bottom-0 h-[36%] md:inset-y-0 md:left-[48%] md:h-auto"}>
             <Image
               src={imageSrc}
               alt={imageAlt ?? ""}
               fill
               priority
-              className="object-cover object-center md:object-right-center"
+              className={imageClassName ?? "object-cover object-center md:object-right-center"}
               sizes="100vw"
             />
           </div>
