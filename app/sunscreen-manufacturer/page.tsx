@@ -31,7 +31,7 @@ const pageDescription =
 const ogTitle = "Sunscreen Manufacturer in India | Kiora CosmoTech";
 const ogDescription =
   "Explore premium private label sunscreen concepts including SPF 50 gel sunscreen, tinted sunscreen, mineral sunscreen, sunscreen sticks, sunscreen serum, body sunscreen, sport SPF, kids SPF, men's sunscreen, scalp SPF mist and lip SPF balm concepts.";
-const preferredOgImage = "/images/sunscreens/spf-50-hybrid-skincare-sunscreen.webp";
+const preferredOgImage = "/images/sunscreens/sunscreen-manufacturing.webp";
 
 function publicAssetExists(src: string) {
   return fs.existsSync(path.join(process.cwd(), "public", src.replace(/^\//, "")));
@@ -51,7 +51,7 @@ function resolvePublicAsset(src: string) {
 }
 
 const resolvedOgImage = resolvePublicAsset(preferredOgImage) ?? siteConfig.ogImage;
-const resolvedHeroImage = resolvePublicAsset("/images/sunscreens/spf-50-hybrid-skincare-sunscreen.webp");
+const resolvedHeroImage = resolvePublicAsset("/images/sunscreens/sunscreen-manufacturing.webp");
 
 export const metadata: Metadata = {
   title: pageTitle,
