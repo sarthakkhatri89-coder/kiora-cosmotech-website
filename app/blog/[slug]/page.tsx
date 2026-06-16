@@ -43,7 +43,13 @@ export default async function BlogDetailPage({ params }: Params) {
 
   return (
     <>
-      <SchemaJsonLd data={[breadcrumbSchema(crumbs), articleSchema({ ...currentPost, excerpt: currentPost.excerpt }), ...(currentPost.faqs?.length ? [faqSchema(currentPost.faqs)] : [])]} />
+      <SchemaJsonLd
+        data={[
+          breadcrumbSchema(crumbs),
+          articleSchema({ ...currentPost, excerpt: currentPost.excerpt }),
+          ...(currentPost.faqs?.length ? [faqSchema(currentPost.faqs)] : [])
+        ]}
+      />
       <Breadcrumbs crumbs={crumbs} />
       <PageHero eyebrow={currentPost.category} title={currentPost.title} intro={currentPost.excerpt} />
       <main>
@@ -51,8 +57,8 @@ export default async function BlogDetailPage({ params }: Params) {
           <div className="container-padded mx-auto max-w-4xl">
             <div className="mb-8 flex flex-wrap items-center gap-4 text-sm font-semibold uppercase tracking-[0.16em] text-teal">
               <span>{currentPost.readingTime}</span>
-              <span>Kiora CosmoTech Editorial Team</span>
-              <span>Updated {currentPost.publishedAt}</span>
+              <span>{currentPost.author}</span>
+              <span>Updated {currentPost.updatedAt ?? currentPost.publishedAt}</span>
             </div>
             <section className="mb-8 rounded-3xl border border-charcoal/10 bg-mist p-6 shadow-sm" aria-labelledby="toc-title">
               <h2 id="toc-title" className="text-2xl font-semibold text-charcoal">Table of contents</h2>

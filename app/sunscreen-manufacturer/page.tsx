@@ -9,7 +9,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import InternalLinkGrid from "@/components/InternalLinkGrid";
 import ProductHeroBackground from "@/components/ProductHeroBackground";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
-import { organizationSchema, breadcrumbSchema, faqSchema, manufacturerSchema, serviceSchema } from "@/lib/schema";
+import { organizationSchema, breadcrumbSchema, faqSchema, manufacturerSchema } from "@/lib/schema";
 import { siteConfig, whatsappHref } from "@/data/siteConfig";
 import { absoluteUrl } from "@/lib/utils";
 
@@ -25,9 +25,9 @@ type SunscreenConcept = {
 };
 
 const pagePath = "/sunscreen-manufacturer";
-const pageTitle = "Sunscreen Manufacturer in India | Private Label SPF 50 Sun Care Manufacturing";
+const pageTitle = "Sunscreen Manufacturer in India | Private Label Sun Care";
 const pageDescription =
-  "Kiora CosmoTech offers private label and third-party sunscreen manufacturing in India, including SPF 50 sunscreen concepts, gel sunscreen, aqua gel sunscreen, hybrid sunscreen, tinted sunscreen, mineral sunscreen, no-white-cast sunscreen, sunscreen sticks, sunscreen serum, milky sunscreen fluid, body sunscreen, sport sunscreen, kids SPF, men's sunscreen, blue light SPF, ceramide barrier sunscreen, scalp sunscreen mist and lip SPF balm concepts.";
+  "Private label and third-party sunscreen manufacturing in India for gel sunscreen, tinted sunscreen, mineral sunscreen, sunscreen sticks and custom sun-care concepts.";
 const ogTitle = "Sunscreen Manufacturer in India | Kiora CosmoTech";
 const ogDescription =
   "Explore premium private label sunscreen concepts including SPF 50 gel sunscreen, tinted sunscreen, mineral sunscreen, sunscreen sticks, sunscreen serum, body sunscreen, sport SPF, kids SPF, men's sunscreen, scalp SPF mist and lip SPF balm concepts.";
@@ -626,7 +626,7 @@ const relatedCategories = [
   { label: "Hair Serum Manufacturing", href: "/hair-serum-manufacturer", description: "Expand into scalp, hairline and adjacent care segments." },
   { label: "Moisturizer Manufacturing", href: "/moisturizer-manufacturer", description: "Support hydration and barrier-positioned range planning." },
   { label: "Body Lotion Manufacturing", href: "/body-lotion-manufacturer", description: "Extend into body-care and outdoor-use product ranges." },
-  { label: "Lip Care Manufacturing", href: "/request-quote?product=Lip%20Care%20Manufacturing", description: "Discuss SPF lip balm and balm-format development." },
+  { label: "Discuss Lip Care Manufacturing", href: "/request-quote?product=Lip%20Care%20Manufacturing", description: "Start a quote discussion for SPF lip balm and balm-format development." },
   { label: "Cosmetic Manufacturing", href: "/contract-cosmetic-manufacturer-india", description: "Review wider cosmetic manufacturing capabilities." },
   { label: "Private Label Manufacturing", href: "/private-label-cosmetics-manufacturer-india", description: "Launch sun-care products under your own brand." }
 ];
@@ -690,7 +690,6 @@ export default function Page() {
           pageOrganizationSchema,
           manufacturerSchema(siteConfig.name, pagePath),
           breadcrumbSchema(crumbs),
-          serviceSchema("Sunscreen Manufacturing", pageDescription, pagePath),
           detailedServiceSchema,
           faqSchema(faqs),
           webPageSchema

@@ -10,7 +10,7 @@ import InternalLinkGrid from "@/components/InternalLinkGrid";
 import ProductHeroBackground from "@/components/ProductHeroBackground";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import { siteConfig, whatsappHref } from "@/data/siteConfig";
-import { breadcrumbSchema, faqSchema, manufacturerSchema, serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, manufacturerSchema } from "@/lib/schema";
 import { absoluteUrl } from "@/lib/utils";
 
 type FaceWashConcept = {
@@ -25,9 +25,9 @@ type FaceWashConcept = {
 };
 
 const pagePath = "/face-wash-manufacturer";
-const pageTitle = "Face Wash Manufacturer in India | Private Label Cleanser Manufacturing";
+const pageTitle = "Face Wash Manufacturer in India | Private Label Cleanser";
 const pageDescription =
-  "Kiora CosmoTech offers private label and third-party face wash manufacturing in India, including cream cleansers, non-foaming cleansers, gel-to-foam cleansers, oil-to-milk cleansers, cleansing balms, mousse face wash, enzyme cleansers, microbiome cleansers, salicylic acid face wash, niacinamide face wash, charcoal face wash, saffron face wash and custom cleanser concepts.";
+  "Private label and third-party face wash manufacturing in India for cream cleansers, gel cleansers, oil-control face wash, microbiome cleansers and custom cleanser concepts.";
 const ogTitle = "Face Wash Manufacturer in India | Kiora CosmoTech";
 const ogDescription =
   "Explore premium private label face wash and cleanser concepts including cream cleansers, non-foaming cleansers, gel-to-foam cleansers, oil-to-milk cleansers, cleansing balms, enzyme cleansers, microbiome cleansers, acne-control face wash and luxury botanical face washes.";
@@ -636,7 +636,6 @@ export default function Page() {
           pageOrganizationSchema,
           manufacturerSchema(siteConfig.name, pagePath),
           breadcrumbSchema(crumbs),
-          serviceSchema("Face Wash Manufacturing", pageDescription, pagePath),
           detailedServiceSchema,
           faqSchema(faqs),
           webPageSchema

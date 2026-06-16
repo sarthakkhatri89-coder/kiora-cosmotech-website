@@ -10,7 +10,7 @@ import InternalLinkGrid from "@/components/InternalLinkGrid";
 import ProductHeroBackground from "@/components/ProductHeroBackground";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import { siteConfig, whatsappHref } from "@/data/siteConfig";
-import { breadcrumbSchema, faqSchema, manufacturerSchema, serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, manufacturerSchema } from "@/lib/schema";
 import { absoluteUrl } from "@/lib/utils";
 
 type FaceSerumConcept = {
@@ -25,9 +25,9 @@ type FaceSerumConcept = {
 };
 
 const pagePath = "/face-serum-manufacturer";
-const pageTitle = "Face Serum Manufacturer in India | Private Label Skincare Serum Manufacturing";
+const pageTitle = "Face Serum Manufacturer in India | Private Label Serums";
 const pageDescription =
-  "Kiora CosmoTech offers private label and third-party face serum manufacturing in India, including vitamin C, niacinamide, glutathione, tranexamic acid, alpha arbutin, azelaic acid, salicylic acid, peptide, copper peptide, retinal, bakuchiol, hyaluronic acid, ceramide, PDRN, exosome-inspired, microbiome, snail mucin and kumkumadi serum concepts.";
+  "Private label and third-party face serum manufacturing in India for vitamin C, niacinamide, peptide, hydration, barrier-repair and custom serum concepts.";
 const ogTitle = "Face Serum Manufacturer in India | Kiora CosmoTech";
 const ogDescription =
   "Explore premium private label face serum concepts including vitamin C, niacinamide, pigmentation, peptide, copper peptide, retinal, hydration, barrier repair, PDRN, exosome-inspired, microbiome, snail mucin and kumkumadi serums.";
@@ -589,7 +589,6 @@ export default function Page() {
           pageOrganizationSchema,
           manufacturerSchema(siteConfig.name, pagePath),
           breadcrumbSchema(crumbs),
-          serviceSchema("Face Serum Manufacturing", pageDescription, pagePath),
           detailedServiceSchema,
           faqSchema(faqs),
           webPageSchema

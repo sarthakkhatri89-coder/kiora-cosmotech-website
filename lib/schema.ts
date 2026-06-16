@@ -133,6 +133,8 @@ export const articleSchema = (post: {
   metaDescription: string;
   slug: string;
   publishedAt: string;
+  updatedAt?: string;
+  author?: string;
   excerpt?: string;
 }) => ({
   "@context": "https://schema.org",
@@ -142,10 +144,10 @@ export const articleSchema = (post: {
   articleSection: "Cosmetic manufacturing",
   abstract: post.excerpt ?? post.metaDescription,
   datePublished: post.publishedAt,
-  dateModified: post.publishedAt,
+  dateModified: post.updatedAt ?? post.publishedAt,
   author: {
     "@type": "Organization",
-    name: "Kiora CosmoTech Editorial Team"
+    name: post.author ?? "Kiora CosmoTech Editorial Team"
   },
   publisher: {
     "@type": "Organization",

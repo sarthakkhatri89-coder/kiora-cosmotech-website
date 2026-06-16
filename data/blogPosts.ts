@@ -2673,6 +2673,11 @@ enrichBlogPost("cosmetic-manufacturing-distributors-marketing-companies", {
   packagingExamples: "mass-market bottles, tubes, pumps, labels, mono cartons, outer cartons and dispatch-friendly secondary packs"
 });
 
+for (const post of blogPosts) {
+  post.author ??= "Kiora CosmoTech Editorial Team";
+  post.updatedAt ??= post.publishedAt;
+}
+
 export const blogSlugs = blogPosts.map((post) => post.slug);
 
 export const getBlogPost = (slug: string) => blogPosts.find((post) => post.slug === slug);
