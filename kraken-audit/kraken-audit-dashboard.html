@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KRAKEN DEEP AUDIT Dashboard - Kiora CosmoTech</title>
+    <style>
+      :root {
+        --bg: #f7f4ed;
+        --card: #fffdf8;
+        --ink: #17211d;
+        --muted: #5b6b62;
+        --line: rgba(23, 33, 29, 0.12);
+        --teal: #205a55;
+        --champagne: #d9c29c;
+        --critical: #8c1d18;
+        --high: #b45309;
+        --medium: #0f766e;
+        --low: #475569;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, Arial, sans-serif;
+        background: linear-gradient(180deg, #fffdf8 0%, #f4efe6 100%);
+        color: var(--ink);
+      }
+      .wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 32px 20px 64px;
+      }
+      .hero {
+        border: 1px solid var(--line);
+        background:
+          radial-gradient(circle at top left, rgba(217,194,156,.38), transparent 22rem),
+          radial-gradient(circle at top right, rgba(32,90,85,.12), transparent 20rem),
+          var(--card);
+        border-radius: 28px;
+        padding: 28px;
+        box-shadow: 0 24px 60px rgba(23, 33, 29, 0.08);
+      }
+      .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .22em;
+        color: var(--teal);
+        font-weight: 700;
+      }
+      h1 {
+        margin: 10px 0 8px;
+        font-size: clamp(2rem, 5vw, 4rem);
+        line-height: .98;
+      }
+      .sub {
+        max-width: 860px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.8;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .chip {
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,.78);
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+      .stats {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        margin-top: 22px;
+      }
+      .card {
+        border: 1px solid var(--line);
+        background: var(--card);
+        border-radius: 24px;
+        padding: 20px;
+        box-shadow: 0 14px 34px rgba(23, 33, 29, 0.05);
+      }
+      .stat-value {
+        font-size: 34px;
+        font-weight: 800;
+      }
+      .stat-label {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .section {
+        margin-top: 24px;
+      }
+      .section h2 {
+        margin: 0 0 14px;
+        font-size: 28px;
+      }
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      button.filter {
+        cursor: pointer;
+        border: 1px solid var(--line);
+        background: white;
+        border-radius: 999px;
+        padding: 10px 14px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      button.filter.active {
+        background: var(--ink);
+        color: white;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+      }
+      th, td {
+        text-align: left;
+        padding: 14px 12px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      th {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .14em;
+        color: var(--muted);
+        background: rgba(23,33,29,.03);
+      }
+      .sev {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .critical { background: rgba(140,29,24,.1); color: var(--critical); }
+      .high { background: rgba(180,83,9,.11); color: var(--high); }
+      .medium { background: rgba(15,118,110,.1); color: var(--medium); }
+      .low { background: rgba(71,85,105,.1); color: var(--low); }
+      .issue-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .issue-title {
+        margin: 10px 0 8px;
+        font-size: 20px;
+      }
+      .small {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.65;
+      }
+      .list {
+        margin: 10px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+      .list li { margin: 6px 0; }
+      .two-col {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      a { color: var(--teal); text-decoration: none; }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        background: rgba(23,33,29,.05);
+        padding: 2px 6px;
+        border-radius: 6px;
+      }
+      @media (max-width: 980px) {
+        .stats, .issue-grid, .two-col { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 720px) {
+        .stats, .issue-grid, .two-col { grid-template-columns: 1fr; }
+        table, thead, tbody, th, td, tr { display: block; }
+        thead { display: none; }
+        td {
+          border-bottom: 1px solid var(--line);
+          padding-top: 10px;
+        }
+        td::before {
+          content: attr(data-label);
+          display: block;
+          font-size: 11px;
+          text-transform: uppercase;
+          letter-spacing: .12em;
+          color: var(--muted);
+          margin-bottom: 4px;
+          font-weight: 700;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <section class="hero">
+        <div class="eyebrow">KRAKEN Deep Audit</div>
+        <h1>Kiora CosmoTech SEO, schema, lead-gen, and source-code audit</h1>
+        <p class="sub">
+          This dashboard summarizes a live + source audit of
+          <a href="https://kiora-cosmotech-website.vercel.app">kiora-cosmotech-website.vercel.app</a>
+          and the local Next.js repository. It is built for implementation handoff, not generic advice.
+        </p>
+        <div class="meta">
+          <span class="chip">Live URL verified</span>
+          <span class="chip">Source code audited</span>
+          <span class="chip">Build verified</span>
+          <span class="chip">68 live sitemap URLs detected</span>
+          <span class="chip">Homepage hero assets already optimized</span>
+        </div>
+      </section>
+
+      <section class="grid stats">
+        <div class="card">
+          <div class="stat-value">10</div>
+          <div class="stat-label">Total issues</div>
+        </div>
+        <div class="card">
+          <div class="stat-value">4</div>
+          <div class="stat-label">P1 issues</div>
+        </div>
+        <div class="card">
+          <div class="stat-value">4</div>
+          <div class="stat-label">P2 issues</div>
+        </div>
+        <div class="card">
+          <div class="stat-value">2</div>
+          <div class="stat-label">P3 issues</div>
+        </div>
+        <div class="card">
+          <div class="stat-value">Pass</div>
+          <div class="stat-label">Production build status</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Top Priorities</h2>
+        <div class="grid issue-grid">
+          <article class="card">
+            <span class="sev critical">Critical</span>
+            <h3 class="issue-title">KD-01: Quote form is UI-only</h3>
+            <p class="small">
+              The quote form currently prevents submission and shows a success message without sending data. This is the biggest business risk on the site.
+            </p>
+            <ul class="list">
+              <li>Affected: <code>/request-quote</code></li>
+              <li>Source: <code>components/QuoteForm.tsx</code></li>
+              <li>Owner: Developer + Growth/CRM</li>
+            </ul>
+          </article>
+          <article class="card">
+            <span class="sev high">High</span>
+            <h3 class="issue-title">KD-02: Schema pattern diverges across commercial pages</h3>
+            <p class="small">
+              Shared pages use a cleaner schema stack than custom Face Wash, Face Serum, Hair Serum, and Sunscreen pages. Governance will drift unless these are normalized.
+            </p>
+            <ul class="list">
+              <li>Affected: custom product-manufacturer routes</li>
+              <li>Source: shared renderers + standalone product pages</li>
+              <li>Owner: Developer + SEO</li>
+            </ul>
+          </article>
+          <article class="card">
+            <span class="sev high">High</span>
+            <h3 class="issue-title">KD-03: City pages overstate locality via LocalBusiness schema</h3>
+            <p class="small">
+              City landing pages are service-coverage pages, but schema currently models them as local businesses without city-specific office evidence.
+            </p>
+            <ul class="list">
+              <li>Affected: <code>/city/*</code></li>
+              <li>Source: <code>app/city/[slug]/page.tsx</code>, <code>lib/schema.ts</code></li>
+              <li>Owner: SEO + Developer</li>
+            </ul>
+          </article>
+          <article class="card">
+            <span class="sev high">High</span>
+            <h3 class="issue-title">KD-04: No analytics or conversion tracking stack</h3>
+            <p class="small">
+              There is no evidence of GA4, GTM, Clarity, Plausible, Umami, or server-side lead event tracking in the current codebase.
+            </p>
+            <ul class="list">
+              <li>Affected: site-wide</li>
+              <li>Source: repo-wide source scan</li>
+              <li>Owner: Growth + Developer</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Issue Table</h2>
+        <div class="filters">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="critical">Critical</button>
+          <button class="filter" data-filter="high">High</button>
+          <button class="filter" data-filter="medium">Medium</button>
+          <button class="filter" data-filter="low">Low</button>
+        </div>
+        <table id="issues-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Severity</th>
+              <th>Title</th>
+              <th>Owner</th>
+              <th>Effort</th>
+              <th>Confidence</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <div class="grid two-col">
+          <article class="card">
+            <h2>Verified Strengths</h2>
+            <ul class="list">
+              <li>Production build completed successfully.</li>
+              <li>Sampled key pages returned <code>200</code> and showed one visible H1.</li>
+              <li><code>robots.txt</code> and <code>sitemap.xml</code> are reachable live.</li>
+              <li>Homepage and current product hero images are already lightweight.</li>
+              <li>Legal pages exist in source and are linked in the footer and quote flow.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h2>Live vs Code Notes</h2>
+            <ul class="list">
+              <li>Live sitemap exposes 68 URLs.</li>
+              <li>Source build completed with 75 static/SSG routes in the route manifest.</li>
+              <li>Shared service/content pages already use a more consistent schema model than custom product pages.</li>
+              <li>Only 3 dedicated shared-product hero files currently exist in <code>public/images/product/</code>.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="card">
+          <h2>Implementation Assets</h2>
+          <ul class="list">
+            <li><a href="kraken-audit-report.md">Audit report (Markdown)</a></li>
+            <li><a href="kraken-action-tracker.csv">Implementation tracker (CSV)</a></li>
+            <li><a href="kraken-developer-implementation-prompt.md">Developer implementation prompt</a></li>
+            <li><a href="kraken-content-writer-brief.md">Content writer brief</a></li>
+            <li><a href="kraken-reaudit-checklist.md">Re-audit checklist</a></li>
+            <li><a href="live-scan.json">Supporting live crawl data</a></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const issues = [
+        { id: "KD-01", severity: "critical", title: "Quote form shows success without sending lead data", owner: "Developer + Growth/CRM", effort: "Medium", confidence: "High" },
+        { id: "KD-02", severity: "high", title: "Schema pattern inconsistent across shared vs custom commercial pages", owner: "Developer + SEO", effort: "Medium", confidence: "High" },
+        { id: "KD-03", severity: "high", title: "City pages use LocalBusiness semantics without city-specific office proof", owner: "SEO + Developer", effort: "Medium", confidence: "High" },
+        { id: "KD-04", severity: "high", title: "No analytics or conversion measurement stack", owner: "Growth + Developer", effort: "Medium", confidence: "High" },
+        { id: "KD-05", severity: "medium", title: "Shared product hero mapping exceeds actual asset coverage", owner: "Design/Content + Developer", effort: "Medium", confidence: "High" },
+        { id: "KD-06", severity: "medium", title: "Blog listing schema is too thin", owner: "SEO + Developer", effort: "Low", confidence: "High" },
+        { id: "KD-07", severity: "medium", title: "Generic OG image still used on many commercial hubs", owner: "Content + Developer", effort: "Medium", confidence: "High" },
+        { id: "KD-08", severity: "medium", title: "Homepage above-the-fold still depends on several reveal/showcase layers", owner: "Developer", effort: "Medium", confidence: "Medium" },
+        { id: "KD-09", severity: "low", title: "Retail Product schema helper remains available for a B2B service site", owner: "Developer", effort: "Low", confidence: "High" },
+        { id: "KD-10", severity: "low", title: "Sitemap lastModified values are hard-coded", owner: "Developer + SEO", effort: "Low", confidence: "High" }
+      ];
+
+      const tbody = document.querySelector("#issues-table tbody");
+      const filters = document.querySelectorAll(".filter");
+
+      function sevLabel(sev) {
+        return sev.charAt(0).toUpperCase() + sev.slice(1);
+      }
+
+      function render(filter) {
+        tbody.innerHTML = "";
+        issues
+          .filter(issue => filter === "all" || issue.severity === filter)
+          .forEach(issue => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td data-label="ID"><strong>${issue.id}</strong></td>
+              <td data-label="Severity"><span class="sev ${issue.severity}">${sevLabel(issue.severity)}</span></td>
+              <td data-label="Title">${issue.title}</td>
+              <td data-label="Owner">${issue.owner}</td>
+              <td data-label="Effort">${issue.effort}</td>
+              <td data-label="Confidence">${issue.confidence}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+      }
+
+      filters.forEach(button => {
+        button.addEventListener("click", () => {
+          filters.forEach(btn => btn.classList.remove("active"));
+          button.classList.add("active");
+          render(button.dataset.filter);
+        });
+      });
+
+      render("all");
+    </script>
+  </body>
+</html>

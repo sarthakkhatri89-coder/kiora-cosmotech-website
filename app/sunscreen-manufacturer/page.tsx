@@ -749,7 +749,7 @@ export default function Page() {
                 Kiora CosmoTech supports sunscreen development for cosmetic, derma-care, D2C, men's grooming, body care and family-care brands that need premium concept direction, packaging planning and manufacturing clarity. Final SPF, PA, broad-spectrum and water-resistance claims must be validated through appropriate testing before final label approval.
               </p>
               <p className="mt-4 text-[0.98rem] leading-7 text-ink/74 md:leading-8">
-                This page is designed to help buyers compare sunscreen formats, understand positioning angles, shortlist suitable product directions and move toward a more useful brief before they <Link className="font-semibold text-teal underline decoration-teal/35 underline-offset-4" href="/request-quote">contact Kiora CosmoTech</Link> for quote discussion.
+                This page is designed to help buyers compare sunscreen formats, understand positioning angles, review <Link className="font-semibold text-teal underline decoration-teal/35 underline-offset-4" href="/packaging-options">packaging options</Link>, shortlist suitable product directions and move toward a more useful brief before they <Link className="font-semibold text-teal underline decoration-teal/35 underline-offset-4" href="/request-quote">contact Kiora CosmoTech</Link> for quote discussion.
               </p>
             </article>
           </div>

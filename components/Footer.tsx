@@ -18,6 +18,8 @@ export default function Footer() {
     { label: "Quality and Compliance", href: "/quality-and-compliance" },
     { label: "Startup Brand Support", href: "/startup-cosmetic-brand-support" },
     { label: "Packaging Options", href: "/packaging-options" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms & Conditions", href: "/terms-and-conditions" },
     { label: "Request Quote", href: "/request-quote" },
     { label: "Blog", href: "/blog" }
   ];

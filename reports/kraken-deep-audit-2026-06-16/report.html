@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KRAKEN DEEP AUDIT Report | Kiora CosmoTech</title>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; color: #17211d; margin: 0; background: #f4f6f8; }
+    .page { max-width: 980px; margin: 24px auto; background: #fff; padding: 42px; box-shadow: 0 18px 40px rgba(0,0,0,.08); }
+    h1, h2, h3 { margin: 0 0 12px; }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.4rem; margin-top: 28px; }
+    h3 { font-size: 1.08rem; margin-top: 20px; }
+    p, li { line-height: 1.7; }
+    .meta { color: #5f6b76; font-size: 0.96rem; }
+    .scores { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    .scores th, .scores td, .issues th, .issues td { border: 1px solid #dce3e8; padding: 10px 12px; vertical-align: top; text-align: left; }
+    .scores th, .issues th { background: #f7fafc; }
+    .pill { display:inline-block; padding: 4px 10px; border-radius: 999px; font-size: .82rem; font-weight: 700; }
+    .critical { background:#fbe4e4; color:#b42318; }
+    .high { background:#fff0dd; color:#b54708; }
+    .medium { background:#fff8d6; color:#946200; }
+    .low { background:#e8f5eb; color:#157347; }
+    .issues { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    code { background:#f4f6f8; padding:2px 5px; border-radius:6px; }
+    @media print {
+      body { background:#fff; }
+      .page { box-shadow:none; margin:0; max-width:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>KRAKEN DEEP AUDIT</h1>
+    <p class="meta">Website: https://kiora-cosmotech-website.vercel.app<br>Audit date: 2026-06-16<br>Prepared from live crawl evidence + repository source code review</p>
+
+    <h2>Executive Summary</h2>
+    <p>Kiora CosmoTech now has a materially stronger SEO foundation than a generic brochure site. The live website is crawlable, the sitemap is valid, the major commercial pages are indexable, schema is present on key landing pages, and the content model is significantly deeper than the average private-label manufacturing website. The main blockers are no longer basic metadata or routing. The biggest blockers are commercial: lead capture is not functional, analytics are absent, legal trust pages are missing, and schema consistency across the page system is uneven.</p>
+    <p>No material deploy mismatch was detected between the live site and the current codebase on the sampled routes. The issues documented here are implementation decisions present in both environments, not stale deployment artifacts.</p>
+
+    <h2>Overall SEO Score</h2>
+    <table class="scores">
+      <tr><th>Area</th><th>Score</th><th>Comment</th></tr>
+      <tr><td>Technical SEO</td><td>84</td><td>Strong App Router setup, valid build, static rendering, and healthy crawlability foundation.</td></tr>
+      <tr><td>Crawlability &amp; Indexability</td><td>88</td><td>Robots and sitemap are live, key pages return 200, and canonical logic is consistent.</td></tr>
+      <tr><td>On-Page SEO</td><td>82</td><td>Most commercial pages have strong H1s and useful structure, with some remaining snippet-length issues.</td></tr>
+      <tr><td>Content SEO &amp; Intent</td><td>84</td><td>Product and service pages align well with commercial intent; blog coverage is becoming a topical cluster.</td></tr>
+      <tr><td>EEAT &amp; Trust</td><td>64</td><td>Brand clarity exists, but legal pages, proof blocks, and editorial transparency are still thin.</td></tr>
+      <tr><td>Schema / Structured Data</td><td>76</td><td>Good schema baseline, but custom and shared pages are inconsistent, and one duplicate service schema remains.</td></tr>
+      <tr><td>Core Web Vitals &amp; Performance</td><td>78</td><td>Hero image work is improved, but long product pages still ship heavy HTML.</td></tr>
+      <tr><td>Mobile SEO</td><td>82</td><td>Responsive structure is generally strong and mobile-first thinking is visible in the code.</td></tr>
+      <tr><td>Internal Linking &amp; Architecture</td><td>86</td><td>Commercial pages, blogs, city pages, and category pages are logically connected.</td></tr>
+      <tr><td>AI Search / GEO / AEO</td><td>84</td><td>Direct-answer blocks, FAQs, and definition-style content are strong for answer-engine extraction.</td></tr>
+      <tr><td>Conversion SEO</td><td>49</td><td>The site is persuasive, but the lead form is non-functional and conversion measurement is absent.</td></tr>
+      <tr><td>Analytics &amp; Tracking</td><td>12</td><td>No measurable analytics stack was detected in code.</td></tr>
+    </table>
+
+    <h2>Top 5 Findings</h2>
+    <ol>
+      <li>The quote form currently does not send enquiries anywhere.</li>
+      <li>No analytics or conversion tracking implementation was detected.</li>
+      <li>The site still self-canonicalizes to the Vercel subdomain.</li>
+      <li>Privacy / Terms trust-floor pages are missing.</li>
+      <li>Shared commercial pages use lighter schema than custom landing pages, and the hair serum page still duplicates Service schema.</li>
+    </ol>
+
+    <h2>Live Website Findings</h2>
+    <ul>
+      <li><strong>Robots:</strong> live at <code>/robots.txt</code>, permissive, includes sitemap and host.</li>
+      <li><strong>Sitemap:</strong> live at <code>/sitemap.xml</code>, 68 URLs, valid <code>lastmod</code> entries.</li>
+      <li><strong>Status codes:</strong> key commercial pages return <code>200</code> and are prerendered from Vercel cache.</li>
+      <li><strong>Metadata:</strong> most key pages are now in a cleaner range, but hair serum and several blogs still overrun ideal snippet lengths.</li>
+      <li><strong>Heading structure:</strong> sampled key pages all use one H1.</li>
+      <li><strong>Schema:</strong> root layout emits <code>Organization</code> + <code>WebSite</code>; custom pages add richer schema; shared pages remain lighter.</li>
+    </ul>
+
+    <h2>Source Code Findings</h2>
+    <ul>
+      <li><strong>Framework:</strong> Next.js 15 App Router, static rendering, metadata via helper in <code>lib/seo.ts</code>.</li>
+      <li><strong>Canonical source:</strong> driven by <code>siteConfig.url</code> in <code>data/siteConfig.ts</code>.</li>
+      <li><strong>Schema helpers:</strong> centralized in <code>lib/schema.ts</code>.</li>
+      <li><strong>Shared page renderers:</strong> <code>components/ContentPageRenderer.tsx</code> and <code>components/ProductPageRenderer.tsx</code>.</li>
+      <li><strong>Tracking:</strong> none detected in source.</li>
+      <li><strong>Lead form:</strong> <code>components/QuoteForm.tsx</code> uses a local state-only submit flow.</li>
+    </ul>
+
+    <h2>Live vs Source Mismatch Assessment</h2>
+    <p><strong>Result:</strong> no major deploy drift was detected on the sampled pages. The live site reflects the current source on metadata, sitemap behavior, and the main custom product pages. The remaining issues are shared implementation issues, not environment mismatch bugs.</p>
+    <p>The only notable risk is strategic rather than technical drift: if the business intends to rank a branded custom domain instead of the Vercel subdomain, both live and source must be updated together.</p>
+
+    <h2>Issue Register</h2>
+    <table class="issues">
+      <tr>
+        <th>Issue</th><th>Severity</th><th>Confidence</th><th>Affected URL / File</th><th>Evidence</th><th>Exact Fix</th><th>Owner</th><th>Effort</th><th>Testing Method</th>
+      </tr>
+      <tr>
+        <td>Quote form does not capture leads</td>
+        <td><span class="pill critical">Critical</span></td>
+        <td>High</td>
+        <td><code>/request-quote</code><br><code>components/QuoteForm.tsx</code></td>
+        <td>Submit handler only prevents default and shows a local success message.</td>
+        <td>Connect form to a real submission destination, then add error handling and analytics events.</td>
+        <td>Developer</td>
+        <td>Medium</td>
+        <td>Submit test enquiry and verify receipt in target system.</td>
+      </tr>
+      <tr>
+        <td>No analytics or conversion tracking detected</td>
+        <td><span class="pill critical">Critical</span></td>
+        <td>High</td>
+        <td>Whole app</td>
+        <td>No GA4, GTM, Clarity, Pixel, or custom CTA event hooks found in source.</td>
+        <td>Add GA4 or GTM and track quote, WhatsApp, phone, and key CTA events.</td>
+        <td>Developer + SEO</td>
+        <td>Medium</td>
+        <td>Verify with DebugView or GTM preview.</td>
+      </tr>
+      <tr>
+        <td>Canonical host remains the Vercel subdomain</td>
+        <td><span class="pill high">High</span></td>
+        <td>High</td>
+        <td><code>data/siteConfig.ts</code>, live sitewide canonicals</td>
+        <td>Live canonical/robots/sitemap host all use <code>kiora-cosmotech-website.vercel.app</code>.</td>
+        <td>Update <code>NEXT_PUBLIC_SITE_URL</code> to the final production domain and redeploy.</td>
+        <td>Developer + SEO</td>
+        <td>Low</td>
+        <td>Inspect live source and structured data URLs post-deploy.</td>
+      </tr>
+      <tr>
+        <td>Privacy / Terms pages missing</td>
+        <td><span class="pill high">High</span></td>
+        <td>High</td>
+        <td>Footer, form flow, sitewide trust layer</td>
+        <td>No relevant routes or links detected.</td>
+        <td>Add Privacy Policy and Terms pages, link in footer, mention data handling near form.</td>
+        <td>Business + Content + Developer</td>
+        <td>Medium</td>
+        <td>Verify crawlability, footer placement, and form-adjacent trust copy.</td>
+      </tr>
+      <tr>
+        <td>Schema inconsistency across shared pages</td>
+        <td><span class="pill high">High</span></td>
+        <td>High</td>
+        <td><code>components/ProductPageRenderer.tsx</code>, <code>components/ContentPageRenderer.tsx</code></td>
+        <td>Shared pages emit only <code>Service</code> + <code>Breadcrumb</code> + FAQ, unlike richer custom pages.</td>
+        <td>Add <code>manufacturerSchema()</code> and <code>WebPage</code> schema to shared renderers.</td>
+        <td>Developer</td>
+        <td>Low-Medium</td>
+        <td>Validate live JSON-LD on five shared-renderer pages.</td>
+      </tr>
+      <tr>
+        <td>Duplicate Service schema on hair serum page</td>
+        <td><span class="pill high">High</span></td>
+        <td>High</td>
+        <td><code>/hair-serum-manufacturer</code><br><code>app/hair-serum-manufacturer/page.tsx</code></td>
+        <td>Source includes both generic and detailed service schema. Live JSON-LD shows two Service objects.</td>
+        <td>Remove the generic <code>serviceSchema(...)</code> call.</td>
+        <td>Developer</td>
+        <td>Low</td>
+        <td>Recrawl live JSON-LD after deployment.</td>
+      </tr>
+      <tr>
+        <td>Hair serum metadata is far too long</td>
+        <td><span class="pill high">High</span></td>
+        <td>High</td>
+        <td><code>/hair-serum-manufacturer</code></td>
+        <td>Live title length 92; meta description length 274.</td>
+        <td>Shorten title and description to a commercial, non-truncated version.</td>
+        <td>SEO + Developer</td>
+        <td>Low</td>
+        <td>Recrawl lengths after deployment.</td>
+      </tr>
+      <tr>
+        <td>Remaining long meta descriptions across pages</td>
+        <td><span class="pill medium">Medium</span></td>
+        <td>High</td>
+        <td><code>/face-wash-manufacturer</code>, <code>/sunscreen-manufacturer</code>, several blogs</td>
+        <td>Live crawl shows several pages beyond preferred snippet length.</td>
+        <td>Trim to 120–155 characters while preserving keyword and value clarity.</td>
+        <td>SEO + Content + Developer</td>
+        <td>Low</td>
+        <td>Recrawl live metadata.</td>
+      </tr>
+      <tr>
+        <td>Blog template lacks author bio / editorial note</td>
+        <td><span class="pill medium">Medium</span></td>
+        <td>High</td>
+        <td><code>app/blog/[slug]/page.tsx</code></td>
+        <td>Template shows author and updated date, but no expertise or editorial-method block.</td>
+        <td>Add a reusable author/editorial section under article content.</td>
+        <td>Content + Developer</td>
+        <td>Low-Medium</td>
+        <td>Verify visible block on all articles.</td>
+      </tr>
+      <tr>
+        <td>No thank-you flow for conversion tracking</td>
+        <td><span class="pill medium">Medium</span></td>
+        <td>High</td>
+        <td><code>/request-quote</code></td>
+        <td>Inline success message only; no event route or thank-you page.</td>
+        <td>Add tracked thank-you route or a structured success state with events.</td>
+        <td>Developer + CRO</td>
+        <td>Medium</td>
+        <td>Complete a test submit and verify journey + analytics.</td>
+      </tr>
+      <tr>
+        <td>Long product pages ship heavy HTML</td>
+        <td><span class="pill medium">Medium</span></td>
+        <td>Medium</td>
+        <td><code>/face-wash-manufacturer</code>, <code>/face-serum-manufacturer</code>, <code>/sunscreen-manufacturer</code>, <code>/hair-serum-manufacturer</code></td>
+        <td>HEAD responses show 371–423 KB HTML payloads.</td>
+        <td>Collapse lower-priority keyword banks and secondary clusters without hiding essential crawlable text.</td>
+        <td>Developer + SEO + Content</td>
+        <td>Medium</td>
+        <td>Compare HTML size and Lighthouse after restructure.</td>
+      </tr>
+      <tr>
+        <td>Lint is not configured as a non-interactive gate</td>
+        <td><span class="pill low">Low</span></td>
+        <td>High</td>
+        <td><code>package.json</code>, ESLint config</td>
+        <td><code>next lint</code> prompts for setup instead of running a stable lint config.</td>
+        <td>Commit a real ESLint config and run it in CI.</td>
+        <td>Developer</td>
+        <td>Low</td>
+        <td>Run lint locally and in CI without prompts.</td>
+      </tr>
+    </table>
+
+    <h2>24h / 7d / 30d / 90d Roadmap</h2>
+    <h3>First 24 Hours</h3>
+    <ul>
+      <li>Make the quote form functional.</li>
+      <li>Install analytics and conversion tracking.</li>
+      <li>Confirm intended primary domain for canonical use.</li>
+      <li>Create Privacy Policy and Terms pages.</li>
+    </ul>
+    <h3>First 7 Days</h3>
+    <ul>
+      <li>Normalize schema coverage across shared commercial pages.</li>
+      <li>Remove duplicate service schema on hair serum page.</li>
+      <li>Trim remaining overlong title/meta pairs.</li>
+      <li>Add stronger trust blocks around quote and high-intent pages.</li>
+    </ul>
+    <h3>First 30 Days</h3>
+    <ul>
+      <li>Add blog author/editorial blocks and AI-ready quick-answer sections.</li>
+      <li>Reduce heavy HTML on the longest product pages.</li>
+      <li>Launch comparison and decision-support content for private label buyers.</li>
+    </ul>
+    <h3>First 90 Days</h3>
+    <ul>
+      <li>Start backlink and authority-building campaigns.</li>
+      <li>Track conversion-assisted blog performance and refine internal links.</li>
+      <li>Re-audit quarterly with live ranking and Search Console data.</li>
+    </ul>
+
+    <h2>Limitations</h2>
+    <p>No direct Search Console, GA4, backlink-tool, or competitor dataset access was available for this audit. Backlink authority, query-level ranking data, and true conversion performance could not be verified directly.</p>
+  </div>
+</body>
+</html>

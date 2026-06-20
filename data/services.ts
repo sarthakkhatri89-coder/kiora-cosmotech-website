@@ -2,7 +2,7 @@ import { coreFaqs, documentsFaqs, type FAQ } from "./faqs";
 
 export type ContentPage = {
   slug: string;
-  kind: "service" | "category" | "support" | "company";
+  kind: "service" | "category" | "support" | "company" | "legal";
   title: string;
   description: string;
   h1: string;
@@ -26,6 +26,190 @@ const productLinks = [
   { label: "Sunscreen Manufacturer", href: "/sunscreen-manufacturer", description: "SPF-positioned skincare manufacturing support." },
   { label: "Haircare Manufacturer", href: "/haircare-manufacturer-india", description: "Shampoo, hair serum, hair oil and mask formats." },
   { label: "Packaging Options", href: "/packaging-options", description: "Tubes, jars, bottles, pumps, droppers and cartons." }
+];
+
+const privateLabelFaqs: FAQ[] = [
+  {
+    question: "What is private label cosmetic manufacturing?",
+    answer:
+      "Private label cosmetic manufacturing lets a brand launch skincare, haircare or personal care products under its own brand name using selected formulas, approved packaging and brand-specific labels."
+  },
+  {
+    question: "Is private label suitable for startup skincare brands?",
+    answer:
+      "Yes. Private label is often suitable for startup skincare brands because it can simplify first-product planning, packaging selection and MOQ discussion compared with a fully custom launch."
+  },
+  {
+    question: "What should be finalized before private label production starts?",
+    answer:
+      "A cleaner private label brief usually includes product category, likely formula route, pack type, fill size, artwork status, MOQ direction and launch timeline."
+  },
+  {
+    question: "Can Kiora CosmoTech support packaging and artwork planning?",
+    answer:
+      "Yes. Packaging selection, label declaration input and artwork-sizing discussion can be supported where applicable so the final product brief is easier to move into production."
+  }
+];
+
+const skincareHubFaqs: FAQ[] = [
+  {
+    question: "What skincare products can Kiora CosmoTech manufacture?",
+    answer:
+      "Kiora CosmoTech can support face wash, face serum, sunscreen, moisturizer, cream, gel, body lotion and derma-inspired cosmetic product categories depending on the brand brief."
+  },
+  {
+    question: "Is this page for private label only?",
+    answer:
+      "No. This page works as a skincare category hub for brands comparing product directions before choosing a private label, third party or contract manufacturing route."
+  },
+  {
+    question: "How should a new skincare brand choose its first products?",
+    answer:
+      "A new skincare brand usually launches more cleanly when it starts with a tighter routine such as cleanser, serum, moisturizer or sunscreen rather than too many unrelated SKUs."
+  },
+  {
+    question: "Can packaging be standardized across a skincare range?",
+    answer:
+      "Yes. Range-level packaging planning can align tubes, droppers, pumps, jars and cartons more consistently across cleanser, treatment and hydration products."
+  }
+];
+
+const thirdPartyFaqs: FAQ[] = [
+  {
+    question: "What is third party cosmetic manufacturing?",
+    answer:
+      "Third party cosmetic manufacturing means a brand outsources production, filling and packing to a manufacturing partner while focusing on sales, distribution and market growth."
+  },
+  {
+    question: "How is third party manufacturing different from private label?",
+    answer:
+      "Third party manufacturing is more execution-led and production-oriented, while private label usually focuses more directly on launch-ready product selection, packaging and brand rollout."
+  },
+  {
+    question: "What information helps a third party manufacturing quote move faster?",
+    answer:
+      "A faster third party manufacturing discussion usually needs product category, formula direction, pack type, quantity, artwork status and expected dispatch timeline."
+  },
+  {
+    question: "Can third party manufacturing support repeat batch planning?",
+    answer:
+      "Yes. Third party manufacturing is often used by brands that need repeat production, packaging consistency and clearer batch-execution planning."
+  }
+];
+
+const contractFaqs: FAQ[] = [
+  {
+    question: "What is contract cosmetic manufacturing?",
+    answer:
+      "Contract cosmetic manufacturing is a structured production arrangement where the product scope, specifications, packaging and batch expectations are agreed in a more formal operating model."
+  },
+  {
+    question: "How is contract manufacturing different from third party manufacturing?",
+    answer:
+      "Contract manufacturing usually leans more heavily into structured specifications, repeat batch discipline, packaging coordination and agreed production scope than the broader outsourced-production language used on third party pages."
+  },
+  {
+    question: "Who usually chooses contract manufacturing?",
+    answer:
+      "Contract manufacturing is often chosen by existing brands, marketers, distributors, clinics or salon-led ranges that already know the product scope and need repeatable production planning."
+  },
+  {
+    question: "What should be approved before contract production begins?",
+    answer:
+      "Product category, formula direction, pack type, label scope, fill size, batch quantity and dispatch expectation should be aligned before contract production begins."
+  }
+];
+
+const packagingFaqs: FAQ[] = [
+  {
+    question: "How do I choose the right cosmetic packaging?",
+    answer:
+      "The right cosmetic packaging depends on formula viscosity, usage style, target customer, fill size, label area, MOQ and overall price positioning."
+  },
+  {
+    question: "What packaging works well for face serum products?",
+    answer:
+      "Face serum products often suit droppers, pumps or airless bottles depending on viscosity, oxidation sensitivity and the desired user experience."
+  },
+  {
+    question: "Can sunscreen and face wash use the same packaging style?",
+    answer:
+      "Sometimes, but not always. Face wash often suits tubes or bottles, while sunscreen may need packaging that better supports claim communication, fill size control and daily-use handling."
+  },
+  {
+    question: "Should artwork be started before packaging is finalized?",
+    answer:
+      "Usually no. Artwork moves more smoothly after the actual pack, label area, closure type and carton dimensions are reasonably confirmed."
+  }
+];
+
+const processFaqs: FAQ[] = [
+  {
+    question: "What are the main steps in cosmetic manufacturing?",
+    answer:
+      "The main steps usually include product brief discussion, formula selection or development, packaging selection, sampling, artwork coordination, batch manufacturing, filling, packing, quality review and dispatch planning."
+  },
+  {
+    question: "Why do manufacturing timelines change?",
+    answer:
+      "Timelines often change because the product brief is still evolving, packaging is pending, artwork is not approved yet or the product category needs additional planning."
+  },
+  {
+    question: "What helps reduce manufacturing delays?",
+    answer:
+      "A tighter product brief, earlier packaging confirmation, cleaner artwork inputs and realistic MOQ and launch-timeline discussion usually reduce delays."
+  },
+  {
+    question: "When should a brand request a quote?",
+    answer:
+      "A brand should request a quote once the product category, likely pack type, quantity direction and formula route are clear enough for a practical manufacturing conversation."
+  }
+];
+
+const startupFaqs: FAQ[] = [
+  {
+    question: "How can I start my own skincare brand in India?",
+    answer:
+      "A practical skincare launch usually starts with a focused product range, packaging direction, MOQ discussion, sample review and a realistic quote brief."
+  },
+  {
+    question: "What is a good first product range for a startup beauty brand?",
+    answer:
+      "Many startup skincare brands begin with a tighter routine such as face wash, face serum, moisturizer or sunscreen, while haircare brands may start with shampoo and hair serum."
+  },
+  {
+    question: "Can startups discuss lower MOQ options?",
+    answer:
+      "Yes, where practical. Lower-risk launches often depend on choosing fewer SKUs, standard pack formats and a more focused first brief."
+  },
+  {
+    question: "What should a founder prepare before requesting a quote?",
+    answer:
+      "A founder should prepare the product category, likely formula route, pack preference, quantity range, target price band, city and launch timeline."
+  }
+];
+
+const requestQuoteFaqs: FAQ[] = [
+  {
+    question: "What details are needed for a cosmetic manufacturing quote?",
+    answer:
+      "A strong quote request includes product category, product type, pack type, fill size, expected quantity, formula direction, target price band and launch timeline."
+  },
+  {
+    question: "Can I request a quote for multiple products together?",
+    answer:
+      "Yes. Brands can request a quote for a wider product range, especially when they want to plan a cleanser, serum, moisturizer, sunscreen or haircare lineup together."
+  },
+  {
+    question: "Does packaging affect the quote significantly?",
+    answer:
+      "Yes. Packaging can strongly affect cost, MOQ, label planning, carton size and production practicality, so it should be included as early as possible in the quote brief."
+  },
+  {
+    question: "What is the fastest way to start the quote discussion?",
+    answer:
+      "The fastest route is to share a clear product brief through the form or WhatsApp with product type, quantity, pack style and launch direction."
+  }
 ];
 
 export const contentPages: ContentPage[] = [
@@ -59,7 +243,117 @@ export const contentPages: ContentPage[] = [
       }
     ],
     relatedLinks: productLinks,
-    faqs: coreFaqs
+    faqs: privateLabelFaqs
+  },
+  {
+    slug: "privacy-policy",
+    kind: "legal",
+    title: "Privacy Policy | Kiora CosmoTech",
+    description:
+      "Privacy Policy for Kiora CosmoTech covering enquiry information, communication handling and website data use for cosmetic manufacturing discussions.",
+    h1: "Privacy Policy",
+    eyebrow: "Website and enquiry privacy",
+    intro:
+      "This Privacy Policy explains how Kiora CosmoTech handles website enquiries, contact information and communication shared through the website, email, phone or WhatsApp.",
+    directAnswer: {
+      question: "What information does Kiora CosmoTech collect?",
+      answer:
+        "Kiora CosmoTech may collect the contact and project information you share when you request a quote, send an email, call, message on WhatsApp or submit a website enquiry so the team can respond to your cosmetic manufacturing requirement."
+    },
+    sections: [
+      {
+        heading: "Information shared through enquiries",
+        body:
+          "When you contact Kiora CosmoTech, you may share details such as your name, company name, mobile number, email address, product category, quantity requirement, packaging preference, target city and message. This information is used to understand your manufacturing requirement and respond with practical guidance."
+      },
+      {
+        heading: "How enquiry information is used",
+        body:
+          "Enquiry information is used for quote discussion, product-category guidance, packaging and MOQ communication, follow-up on your request and general customer-support communication related to cosmetic manufacturing discussions."
+      },
+      {
+        heading: "Communication channels",
+        body:
+          "Kiora CosmoTech may respond through email, phone or WhatsApp based on the contact information you provide. Communication is intended for your manufacturing enquiry, follow-up discussion and related project coordination."
+      },
+      {
+        heading: "Website usage and third-party tools",
+        body:
+          "The website may use hosting, analytics, form-handling, messaging or performance tools where applicable. These may process limited technical information such as browser, device or page-usage data to support website operation, communication and improvement."
+      },
+      {
+        heading: "Data sharing and protection",
+        body:
+          "Kiora CosmoTech does not present website enquiry information as public data. Information may be shared only with internal team members, service providers or partners involved in responding to the enquiry, managing communication or operating the website where reasonably required."
+      },
+      {
+        heading: "Your contact choices",
+        body:
+          "If you want to update or remove previously shared enquiry information, you can contact Kiora CosmoTech through the website contact details and request a review of the information connected to your enquiry."
+      }
+    ],
+    relatedLinks: [
+      { label: "Request Quote", href: "/request-quote", description: "Submit your manufacturing requirement through the website form." },
+      { label: "About Kiora CosmoTech", href: "/about-kiora-cosmotech", description: "Learn more about the company and manufacturing focus." },
+      { label: "Private Label Cosmetics", href: "/private-label-cosmetics-manufacturer-india", description: "Explore private label cosmetic manufacturing support." },
+      { label: "Contact on WhatsApp", href: "/request-quote", description: "Use the quote page to begin a direct manufacturing discussion." }
+    ],
+    faqs: []
+  },
+  {
+    slug: "terms-and-conditions",
+    kind: "legal",
+    title: "Terms and Conditions | Kiora CosmoTech",
+    description:
+      "Terms and Conditions for using the Kiora CosmoTech website, submitting enquiries and discussing cosmetic manufacturing requirements.",
+    h1: "Terms and Conditions",
+    eyebrow: "Website use and enquiry terms",
+    intro:
+      "These Terms and Conditions describe the general use of the Kiora CosmoTech website and the nature of information shared during cosmetic manufacturing discussions.",
+    directAnswer: {
+      question: "What do these Terms and Conditions cover?",
+      answer:
+        "These terms explain how visitors may use the website, what enquiry communication is intended for, and how manufacturing discussions, product information and website content should be understood."
+    },
+    sections: [
+      {
+        heading: "Website use",
+        body:
+          "This website is intended to provide information about Kiora CosmoTech, cosmetic manufacturing categories, product concepts, quote discussions and related business communication. Visitors should use the website for lawful business, informational and enquiry purposes."
+      },
+      {
+        heading: "Product and manufacturing information",
+        body:
+          "Product concepts, category pages, FAQs, blog articles and related content are provided for general information, commercial discussion and manufacturing planning. Final formula, packaging, pricing, MOQ, claim language, testing requirement and project scope may change depending on the actual product brief and applicable regulations."
+      },
+      {
+        heading: "No medical or guaranteed outcome claims",
+        body:
+          "Website content is intended for cosmetic manufacturing communication and product-planning discussion. It should not be interpreted as medical advice, disease-treatment guidance or a guarantee of commercial, technical or ranking outcomes."
+      },
+      {
+        heading: "Quote and communication expectations",
+        body:
+          "Submitting an enquiry or requesting a quote does not automatically create a manufacturing agreement. Product discussions, quotation, sampling, packaging coordination, documentation inputs and project timelines are subject to commercial review and mutual confirmation."
+      },
+      {
+        heading: "Intellectual property and content use",
+        body:
+          "Website copy, branding elements, layout, images and written content are intended for Kiora CosmoTech business communication. They should not be copied, republished or reused in a misleading manner without permission."
+      },
+      {
+        heading: "Updates to website information",
+        body:
+          "Kiora CosmoTech may update website content, product categories, process descriptions, quote guidance, contact details or general business information as required. Visitors should confirm current commercial details directly during project discussions."
+      }
+    ],
+    relatedLinks: [
+      { label: "Request Quote", href: "/request-quote", description: "Share your requirement to begin a manufacturing discussion." },
+      { label: "Quality and Compliance", href: "/quality-and-compliance", description: "Review the quality-focused approach described on the website." },
+      { label: "Manufacturing Process", href: "/manufacturing-process", description: "See the broad workflow from discussion to dispatch." },
+      { label: "Privacy Policy", href: "/privacy-policy", description: "Read how enquiry information is handled." }
+    ],
+    faqs: []
   },
   {
     slug: "private-label-cosmetics-manufacturer-india",
@@ -101,7 +395,7 @@ export const contentPages: ContentPage[] = [
       { label: "Packaging Options", href: "/packaging-options", description: "Review packaging formats for startup launches." },
       { label: "Request Quote", href: "/request-quote", description: "Share your requirement for a manufacturing quote." }
     ],
-    faqs: coreFaqs
+    faqs: thirdPartyFaqs
   },
   {
     slug: "third-party-cosmetic-manufacturing-india",
@@ -142,7 +436,7 @@ export const contentPages: ContentPage[] = [
       { label: "Quality and Compliance", href: "/quality-and-compliance", description: "Understand quality-driven operations." },
       { label: "Request Quote", href: "/request-quote", description: "Get a third party manufacturing quote." }
     ],
-    faqs: coreFaqs
+    faqs: contractFaqs
   },
   {
     slug: "contract-cosmetic-manufacturer-india",
@@ -183,7 +477,7 @@ export const contentPages: ContentPage[] = [
       { label: "Packaging Options", href: "/packaging-options", description: "Choose suitable product packaging." },
       { label: "Request Quote", href: "/request-quote", description: "Discuss batch and packaging requirements." }
     ],
-    faqs: coreFaqs
+    faqs: skincareHubFaqs
   },
   {
     slug: "custom-skincare-formulation",
@@ -224,7 +518,7 @@ export const contentPages: ContentPage[] = [
       { label: "Private Label Cosmetics", href: "/private-label-cosmetics-manufacturer-india", description: "Launch under your own brand." },
       { label: "Request Quote", href: "/request-quote", description: "Discuss your product idea." }
     ],
-    faqs: coreFaqs
+    faqs: packagingFaqs
   },
   {
     slug: "skincare-manufacturer-india",
@@ -265,7 +559,7 @@ export const contentPages: ContentPage[] = [
       { label: "Sunscreen Manufacturer", href: "/sunscreen-manufacturer", description: "SPF-positioned product support." },
       { label: "Moisturizer Manufacturer", href: "/moisturizer-manufacturer", description: "Hydrating skincare products." }
     ],
-    faqs: coreFaqs
+    faqs: processFaqs
   },
   {
     slug: "haircare-manufacturer-india",
@@ -301,7 +595,7 @@ export const contentPages: ContentPage[] = [
       { label: "Hair Oil Manufacturer", href: "/hair-oil-manufacturer", description: "Cosmetic hair oil manufacturing." },
       { label: "Hair Mask Manufacturer", href: "/hair-mask-manufacturer", description: "Salon-inspired hair mask formats." }
     ],
-    faqs: coreFaqs
+    faqs: startupFaqs
   },
   {
     slug: "personal-care-manufacturer-india",
@@ -337,7 +631,7 @@ export const contentPages: ContentPage[] = [
       { label: "Body Lotion Manufacturer", href: "/body-lotion-manufacturer", description: "Body moisturization products." },
       { label: "Request Quote", href: "/request-quote", description: "Plan your personal care launch." }
     ],
-    faqs: coreFaqs
+    faqs: requestQuoteFaqs
   },
   {
     slug: "packaging-options",
@@ -602,102 +896,47 @@ updateContentPage("about-kiora-cosmotech", {
 updateContentPage("skincare-manufacturer-india", {
   title: "Skincare Manufacturer in India | Private Label Skincare",
   description:
-    "Kiora CosmoTech is a skincare manufacturer in India for private label skincare, third party manufacturing, packaging and batch planning.",
+    "Kiora CosmoTech is a skincare manufacturer in India supporting face wash, face serum, sunscreen, moisturizer, cream, gel and body lotion manufacturing.",
   intro:
-    "Kiora CosmoTech is a skincare manufacturer in India for private label brands, third party skincare requirements and contract manufacturing projects. Brands can plan formulas, product formats, packaging selection, MOQ, filling, packing, product specification inputs, quality checks and dispatch planning through one skincare-focused manufacturing conversation.",
+    "Kiora CosmoTech is a skincare manufacturer in India for brands planning face wash, face serum, sunscreen, moisturizer, cream, gel, body lotion and derma-inspired cosmetic ranges. This page is designed as a skincare category hub so buyers can compare product formats, packaging directions, formula routes and range-planning decisions before moving into a more detailed manufacturing discussion.",
   sections: [
     {
-      heading: "Skincare manufacturer in India for private label brands",
+      heading: "Skincare category planning for modern beauty brands",
       body:
-        "As a skincare manufacturer in India, Kiora CosmoTech works with founders, D2C teams, salons, clinics, influencers and distributors that want a clear route from product idea to launch-ready skincare products. The process starts with the desired product type, target price, texture, actives, fragrance direction, packaging and expected quantity. This helps convert a broad skincare idea into a manufacturing-ready brief.",
-      points: ["Private label skincare manufacturer", "Third party skincare manufacturer", "Skincare contract manufacturer"]
+        "As a skincare manufacturer in India, Kiora CosmoTech works with founders, D2C teams, salons, clinics, influencers and distributors that want a clear route from product idea to a more structured skincare range. The first decision is usually category architecture: which cleanser, treatment, hydration and protection products should come first, and how should the range fit the target buyer and price band.",
+      points: ["Face wash and cleanser categories", "Treatment-led serum categories", "Hydration, protection and routine planning"]
     },
     {
-      heading: "Private label skincare manufacturing",
+      heading: "Product categories this page helps you compare",
       body:
-        "Private label skincare manufacturing allows a brand to sell face care and body care products under its own label while a manufacturing partner handles formula selection, batch planning, filling and packing. It is useful for brands that want to move faster than a fully custom development path while still controlling packaging, label direction and range planning.",
-      points: ["Ready formula discussions", "Packaging selection", "Label declaration review"]
-    },
-    {
-      heading: "Third party skincare manufacturing",
-      body:
-        "Third party skincare manufacturing is designed for brands that want to outsource production instead of building an internal unit. Kiora CosmoTech can discuss batch planning, packaging, filling, packing, quality checks and finished goods review for skincare products across face wash, serum, sunscreen, moisturizers, creams, gels and body lotion."
-    },
-    {
-      heading: "Custom skincare formulation",
-      body:
-        "Custom skincare formulation is useful when a brand needs a differentiated texture, active story, ingredient direction or sensory profile. The development conversation covers formula objective, cosmetic claim boundaries, packaging compatibility, sampling, feedback rounds and commercial manufacturing readiness."
-    },
-    {
-      heading: "Skincare product categories",
-      body:
-        "Kiora CosmoTech focuses on skincare and derma-cosmetic product manufacturing rather than decorative color cosmetics. Brands can build single-product launches or wider ranges across cleansers, active-led serums, sunscreen concepts, moisturizers, creams, gels, body lotions and derma-inspired cosmetics.",
+        "This page supports category comparison across face wash, face serum, sunscreen, moisturizer, cream, gel, body lotion and derma-cosmetic directions. It should help a buyer decide which product types belong in the first launch and which pages to visit next for deeper manufacturing planning.",
       points: ["Face wash", "Face serum", "Sunscreen", "Moisturizer", "Cream", "Gel", "Body lotion", "Derma cosmetic"]
     },
     {
-      heading: "Face wash manufacturing",
+      heading: "Ready formula or custom formulation for skincare ranges",
       body:
-        "Face wash manufacturing includes gel cleansers, foaming cleansers, cream cleansers and active-led cleanser formats. Brands can discuss surfactant feel, viscosity, fragrance, color, tube or bottle packaging, fill quantity and pH review where relevant."
+        "Some skincare ranges move faster through a ready-formula private label route, while others need custom formulation for a more ownable texture, ingredient story or packaging requirement. The right path depends on launch timeline, target price, packaging choice, differentiation needs and how many products are being developed together."
     },
     {
-      heading: "Face serum manufacturing",
+      heading: "Packaging consistency across the skincare range",
       body:
-        "Face serum manufacturing is suited to active-led skincare lines with ingredients such as niacinamide, hyaluronic acid, Vitamin C, peptides or salicylic acid in cosmetic positioning. Packaging examples include 15 ml, 30 ml and 50 ml droppers, pumps and airless bottles."
+        "Skincare brand building works better when the packaging system feels coordinated. Face wash may suit tubes or bottles, serums often use droppers, pumps or airless packs, and moisturizers or creams may use jars, pumps or tubes. A range-level packaging discussion prevents mismatch across labels, cartons, fill sizes and shelf presentation."
     },
     {
-      heading: "Sunscreen manufacturing",
+      heading: "MOQ, sampling and quote readiness",
       body:
-        "Sunscreen manufacturing requires careful formula, texture, packaging and quality discussion because users expect daily comfort and reliable product experience. Brands can explore gel, lotion, cream, matte, hydrating or tinted formats where suitable, with tubes, pumps or airless packs."
+        "MOQ in skincare manufacturing depends on formula type, packaging format, fill size, decoration scope and whether the brand wants a focused first launch or a wider routine. Sampling, packaging approval and quote accuracy all improve when the buyer shares product category, pack preference, target price band and likely launch timeline early."
     },
     {
-      heading: "Moisturizer manufacturing",
+      heading: "Who should use this skincare page",
       body:
-        "Moisturizer manufacturing covers gel creams, lotions, oil-free textures, barrier-positioned creams and hydrating cosmetic formats. The manufacturing plan should align emollient feel, humectants, jar, tube or pump packaging and finished product review."
-    },
-    {
-      heading: "Cream and gel manufacturing",
-      body:
-        "Cream and gel manufacturing helps brands create premium texture-led products for daily skincare, salon retail and derma-inspired cosmetic lines. Creams often use jars, tubes or airless packaging, while gels may use jars, tubes or pump bottles depending on viscosity."
-    },
-    {
-      heading: "Body lotion manufacturing",
-      body:
-        "Body lotion manufacturing works well for personal care extensions, salon retail, hotel amenities and D2C body care ranges. The batch plan should consider fragrance, viscosity, pump performance, bottle size, label artwork and dispatch quantities."
-    },
-    {
-      heading: "Derma-cosmetic manufacturing",
-      body:
-        "Derma-cosmetic manufacturing focuses on active-led cosmetic products for clinics, dermatologists and professional-facing skincare brands. Claims must remain cosmetic and appearance-focused, while formula selection, packaging and label declaration inputs should be reviewed carefully."
-    },
-    {
-      heading: "Packaging options",
-      body:
-        "Skincare packaging options include tubes, jars, bottles, pumps, airless bottles, droppers, labels, mono cartons, outer cartons and shrink wrapping. Packaging selection should match formula viscosity, user experience, price positioning and channel requirements."
-    },
-    {
-      heading: "MOQ and batch planning",
-      body:
-        "MOQ in skincare manufacturing depends on formula type, packaging availability, fill size, decoration requirements and commercial batch planning. Early MOQ discussion helps brands avoid artwork delays, packaging mismatch and unrealistic launch timelines."
-    },
-    {
-      heading: "Quality checks",
-      body:
-        "Quality checks may include raw material review, in-process observations, pH or viscosity checks where relevant, appearance review, fill weight checks, packaging review, leak checks and finished product review. The exact checks depend on the product format."
-    },
-    {
-      heading: "Documentation support",
-      body:
-        "Documentation support may include product specification inputs, batch details, COA or testing support where applicable, and label declaration input support. Documentation scope depends on the product type, formula, packaging and buyer requirement."
-    },
-    {
-      heading: "Who can work with Kiora CosmoTech",
-      body:
-        "Kiora CosmoTech is suitable for startup skincare brands, D2C founders, salons, clinics, dermatologist-led concepts, influencers, exporters, retailers and distributors searching for a cosmetic manufacturer in India or a skincare manufacturer near me with pan-India dispatch planning."
+        "This page is useful for startup skincare brands, D2C founders, clinics, salons, dermatologist-led concepts, exporters and distributors who first need to map the product range before choosing a private label, third party or contract manufacturing route."
     }
   ],
   relatedLinks: [
     ...skincareProductLinks,
-    { label: "Private Label Cosmetics", href: "/private-label-cosmetics-manufacturer-india", description: "Plan private label skincare under your own brand." },
+    { label: "Private Label Cosmetics", href: "/private-label-cosmetics-manufacturer-india", description: "Explore launch-ready private label skincare manufacturing." },
+    { label: "Third Party Manufacturing", href: "/third-party-cosmetic-manufacturing-india", description: "Compare outsourced production support for skincare ranges." },
     { label: "Custom Skincare Formulation", href: "/custom-skincare-formulation", description: "Develop a differentiated skincare formula." },
     { label: "Packaging Options", href: "/packaging-options", description: "Review skincare packaging formats." },
     { label: "Request Quote", href: "/request-quote", description: "Share product, MOQ and packaging requirements." }
@@ -706,14 +945,19 @@ updateContentPage("skincare-manufacturer-india", {
 
 updateContentPage("private-label-cosmetics-manufacturer-india", {
   description:
-    "Private label cosmetics manufacturer in India for skincare, haircare and personal care brands with formula, packaging and MOQ planning.",
+    "Private label cosmetics manufacturer in India for skincare, haircare and personal care brands with formula selection, packaging planning, artwork discussion and startup-friendly launch support.",
   intro:
-    "Kiora CosmoTech manufactures private label cosmetics for skincare, haircare, derma-cosmetic and personal care brands that want to sell products under their own brand name. The private label route helps founders plan product selection, formulas, packaging, MOQ, filling, packing, documentation inputs and launch-ready ranges with a practical manufacturing workflow.",
+    "Kiora CosmoTech manufactures private label cosmetics for skincare, haircare, derma-cosmetic and personal care brands that want to sell products under their own brand name. This page is built for launch-ready brand planning: selecting the first products, choosing packaging, discussing artwork inputs, understanding MOQ and turning a broad idea into a more practical manufacturing brief.",
   sections: [
     {
       heading: "How Private Label Cosmetic Manufacturing Works at Kiora CosmoTech",
       body:
         "Private label cosmetic manufacturing means a brand sells cosmetic products under its own label while a manufacturing partner produces, fills and packs the products. The brand controls its positioning, packaging artwork and product range, while the manufacturer handles the agreed formula, batch plan and production workflow."
+    },
+    {
+      heading: "Why startups and growing brands choose private label",
+      body:
+        "Private label is often the cleanest first route for founders that want faster sampling, clearer SKU planning and easier packaging coordination than a fully custom development path. It helps a new brand focus on product selection, price band, packaging identity and launch sequencing before it takes on deeper formulation complexity."
     },
     {
       heading: "Private label skincare manufacturing",
@@ -736,14 +980,14 @@ updateContentPage("private-label-cosmetics-manufacturer-india", {
         "Ready formulas can reduce development time and help brands reach sampling faster. Custom formulas create more differentiation but require deeper work on texture, actives, packaging compatibility, sampling feedback and commercial batch readiness."
     },
     {
-      heading: "MOQ and startup manufacturing",
+      heading: "MOQ, first-product planning and startup manufacturing",
       body:
-        "MOQ depends on the formula, packaging, fill size and batch plan. Startup brands should discuss expected order quantity early so product selection, packaging decoration and quote planning stay realistic."
+        "MOQ depends on the formula, packaging, fill size and batch plan. Startup brands should discuss expected order quantity, likely first SKU mix, target price and packaging decoration early so the quote stays realistic and the launch plan does not get crowded with too many formats."
     },
     {
-      heading: "Packaging and label support",
+      heading: "Packaging, artwork and label support",
       body:
-        "Packaging selection includes tubes, jars, bottles, pumps, airless bottles, droppers, labels, mono cartons and outer cartons. Label declaration review and product information inputs help the artwork process stay aligned with the chosen formula and packaging."
+        "Packaging selection includes tubes, jars, bottles, pumps, airless bottles, droppers, labels, mono cartons and outer cartons. Label declaration review, artwork sizing inputs and product information support help the packaging process stay aligned with the chosen formula, fill size and batch plan."
     },
     {
       heading: "Sampling and approval process",
@@ -762,10 +1006,11 @@ updateContentPage("private-label-cosmetics-manufacturer-india", {
     }
   ],
   relatedLinks: [
-    { label: "Skincare Manufacturer in India", href: "/skincare-manufacturer-india", description: "Plan private label skincare product ranges." },
+    { label: "Skincare Manufacturer in India", href: "/skincare-manufacturer-india", description: "Use the skincare hub to compare product categories before launch." },
     { label: "Haircare Manufacturer in India", href: "/haircare-manufacturer-india", description: "Manufacture shampoo, hair serum, hair oil and hair mask products." },
     { label: "Personal Care Manufacturer", href: "/personal-care-manufacturer-india", description: "Build body wash, hand wash and body lotion ranges." },
     { label: "Face Serum Manufacturer", href: "/face-serum-manufacturer", description: "Launch active-led private label serums." },
+    { label: "Startup Cosmetic Brand Support", href: "/startup-cosmetic-brand-support", description: "Plan a tighter first launch with packaging and MOQ guidance." },
     { label: "Packaging Options", href: "/packaging-options", description: "Choose tubes, jars, bottles, pumps and cartons." },
     { label: "Request Quote", href: "/request-quote", description: "Share product, MOQ and packaging requirements." }
   ]
@@ -773,9 +1018,9 @@ updateContentPage("private-label-cosmetics-manufacturer-india", {
 
 updateContentPage("third-party-cosmetic-manufacturing-india", {
   description:
-    "Third party cosmetic manufacturing in India for skincare, derma-cosmetic, haircare and personal care brands with batch planning, filling, packing and quality checks.",
+    "Third party cosmetic manufacturing in India for skincare, derma-cosmetic, haircare and personal care brands with batch planning, filling, packing, quality checks and dispatch support.",
   intro:
-    "Kiora CosmoTech provides third party cosmetic manufacturing for brands that want to outsource production, filling, packing and finished goods review while keeping focus on sales, brand building and distribution. The process helps teams plan formulas, packaging, MOQ, batch execution, product specification inputs and dispatch planning.",
+    "Kiora CosmoTech provides third party cosmetic manufacturing for brands that want to outsource production, filling, packing and finished goods review while keeping focus on sales, brand building and distribution. This page is intended for buyers who need operational execution, packaging coordination, batch planning and repeat production support without building their own facility.",
   sections: [
     {
       heading: "What is third party cosmetic manufacturing?",
@@ -793,9 +1038,9 @@ updateContentPage("third-party-cosmetic-manufacturing-india", {
         "Third party manufacturing can cover skincare, derma-cosmetic, haircare and personal care products including face wash, serums, sunscreen, moisturizers, creams, gels, body lotion, shampoo, hair serum, hair oil, hair mask, body wash and hand wash."
     },
     {
-      heading: "Batch planning",
+      heading: "Batch planning and operational execution",
       body:
-        "Batch planning aligns formula type, MOQ, packaging availability, fill quantity, artwork status and target dispatch timeline. Clear batch planning reduces production confusion and helps brands forecast launch inventory."
+        "Batch planning aligns formula type, MOQ, packaging availability, fill quantity, artwork status and target dispatch timeline. Clear batch planning reduces production confusion, supports repeat manufacturing and helps brands forecast launch inventory across distribution or marketplace channels."
     },
     {
       heading: "Filling and packing",
@@ -815,7 +1060,7 @@ updateContentPage("third-party-cosmetic-manufacturing-india", {
     {
       heading: "Why brands outsource manufacturing",
       body:
-        "Brands outsource manufacturing to reduce operational burden, avoid setting up a production unit, access batch manufacturing expertise and focus internal time on brand strategy, distribution, content, sales and customer acquisition."
+        "Brands outsource manufacturing to reduce operational burden, avoid setting up a production unit, access batch manufacturing expertise and focus internal time on brand strategy, distribution, content, sales and customer acquisition. This page should own that execution-oriented outsourced manufacturing intent more strongly than the contract manufacturing page."
     },
     {
       heading: "Third party manufacturing for startups, salons, clinics, D2C and distributors",
@@ -824,7 +1069,9 @@ updateContentPage("third-party-cosmetic-manufacturing-india", {
     }
   ],
   relatedLinks: [
+    { label: "Private Label Cosmetics", href: "/private-label-cosmetics-manufacturer-india", description: "Compare third party outsourcing with the private label route." },
     { label: "Skincare Manufacturer in India", href: "/skincare-manufacturer-india", description: "Explore skincare manufacturing categories." },
+    { label: "Contract Cosmetic Manufacturer", href: "/contract-cosmetic-manufacturer-india", description: "See the more structured contract-manufacturing model." },
     { label: "Manufacturing Process", href: "/manufacturing-process", description: "Review the step-by-step workflow." },
     { label: "Quality and Compliance", href: "/quality-and-compliance", description: "Understand quality checks and documentation inputs." },
     { label: "Packaging Options", href: "/packaging-options", description: "Plan packaging before batch manufacturing." },
@@ -977,19 +1224,29 @@ enrichContentPage("packaging-options", {
         "Packaging is a manufacturing decision as much as a design decision. The pack affects formula compatibility, fill quantity, label area, carton size, MOQ, dispatch handling and customer experience. Kiora CosmoTech encourages brands to choose packaging before final artwork and before comparing quotes."
     },
     {
-      heading: "Skincare packaging examples",
+      heading: "Face wash packaging options",
       body:
-        "Face wash and sunscreen commonly use tubes or pump bottles. Face serum usually uses droppers, pumps or airless bottles. Creams and gels may use jars, tubes or airless packaging. Moisturizers can use jars, pumps, tubes or airless bottles depending on texture and price point."
+        "Face wash packaging commonly begins with tubes for compact retail launches, while pump bottles and flip-top bottles can work for larger fills, salon-led formats or family-use cleanser products. The pack should match cleanser viscosity, label area and intended usage style."
     },
     {
-      heading: "Haircare and personal care packaging",
+      heading: "Face serum packaging options",
       body:
-        "Shampoo, body wash and hand wash often use bottles with flip-top caps or pumps. Hair serum may use pump bottles or small bottles. Hair oil can use bottles with caps or dispensing closures. Body lotion may use pump bottles or tubes depending on viscosity and brand positioning."
+        "Face serum packaging often uses droppers, pumps or airless bottles depending on viscosity, oxidation sensitivity, dispensing preference and price positioning. Premium active-led serums usually need packaging that supports cleaner application and a more refined shelf presence."
+    },
+    {
+      heading: "Sunscreen, moisturizer, cream and gel packaging",
+      body:
+        "Sunscreen often works best in tubes, pumps or airless formats because claim communication, fill size and daily-use handling matter. Moisturizers, creams and gels may use jars, tubes, pumps or airless packs depending on texture, target customer and channel expectations."
+    },
+    {
+      heading: "Shampoo, body wash and body-care packaging",
+      body:
+        "Shampoo, body wash, hand wash and body lotion often use bottles with flip-top caps or pumps. Bottle size, pump performance, closure fit and label area all influence the commercial feel of the final product, especially for salon retail, hospitality or D2C channels."
     },
     {
       heading: "Label, carton and dispatch planning",
       body:
-        "Labels, mono cartons, outer cartons, shrink wrapping and display packaging should be planned with the final pack dimensions. Good packaging planning reduces relabeling, artwork resizing, packing confusion and delays before dispatch."
+        "Labels, mono cartons, outer cartons, shrink wrapping and display packaging should be planned with the final pack dimensions. Good packaging planning reduces relabeling, artwork resizing, packing confusion and delays before dispatch, especially when multiple categories are launching together."
     }
   ]
 });
@@ -1013,6 +1270,11 @@ enrichContentPage("manufacturing-process", {
       heading: "Batch planning and production readiness",
       body:
         "Batch planning aligns formula, packaging, raw material inputs, labels, cartons, filling method and production schedule. Brands should approve key details before manufacturing begins because late changes to packaging or artwork can delay filling and packing."
+    },
+    {
+      heading: "Why manufacturing timelines change",
+      body:
+        "Manufacturing timelines usually change because the brief is still evolving, packaging is not finalized, artwork is pending, samples need revision or a more technical category such as sunscreen requires deeper planning. A tighter quote brief usually creates a faster and cleaner production timeline."
     },
     {
       heading: "Dispatch and reorder thinking",
@@ -1045,7 +1307,7 @@ enrichContentPage("startup-cosmetic-brand-support", {
     {
       heading: "Quote readiness checklist",
       body:
-        "Before requesting a quote, share brand stage, product type, formula preference, packaging requirement, required quantity, expected MOQ, launch timeline, city and preferred contact method. This helps the manufacturing discussion move faster and reduces back-and-forth."
+        "Before requesting a quote, share brand stage, product type, formula preference, packaging requirement, required quantity, expected MOQ, target price band, launch timeline, city and preferred contact method. This helps the manufacturing discussion move faster and reduces back-and-forth."
     }
   ]
 });
@@ -1054,6 +1316,11 @@ enrichContentPage("request-quote", {
   title: "Request Cosmetic Manufacturing Quote | Kiora CosmoTech",
   description:
     "Request a cosmetic manufacturing quote for skincare, haircare, derma-cosmetic or personal care products from Kiora CosmoTech.",
+  directAnswer: {
+    question: "What details are needed for a cosmetic manufacturing quote?",
+    answer:
+      "A useful quote request includes product category, product type, pack type, fill size, quantity or MOQ direction, formula preference, target price band, launch timeline, city and whether you want private label, third party or contract manufacturing support."
+  },
   additions: [
     {
       heading: "How to get a faster quote",
@@ -1064,6 +1331,11 @@ enrichContentPage("request-quote", {
       heading: "Details that affect pricing",
       body:
         "Pricing depends on formula type, active direction, packaging format, fill quantity, label or carton needs, MOQ, filling method and quality or documentation requirements. A face serum in a 30 ml dropper and a shampoo in a 250 ml bottle need different planning."
+    },
+    {
+      heading: "Quote checklist before you submit",
+      body:
+        "The most useful quote discussions start with a clear checklist: product category, likely pack type, fill size, formula route, expected quantity, target price band, launch timeline and whether the requirement fits a private label, third party or contract manufacturing model."
     },
     {
       heading: "Best product examples to include",
@@ -1083,8 +1355,13 @@ enrichContentPage("contract-cosmetic-manufacturer-india", {
     {
       heading: "Who contract manufacturing is for",
       body:
-        "Contract manufacturing is useful for brands that already know their product category, want tighter production planning and need a partner who can work around batch size, packaging format, product specifications and dispatch expectations.",
+        "Contract manufacturing is useful for brands that already know their product category, want tighter production planning and need a partner who can work around batch size, packaging format, product specifications, procurement coordination and dispatch expectations.",
       points: ["Existing brands and marketers", "Distributor-led product ranges", "Planned repeat-batch programs", "Clinic and salon retail lines"]
+    },
+    {
+      heading: "Structured manufacturing model",
+      body:
+        "This page should own the more structured manufacturing model rather than the broader outsourced-production language used on the third party page. The focus here is on agreed product scope, repeatable specifications, production calendar clarity, packaging coordination and batch-wise execution discipline."
     },
     {
       heading: "Common mistakes buyers make",

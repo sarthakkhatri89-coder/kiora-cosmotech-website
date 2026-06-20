@@ -715,7 +715,6 @@ export default function Page() {
           pageOrganizationSchema,
           manufacturerSchema(siteConfig.name, pagePath),
           breadcrumbSchema(crumbs),
-          serviceSchema("Hair Serum Manufacturing", pageDescription, pagePath),
           detailedServiceSchema,
           faqSchema(faqs),
           webPageSchema
@@ -766,7 +765,7 @@ export default function Page() {
                 Kiora CosmoTech helps brands develop premium hair serum products based on trending cosmetic actives, branded ingredient positioning, botanical extracts, peptides, scalp-care actives and derma-cosmetic concepts.
               </p>
               <p className="mt-4 text-[0.98rem] leading-7 text-ivory/78 md:leading-8">
-                The company supports brands from product concept to formulation development, packaging direction and manufacturing support so the final range feels premium, commercially relevant and launch-ready. Buyers exploring <Link className="font-semibold text-champagne underline decoration-champagne/40 underline-offset-4" href="/private-label-cosmetics-manufacturer-india">private label cosmetic manufacturing</Link> or <Link className="font-semibold text-champagne underline decoration-champagne/40 underline-offset-4" href="/third-party-cosmetic-manufacturing-india">third party hair care manufacturing</Link> can use this page to shortlist commercially viable serum directions.
+                The company supports brands from product concept to formulation development, packaging direction and manufacturing support so the final range feels premium, commercially relevant and launch-ready. Buyers exploring <Link className="font-semibold text-champagne underline decoration-champagne/40 underline-offset-4" href="/private-label-cosmetics-manufacturer-india">private label cosmetic manufacturing</Link>, <Link className="font-semibold text-champagne underline decoration-champagne/40 underline-offset-4" href="/third-party-cosmetic-manufacturing-india">third party hair care manufacturing</Link> or a more structured <Link className="font-semibold text-champagne underline decoration-champagne/40 underline-offset-4" href="/contract-cosmetic-manufacturer-india">contract manufacturing model</Link> can use this page to shortlist commercially viable serum directions before requesting a quote.
               </p>
               <p className="mt-4 text-[0.98rem] leading-7 text-ivory/78 md:leading-8">
                 For founders and established buyers alike, the focus stays on practical positioning: ingredient story, target audience, pricing band, packaging direction, claim language, batch planning and a product concept that can make sense for your category strategy.

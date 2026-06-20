@@ -10,8 +10,8 @@ import ProductSpecTable from "@/components/ProductSpecTable";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import SectionHeading from "@/components/SectionHeading";
 import { productPages, type ProductPage } from "@/data/products";
-import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
-import { whatsappHref } from "@/data/siteConfig";
+import { siteConfig, whatsappHref } from "@/data/siteConfig";
+import { breadcrumbSchema, faqSchema, manufacturerSchema, serviceSchema, webPageSchema } from "@/lib/schema";
 import { MessageCircle } from "lucide-react";
 
 function publicAssetExists(src: string) {
@@ -58,7 +58,15 @@ export default function ProductPageRenderer({ product }: { product: ProductPage 
 
   return (
     <>
-      <SchemaJsonLd data={[breadcrumbSchema(crumbs), serviceSchema(product.name, product.description, path), faqSchema(product.faqs)]} />
+      <SchemaJsonLd
+        data={[
+          manufacturerSchema(siteConfig.name, path),
+          breadcrumbSchema(crumbs),
+          serviceSchema(product.name, product.description, path),
+          webPageSchema(product.title, product.description, path),
+          faqSchema(product.faqs)
+        ]}
+      />
       <Breadcrumbs crumbs={crumbs} />
       <main>
         <ProductHeroBackground

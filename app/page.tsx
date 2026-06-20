@@ -50,25 +50,25 @@ const serviceModels = [
     title: "Private Label Cosmetics",
     href: "/private-label-cosmetics-manufacturer-india",
     description:
-      "Launch skincare, haircare and personal care products under your own brand with practical product, MOQ and packaging planning."
+      "Launch skincare, haircare and personal care products under your own brand with launch-ready product selection, packaging planning and startup-friendly manufacturing guidance."
   },
   {
     title: "Third Party Manufacturing",
     href: "/third-party-cosmetic-manufacturing-india",
     description:
-      "Manufacturing, filling and packing support for teams focused on sales, distribution, marketing and launch expansion."
+      "Production, filling, packing and dispatch support for teams focused on sales, distribution, marketing and commercial scale."
   },
   {
     title: "Contract Manufacturing",
     href: "/contract-cosmetic-manufacturer-india",
     description:
-      "Structured production for approved concepts, batch planning, specification-led discussion and repeat manufacturing flow."
+      "Structured manufacturing programs for approved concepts, specification-led batches, packaging coordination and repeat production planning."
   },
   {
     title: "Custom Skincare Formulation",
     href: "/custom-skincare-formulation",
     description:
-      "Develop modern skincare concepts around active direction, pack format, market fit and premium product positioning."
+      "Develop modern skincare concepts around active direction, packaging compatibility, market fit and premium product positioning."
   }
 ];
 

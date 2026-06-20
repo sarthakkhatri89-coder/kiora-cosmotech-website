@@ -1,6 +1,8 @@
 export const staticRoutes = [
   "/",
   "/about-kiora-cosmotech",
+  "/privacy-policy",
+  "/terms-and-conditions",
   "/private-label-cosmetics-manufacturer-india",
   "/third-party-cosmetic-manufacturing-india",
   "/contract-cosmetic-manufacturer-india",

@@ -1,0 +1,67 @@
+{
+  "site": {
+    "name": "Kiora CosmoTech",
+    "liveUrl": "https://kiora-cosmotech-website.vercel.app",
+    "sourcePath": "E:\\Codex\\Kiora Cosmotech Website",
+    "auditDate": "2026-06-19",
+    "mode": "Live + Source Keyword Reconciliation"
+  },
+  "scores": {
+    "overall": 79,
+    "keywordRelevance": 84,
+    "intentAlignment": 82,
+    "freshness": 75,
+    "pageMapping": 74,
+    "placementQuality": 81,
+    "contentDepth": 80,
+    "topicalAuthority": 81,
+    "cannibalizationControl": 66,
+    "aiReadiness": 78,
+    "localCommercialCoverage": 72
+  },
+  "limitations": [
+    "No Search Console export was provided.",
+    "No GA4 landing page data was provided.",
+    "No paid keyword tool export was provided.",
+    "No competitor set was provided.",
+    "Live DNS/TLS access was intermittent during the session; some live validation uses the saved crawl snapshot."
+  ],
+  "priorityPages": [
+    "/",
+    "/private-label-cosmetics-manufacturer-india",
+    "/third-party-cosmetic-manufacturing-india",
+    "/contract-cosmetic-manufacturer-india",
+    "/skincare-manufacturer-india",
+    "/face-wash-manufacturer",
+    "/face-serum-manufacturer",
+    "/sunscreen-manufacturer",
+    "/hair-serum-manufacturer",
+    "/request-quote"
+  ],
+  "topIssues": [
+    {
+      "issue": "Private label and skincare hub keyword overlap",
+      "severity": "High",
+      "evidence": "Live + Code Verified",
+      "confidence": 5
+    },
+    {
+      "issue": "Third-party and contract manufacturing terminology overlap",
+      "severity": "High",
+      "evidence": "Verified in Code",
+      "confidence": 5
+    },
+    {
+      "issue": "Hair serum custom route and shared data use different keyword narratives",
+      "severity": "High",
+      "evidence": "Mismatch",
+      "confidence": 5
+    },
+    {
+      "issue": "Packaging, cost, MOQ, and quote-readiness clusters need stronger commercial mapping",
+      "severity": "High",
+      "evidence": "Verified in Code + Inferred Opportunity",
+      "confidence": 4
+    }
+  ]
+}

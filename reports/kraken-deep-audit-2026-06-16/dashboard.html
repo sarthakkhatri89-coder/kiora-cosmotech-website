@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KRAKEN DEEP AUDIT Dashboard | Kiora CosmoTech</title>
+  <style>
+    :root {
+      --bg: #0f1720;
+      --panel: #15202b;
+      --card: #ffffff;
+      --ink: #17211d;
+      --muted: #5f6b76;
+      --teal: #0f7b73;
+      --blue: #2e8bd6;
+      --red: #d14343;
+      --orange: #d97706;
+      --yellow: #b18a00;
+      --green: #157347;
+      --border: rgba(23, 33, 29, 0.1);
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #0f1720 0%, #132231 100%);
+    }
+    .shell { max-width: 1240px; margin: 0 auto; padding: 32px 20px 80px; }
+    .hero {
+      color: #fff;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(15,123,115,0.95), rgba(30,64,175,0.88));
+      box-shadow: var(--shadow);
+    }
+    .hero h1 { margin: 0 0 8px; font-size: clamp(2rem, 4vw, 3.5rem); }
+    .hero p { margin: 8px 0; max-width: 880px; line-height: 1.7; }
+    .meta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; font-size: 0.95rem; }
+    .meta span {
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255,255,255,0.08);
+    }
+    .grid { display: grid; gap: 18px; margin-top: 22px; }
+    .score-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .card {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .score {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .score strong { font-size: 2rem; }
+    .bar {
+      height: 8px;
+      border-radius: 999px;
+      background: #e8edf2;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+    .bar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--blue)); }
+    .section-title { color: #fff; margin: 34px 0 14px; font-size: 1.4rem; }
+    .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+    .filters button {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .filters button.active { background: #fff; color: var(--ink); }
+    .issues { display: grid; gap: 14px; }
+    .issue {
+      background: #fff;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .issue summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 20px 22px;
+      display: grid;
+      gap: 8px;
+    }
+    .issue summary::-webkit-details-marker { display: none; }
+    .issue-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      justify-content: space-between;
+    }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .Critical { background: rgba(209, 67, 67, 0.14); color: var(--red); }
+    .High { background: rgba(217, 119, 6, 0.14); color: var(--orange); }
+    .Medium { background: rgba(177, 138, 0, 0.14); color: var(--yellow); }
+    .Low { background: rgba(21, 115, 71, 0.14); color: var(--green); }
+    .issue-body { padding: 0 22px 22px; }
+    .issue-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 0.96rem;
+    }
+    .issue-body td {
+      padding: 10px 0;
+      border-top: 1px solid #edf1f5;
+      vertical-align: top;
+    }
+    .issue-body td:first-child { width: 180px; color: var(--muted); font-weight: 600; padding-right: 18px; }
+    .split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 18px; }
+    .mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .mini-table th, .mini-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #edf1f5;
+      text-align: left;
+      vertical-align: top;
+    }
+    .mini-table th { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    @media (max-width: 900px) {
+      .split { grid-template-columns: 1fr; }
+      .issue-body td:first-child { width: 130px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <h1>KRAKEN DEEP AUDIT</h1>
+      <p>Professional ranking-readiness audit for Kiora CosmoTech, based on live crawl evidence from <strong>https://kiora-cosmotech-website.vercel.app</strong> and implementation-level source code review from the Next.js repository.</p>
+      <p>This dashboard focuses on actionable SEO, GEO, AEO, conversion, trust, and performance issues. It does not promise rankings; it prioritizes the highest-leverage controllable fixes.</p>
+      <div class="meta">
+        <span>Audit date: 2026-06-16</span>
+        <span>Pages crawled: 68</span>
+        <span>Framework: Next.js 15 App Router</span>
+        <span>Build status: Pass</span>
+        <span>Live/source drift: No major drift detected</span>
+      </div>
+    </section>
+
+    <h2 class="section-title">Overall Score</h2>
+    <div class="card">
+      <div class="score">
+        <div>
+          <div style="font-size:0.86rem;color:#5f6b76;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Overall SEO Score</div>
+          <strong>77 / 100</strong>
+        </div>
+        <div style="max-width:520px;color:#42505c;line-height:1.7;">
+          Strong content and crawlability foundation, but business-critical conversion tracking, lead capture, trust pages, and schema consistency still need work.
+        </div>
+      </div>
+      <div class="bar"><span style="width:77%"></span></div>
+    </div>
+
+    <div class="grid score-grid">
+      <div class="card"><div class="score"><span>Technical SEO</span><strong>84</strong></div><div class="bar"><span style="width:84%"></span></div></div>
+      <div class="card"><div class="score"><span>Crawlability &amp; Indexability</span><strong>88</strong></div><div class="bar"><span style="width:88%"></span></div></div>
+      <div class="card"><div class="score"><span>On-Page SEO</span><strong>82</strong></div><div class="bar"><span style="width:82%"></span></div></div>
+      <div class="card"><div class="score"><span>Content &amp; Intent</span><strong>84</strong></div><div class="bar"><span style="width:84%"></span></div></div>
+      <div class="card"><div class="score"><span>EEAT &amp; Trust</span><strong>64</strong></div><div class="bar"><span style="width:64%"></span></div></div>
+      <div class="card"><div class="score"><span>Schema</span><strong>76</strong></div><div class="bar"><span style="width:76%"></span></div></div>
+      <div class="card"><div class="score"><span>Core Web Vitals</span><strong>78</strong></div><div class="bar"><span style="width:78%"></span></div></div>
+      <div class="card"><div class="score"><span>Mobile SEO</span><strong>82</strong></div><div class="bar"><span style="width:82%"></span></div></div>
+      <div class="card"><div class="score"><span>Internal Linking</span><strong>86</strong></div><div class="bar"><span style="width:86%"></span></div></div>
+      <div class="card"><div class="score"><span>AI / GEO / AEO</span><strong>84</strong></div><div class="bar"><span style="width:84%"></span></div></div>
+      <div class="card"><div class="score"><span>Conversion SEO</span><strong>49</strong></div><div class="bar"><span style="width:49%"></span></div></div>
+      <div class="card"><div class="score"><span>Analytics &amp; Tracking</span><strong>12</strong></div><div class="bar"><span style="width:12%"></span></div></div>
+    </div>
+
+    <h2 class="section-title">Live vs Source Comparison</h2>
+    <div class="split">
+      <div class="card">
+        <h3 style="margin-top:0;">Matched</h3>
+        <table class="mini-table">
+          <tr><th>Area</th><th>Finding</th></tr>
+          <tr><td>Deployment sync</td><td>No major live/source drift detected on sampled commercial pages. Recent metadata and sitemap changes are live.</td></tr>
+          <tr><td>Routing</td><td>68 sitemap URLs align with source route generation totals: 29 static + 13 city + 26 blog.</td></tr>
+          <tr><td>Canonical logic</td><td>Live canonicals match source logic and resolve to the configured `siteConfig.url`.</td></tr>
+          <tr><td>Schema baseline</td><td>Root layout consistently injects `Organization` + `WebSite` schema across pages.</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;">Mismatches / Risks</h3>
+        <table class="mini-table">
+          <tr><th>Area</th><th>Risk</th></tr>
+          <tr><td>Domain strategy</td><td>Live site uses Vercel subdomain as canonical host. If a branded domain is intended, source and live must both be switched.</td></tr>
+          <tr><td>Schema consistency</td><td>Custom product pages use richer schema than shared-renderer product pages, creating uneven commercial page coverage.</td></tr>
+          <tr><td>Hair serum schema</td><td>Live `/hair-serum-manufacturer` still emits two `Service` schemas because source still includes both generic and detailed service schema objects.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h2 class="section-title">Issue Explorer</h2>
+    <div class="filters">
+      <button class="active" data-filter="All">All</button>
+      <button data-filter="Critical">Critical</button>
+      <button data-filter="High">High</button>
+      <button data-filter="Medium">Medium</button>
+      <button data-filter="Low">Low</button>
+    </div>
+
+    <div class="issues">
+      <details class="issue" data-severity="Critical" open>
+        <summary>
+          <div class="issue-top">
+            <strong>Quote form does not capture leads</strong>
+            <div class="badges">
+              <span class="badge Critical">Critical</span>
+              <span class="badge">Confidence: High</span>
+              <span class="badge">Priority: P1</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">Live traffic can convert visually, but the current form does not send submissions anywhere.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td>URL: <code>/request-quote</code><br>File: <code>components/QuoteForm.tsx</code></td></tr>
+            <tr><td>Evidence</td><td><code>handleSubmit</code> only calls <code>event.preventDefault()</code> and <code>setSubmitted(true)</code>. No network request, email integration, server action, webhook, CRM, or thank-you route exists.</td></tr>
+            <tr><td>Why it matters</td><td>This is the highest-impact commercial failure on the site. SEO can generate traffic, but the primary lead form is currently a UI illusion.</td></tr>
+            <tr><td>Exact fix</td><td>Replace the local-only submit handler with a real submission path: server action, API route, CRM webhook, email delivery, or managed form service. Add success + failure states and event tracking.</td></tr>
+            <tr><td>Owner</td><td>Developer</td></tr>
+            <tr><td>Effort</td><td>Medium</td></tr>
+            <tr><td>Testing</td><td>Submit a test enquiry, verify delivery in the target system, verify error handling, and confirm event tracking fires.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="issue" data-severity="Critical">
+        <summary>
+          <div class="issue-top">
+            <strong>No analytics or conversion tracking detected</strong>
+            <div class="badges">
+              <span class="badge Critical">Critical</span>
+              <span class="badge">Confidence: High</span>
+              <span class="badge">Priority: P1</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">There is no measurable SEO attribution, CTA tracking, or funnel reporting in the source.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td>Whole application<br>Files reviewed: <code>app/layout.tsx</code>, <code>app</code>, <code>components</code>, <code>lib</code></td></tr>
+            <tr><td>Evidence</td><td>No GA4, GTM, Meta Pixel, Clarity, Plausible, Umami, Search Console verification hooks, or event instrumentation patterns were found in source code.</td></tr>
+            <tr><td>Why it matters</td><td>You cannot measure SEO impact, quote completions, WhatsApp clicks, phone clicks, or which pages generate enquiries.</td></tr>
+            <tr><td>Exact fix</td><td>Add GA4 directly or via GTM. Track quote submission, WhatsApp CTA clicks, phone CTA clicks, and key commercial page CTA interactions. Add Search Console verification if not already handled elsewhere.</td></tr>
+            <tr><td>Owner</td><td>Developer + SEO</td></tr>
+            <tr><td>Effort</td><td>Medium</td></tr>
+            <tr><td>Testing</td><td>Use GA4 DebugView or GTM preview. Trigger every primary CTA from mobile and desktop.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="issue" data-severity="High">
+        <summary>
+          <div class="issue-top">
+            <strong>Canonical, robots, and sitemap host use the Vercel subdomain</strong>
+            <div class="badges">
+              <span class="badge High">High</span>
+              <span class="badge">Confidence: High</span>
+              <span class="badge">Priority: P1</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">This is correct only if the Vercel subdomain is the intended ranking domain.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td>Live URLs across the site<br>Files: <code>data/siteConfig.ts</code>, <code>app/robots.ts</code>, <code>lib/seo.ts</code></td></tr>
+            <tr><td>Evidence</td><td>Live canonical, robots host, and sitemap URLs all resolve to <code>https://kiora-cosmotech-website.vercel.app</code>. Source default site URL is the same.</td></tr>
+            <tr><td>Why it matters</td><td>If a branded production domain exists or will exist, leaving the Vercel subdomain canonical can split authority and delay domain consolidation.</td></tr>
+            <tr><td>Exact fix</td><td>Set <code>NEXT_PUBLIC_SITE_URL</code> to the final production domain and redeploy. Recheck canonicals, robots, sitemap, Open Graph absolute URLs, and JSON-LD URLs.</td></tr>
+            <tr><td>Owner</td><td>Developer + SEO</td></tr>
+            <tr><td>Effort</td><td>Low</td></tr>
+            <tr><td>Testing</td><td>View-source on homepage and three commercial pages; verify canonical host, sitemap host, and structured-data URLs.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="issue" data-severity="High">
+        <summary>
+          <div class="issue-top">
+            <strong>Legal and trust policy pages are missing</strong>
+            <div class="badges">
+              <span class="badge High">High</span>
+              <span class="badge">Confidence: High</span>
+              <span class="badge">Priority: P1</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">The site has strong commercial pages but weak trust-floor support for forms and brand legitimacy.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td>Whole site; especially <code>/request-quote</code> and footer</td></tr>
+            <tr><td>Evidence</td><td>No crawlable <code>privacy</code>, <code>terms</code>, <code>policy</code>, <code>refund</code>, or <code>shipping</code> pages/routes were detected in source or navigation.</td></tr>
+            <tr><td>Why it matters</td><td>For B2B lead generation, missing policy pages reduce trust, weaken EEAT, and make form conversion friction higher.</td></tr>
+            <tr><td>Exact fix</td><td>Add at least Privacy Policy and Terms &amp; Conditions pages, link them in the footer, and mention data handling near the quote form.</td></tr>
+            <tr><td>Owner</td><td>Business + Content + Developer</td></tr>
+            <tr><td>Effort</td><td>Medium</td></tr>
+            <tr><td>Testing</td><td>Verify links in footer, form-adjacent trust copy, crawlability, and inclusion in sitemap if intended.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="issue" data-severity="High">
+        <summary>
+          <div class="issue-top">
+            <strong>Schema coverage is inconsistent between custom and shared commercial pages</strong>
+            <div class="badges">
+              <span class="badge High">High</span>
+              <span class="badge">Confidence: High</span>
+              <span class="badge">Priority: P2</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">Some product pages get richer `Manufacturer` and `WebPage` semantics, while templated product/service pages do not.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td>Files: <code>components/ProductPageRenderer.tsx</code>, <code>components/ContentPageRenderer.tsx</code><br>URLs likely affected: <code>/moisturizer-manufacturer</code>, <code>/cream-manufacturer</code>, <code>/shampoo-manufacturer</code>, and service pages rendered by the shared template.</td></tr>
+            <tr><td>Evidence</td><td>The shared renderer outputs only <code>BreadcrumbList + Service + FAQ</code>, while custom pages such as face wash and sunscreen emit richer page-specific schema.</td></tr>
+            <tr><td>Why it matters</td><td>Commercial pages should have consistent entity clarity. Uneven schema weakens large-scale semantic coverage across the site.</td></tr>
+            <tr><td>Exact fix</td><td>Extend shared renderers to inject <code>manufacturerSchema()</code> and a page-level <code>WebPage</code> object, while keeping visible content alignment intact.</td></tr>
+            <tr><td>Owner</td><td>Developer</td></tr>
+            <tr><td>Effort</td><td>Low-Medium</td></tr>
+            <tr><td>Testing</td><td>Validate live JSON-LD types on at least five shared-renderer commercial pages before and after the change.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="issue" data-severity="High">
+        <summary>
+          <div class="issue-top">
+            <strong>Duplicate Service schema remains on the hair serum page</strong>
+            <div class="badges">
+              <span class="badge High">High</span>
+              <span class="badge">Confidence: High</span>
+              <span class="badge">Priority: P2</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">The page currently emits both a generic and a detailed `Service` object.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td>URL: <code>/hair-serum-manufacturer</code><br>File: <code>app/hair-serum-manufacturer/page.tsx</code></td></tr>
+            <tr><td>Evidence</td><td>Source still includes both <code>serviceSchema("Hair Serum Manufacturing"...)</code> and <code>detailedServiceSchema</code>. Live JSON-LD crawl shows two <code>Service</code> types for this URL.</td></tr>
+            <tr><td>Why it matters</td><td>Duplicate service semantics are not catastrophic, but they create unnecessary redundancy and can muddy structured-data intent.</td></tr>
+            <tr><td>Exact fix</td><td>Remove the generic <code>serviceSchema(...)</code> call and keep the detailed service object, matching the newer pattern used on other custom product pages.</td></tr>
+            <tr><td>Owner</td><td>Developer</td></tr>
+            <tr><td>Effort</td><td>Low</td></tr>
+            <tr><td>Testing</td><td>Inspect live JSON-LD after deploy and confirm only one <code>Service</code> object remains.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="issue" data-severity="High">
+        <summary>
+          <div class="issue-top">
+            <strong>Hair Serum page title and meta description are too long</strong>
+            <div class="badges">
+              <span class="badge High">High</span>
+              <span class="badge">Confidence: High</span>
+              <span class="badge">Priority: P2</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">This page is likely to truncate heavily in SERPs.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td>URL: <code>/hair-serum-manufacturer</code><br>File: <code>app/hair-serum-manufacturer/page.tsx</code></td></tr>
+            <tr><td>Evidence</td><td>Live title length: <strong>92</strong>. Live meta description length: <strong>274</strong>.</td></tr>
+            <tr><td>Why it matters</td><td>Overlong titles and descriptions dilute message clarity, reduce CTR quality, and look less polished in search snippets.</td></tr>
+            <tr><td>Exact fix</td><td>Recommended title: <code>Hair Serum Manufacturer in India | Private Label Hair Serums</code><br>Recommended meta description: <code>Private label and third-party hair serum manufacturing in India for scalp, shine, peptide, botanical and custom hair serum concepts.</code></td></tr>
+            <tr><td>Owner</td><td>SEO + Developer</td></tr>
+            <tr><td>Effort</td><td>Low</td></tr>
+            <tr><td>Testing</td><td>View source and crawl again to confirm shorter metadata is rendered live.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="issue" data-severity="Medium">
+        <summary>
+          <div class="issue-top">
+            <strong>Several commercial and blog pages still have long meta descriptions</strong>
+            <div class="badges">
+              <span class="badge Medium">Medium</span>
+              <span class="badge">Confidence: High</span>
+              <span class="badge">Priority: P2</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">This is a snippet-quality issue rather than an indexability blocker.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td>URLs including <code>/face-wash-manufacturer</code> (172), <code>/sunscreen-manufacturer</code> (165), <code>/third-party-cosmetic-manufacturing-india</code> (165), <code>/quality-and-compliance</code> (148), and several blog posts between 151–178 characters.</td></tr>
+            <tr><td>Evidence</td><td>Live crawl across all 68 sitemap URLs flagged multiple descriptions longer than the preferred snippet range.</td></tr>
+            <tr><td>Why it matters</td><td>Descriptions are not direct ranking factors, but good snippet control affects click quality and search presentation.</td></tr>
+            <tr><td>Exact fix</td><td>Trim descriptions to roughly 120–155 characters while keeping the primary commercial keyword early and the value proposition clear.</td></tr>
+            <tr><td>Owner</td><td>SEO + Content + Developer</td></tr>
+            <tr><td>Effort</td><td>Low</td></tr>
+            <tr><td>Testing</td><td>Recrawl live metadata after deployment and compare lengths.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="issue" data-severity="Medium">
+        <summary>
+          <div class="issue-top">
+            <strong>Blog articles show author/date but no author bio, editorial policy, or evidence block</strong>
+            <div class="badges">
+              <span class="badge Medium">Medium</span>
+              <span class="badge">Confidence: High</span>
+              <span class="badge">Priority: P3</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">The blog is becoming strong topically, but EEAT signals are still lightweight.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td>URLs: all blog detail pages<br>File: <code>app/blog/[slug]/page.tsx</code></td></tr>
+            <tr><td>Evidence</td><td>The template displays reading time, author name, and updated date, but no author bio section, editorial method, or factual sourcing note.</td></tr>
+            <tr><td>Why it matters</td><td>For manufacturing guidance content, stronger transparency helps credibility and AI-answer trustworthiness.</td></tr>
+            <tr><td>Exact fix</td><td>Add a reusable author/editorial note below article content: who prepared the guidance, what practical experience it reflects, and a brief statement about claim discipline and manufacturing-context review.</td></tr>
+            <tr><td>Owner</td><td>Content + Developer</td></tr>
+            <tr><td>Effort</td><td>Low-Medium</td></tr>
+            <tr><td>Testing</td><td>Verify the bio block appears on all article pages and matches visible content used in structured data.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="issue" data-severity="Medium">
+        <summary>
+          <div class="issue-top">
+            <strong>No dedicated thank-you page or tracked success step for lead generation</strong>
+            <div class="badges">
+              <span class="badge Medium">Medium</span>
+              <span class="badge">Confidence: High</span>
+              <span class="badge">Priority: P2</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">Even after form capture is fixed, the current UX has no clean conversion confirmation flow.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td>URL: <code>/request-quote</code><br>File: <code>components/QuoteForm.tsx</code></td></tr>
+            <tr><td>Evidence</td><td>Current success state is an inline message only. There is no dedicated thank-you route, no event tracking, and no next-step CTA sequencing.</td></tr>
+            <tr><td>Why it matters</td><td>Thank-you pages make conversion measurement, remarketing, and handoff trust much easier.</td></tr>
+            <tr><td>Exact fix</td><td>Add a thank-you page or structured success state with analytics event firing, next-step messaging, and alternate contact CTA.</td></tr>
+            <tr><td>Owner</td><td>Developer + CRO</td></tr>
+            <tr><td>Effort</td><td>Medium</td></tr>
+            <tr><td>Testing</td><td>Complete a test submission and verify redirect/state, event, and user guidance.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="issue" data-severity="Medium">
+        <summary>
+          <div class="issue-top">
+            <strong>Long-form product pages are HTML-heavy</strong>
+            <div class="badges">
+              <span class="badge Medium">Medium</span>
+              <span class="badge">Confidence: Medium</span>
+              <span class="badge">Priority: P3</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">The pages are content-rich, but the static HTML payload is large for lead-gen landing pages.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td><code>/face-wash-manufacturer</code> (~401 KB HTML), <code>/face-serum-manufacturer</code> (~371 KB), <code>/sunscreen-manufacturer</code> (~423 KB), <code>/hair-serum-manufacturer</code> (~378 KB)</td></tr>
+            <tr><td>Evidence</td><td>HEAD responses from Vercel show large prerendered HTML payloads. These pages include many cards, chips, FAQs, and long repeated content blocks.</td></tr>
+            <tr><td>Why it matters</td><td>Heavy HTML can slow first render, parsing, and mobile responsiveness, even when image assets are optimized.</td></tr>
+            <tr><td>Exact fix</td><td>Keep core commercial sections visible, but collapse secondary keyword banks and lower-priority concept clusters into progressive disclosure (`details`, tabs, or filtered panels) without hiding important crawlable text.</td></tr>
+            <tr><td>Owner</td><td>Developer + SEO + Content</td></tr>
+            <tr><td>Effort</td><td>Medium</td></tr>
+            <tr><td>Testing</td><td>Compare HTML payload size, Lighthouse mobile performance, and engagement after the structural trim.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="issue" data-severity="Medium">
+        <summary>
+          <div class="issue-top">
+            <strong>Trust stack is still thin on key commercial pages</strong>
+            <div class="badges">
+              <span class="badge Medium">Medium</span>
+              <span class="badge">Confidence: Medium</span>
+              <span class="badge">Priority: P3</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">The site is clear and polished, but it still lacks deeper proof elements for cautious B2B buyers.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td>Homepage, About, Private Label, Request Quote, and major product pages</td></tr>
+            <tr><td>Evidence</td><td>The site includes company name, email, phone, and city coverage, but does not surface founder profile, facility/process visuals, documentation workflow proof, case examples, or a clear “why trust this manufacturer” section near high-intent CTAs.</td></tr>
+            <tr><td>Why it matters</td><td>Trust-sensitive niches benefit from visible proof, even when avoiding unverified certification claims.</td></tr>
+            <tr><td>Exact fix</td><td>Add real-photo process sections, documentation workflow summaries, “who we work with” proof, and a transparent manufacturing discussion block without inventing certifications.</td></tr>
+            <tr><td>Owner</td><td>Content + Design + Business</td></tr>
+            <tr><td>Effort</td><td>Medium</td></tr>
+            <tr><td>Testing</td><td>Track quote-page conversion rate and CTA click-through before and after trust-block rollout.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="issue" data-severity="Low">
+        <summary>
+          <div class="issue-top">
+            <strong>Linting is not configured as a non-interactive quality gate</strong>
+            <div class="badges">
+              <span class="badge Low">Low</span>
+              <span class="badge">Confidence: High</span>
+              <span class="badge">Priority: P4</span>
+            </div>
+          </div>
+          <div style="color:#54616c;">This is an engineering governance issue rather than a direct ranking blocker.</div>
+        </summary>
+        <div class="issue-body">
+          <table>
+            <tr><td>Affected</td><td>Repo tooling<br>Files: <code>package.json</code>, ESLint config files</td></tr>
+            <tr><td>Evidence</td><td><code>next lint</code> triggers the interactive setup prompt instead of running a ready lint config. Build passes, but lint is not CI-ready.</td></tr>
+            <tr><td>Why it matters</td><td>SEO regressions often sneak in through metadata, heading, and link changes. A stable lint/config baseline helps catch them earlier.</td></tr>
+            <tr><td>Exact fix</td><td>Adopt a committed ESLint configuration and switch to non-interactive lint execution in CI.</td></tr>
+            <tr><td>Owner</td><td>Developer</td></tr>
+            <tr><td>Effort</td><td>Low</td></tr>
+            <tr><td>Testing</td><td>Run lint in CI and locally without prompts.</td></tr>
+          </table>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('[data-filter]');
+    const issues = document.querySelectorAll('.issue');
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        buttons.forEach((b) => b.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        issues.forEach((issue) => {
+          issue.style.display = filter === 'All' || issue.dataset.severity === filter ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

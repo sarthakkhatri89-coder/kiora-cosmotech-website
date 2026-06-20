@@ -102,6 +102,24 @@ export const serviceSchema = (name: string, description: string, path: string) =
   url: absoluteUrl(siteConfig.url, path)
 });
 
+export const webPageSchema = (name: string, description: string, path: string) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name,
+  description,
+  url: absoluteUrl(siteConfig.url, path),
+  isPartOf: {
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url
+  },
+  about: {
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url
+  }
+});
+
 export const productSchema = (name: string, description: string, path: string) => ({
   "@context": "https://schema.org",
   "@type": "Product",

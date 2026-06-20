@@ -250,18 +250,18 @@ export const productPages: ProductPage[] = [
     category: "Haircare",
     title: "Hair Serum Manufacturer in India | Private Label Hair Serums",
     description:
-      "Hair serum manufacturing for private label haircare brands with shine, frizz-control, lightweight and salon-finish formats.",
+      "Hair serum manufacturing for private label haircare brands with scalp serum, hair growth support, peptide, anti-breakage and premium botanical concept options.",
     h1: "Hair Serum Manufacturer",
     intro:
-      "Kiora CosmoTech manufactures hair serum products for brands looking for premium finishing products, compact packaging and modern haircare positioning.",
+      "Kiora CosmoTech manufactures hair serum products for brands looking for scalp-care positioning, peptide-led concepts, botanical directions and premium haircare packaging.",
     directAnswer:
-      "A hair serum manufacturer produces leave-on hair finishing products designed for shine, smooth feel, frizz-control positioning and retail-ready packaging.",
-    formulaOptions: ["Shine serum", "Frizz-control-positioned", "Lightweight serum", "Argan-inspired", "Keratin-inspired"],
-    packagingOptions: "30 ml / 50 ml / 100 ml pump bottles and serum bottles",
+      "A hair serum manufacturer develops leave-on scalp and hair serum products for private label, third party and contract manufacturing using active-led, botanical or salon-positioned concept directions.",
+    formulaOptions: ["Scalp serum", "Peptide hair serum", "Hair growth support serum", "Anti-breakage serum", "Botanical hair serum"],
+    packagingOptions: "30 ml / 50 ml / 100 ml dropper bottles, pump bottles and serum bottles",
     moq: "500 / 1,000 / 2,000 pcs depending on packaging",
-    customization: "Sensory feel, fragrance, bottle style, label and outer box",
+    customization: "Active direction, scalp-care positioning, fragrance, bottle style, label and outer box",
     documentation: "Product specification and label declaration inputs",
-    suitableFor: "Salons, haircare startups, influencers and D2C brands",
+    suitableFor: "Haircare brands, salons, creators, D2C launches and active-led scalp-care lines",
     qualityChecks: ["Appearance review", "Packaging pump check", "Fill weight check", "Batch documentation"],
     related: ["shampoo-manufacturer", "hair-mask-manufacturer", "haircare-manufacturer-india"],
     faqs: sharedFaqs("Hair Serum")

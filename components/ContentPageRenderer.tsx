@@ -8,8 +8,9 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import QuoteForm from "@/components/QuoteForm";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import SectionHeading from "@/components/SectionHeading";
+import { siteConfig } from "@/data/siteConfig";
 import type { ContentPage } from "@/data/services";
-import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, manufacturerSchema, serviceSchema, webPageSchema } from "@/lib/schema";
 
 export default function ContentPageRenderer({ page }: { page: ContentPage }) {
   const path = `/${page.slug}`;
@@ -25,7 +26,15 @@ export default function ContentPageRenderer({ page }: { page: ContentPage }) {
 
   return (
     <>
-      <SchemaJsonLd data={[breadcrumbSchema(crumbs), serviceSchema(page.h1, page.description, path), ...(page.faqs.length ? [faqSchema(page.faqs)] : [])]} />
+      <SchemaJsonLd
+        data={[
+          manufacturerSchema(siteConfig.name, path),
+          breadcrumbSchema(crumbs),
+          ...(page.kind !== "legal" ? [serviceSchema(page.h1, page.description, path)] : []),
+          webPageSchema(page.title, page.description, path),
+          ...(page.faqs.length ? [faqSchema(page.faqs)] : [])
+        ]}
+      />
       <Breadcrumbs crumbs={crumbs} />
       <PageHero eyebrow={page.eyebrow} title={page.h1} intro={page.intro} />
       <main>
@@ -123,7 +132,7 @@ export default function ContentPageRenderer({ page }: { page: ContentPage }) {
           </section>
         ) : null}
       </main>
-      <CTASection />
+      {page.kind !== "legal" ? <CTASection /> : null}
     </>
   );
 }

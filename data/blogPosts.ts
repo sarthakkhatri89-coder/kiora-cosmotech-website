@@ -2607,6 +2607,96 @@ enrichBlogPost("cosmetic-packaging-options-startups", {
   packagingExamples: "tubes, jars, bottles, pumps, airless packs, droppers, labels, mono cartons and outer cartons"
 });
 
+updateBlogPost("how-to-start-skincare-brand-india", {
+  links: [
+    { label: "Private Label Cosmetics", href: "/private-label-cosmetics-manufacturer-india" },
+    { label: "Skincare Manufacturer", href: "/skincare-manufacturer-india" },
+    { label: "Startup Cosmetic Brand Support", href: "/startup-cosmetic-brand-support" },
+    { label: "Request Quote", href: "/request-quote" }
+  ]
+});
+
+updateBlogPost("private-label-vs-third-party-cosmetic-manufacturing", {
+  links: [
+    { label: "Private Label Cosmetics", href: "/private-label-cosmetics-manufacturer-india" },
+    { label: "Third Party Manufacturing", href: "/third-party-cosmetic-manufacturing-india" },
+    { label: "Contract Manufacturing", href: "/contract-cosmetic-manufacturer-india" },
+    { label: "Request Quote", href: "/request-quote" }
+  ]
+});
+
+updateBlogPost("cost-of-starting-cosmetic-brand-india", {
+  links: [
+    { label: "Startup Cosmetic Brand Support", href: "/startup-cosmetic-brand-support" },
+    { label: "Packaging Options", href: "/packaging-options" },
+    { label: "Private Label Cosmetics", href: "/private-label-cosmetics-manufacturer-india" },
+    { label: "Request Quote", href: "/request-quote" }
+  ]
+});
+
+updateBlogPost("moq-in-cosmetic-manufacturing", {
+  links: [
+    { label: "Startup Cosmetic Brand Support", href: "/startup-cosmetic-brand-support" },
+    { label: "Private Label Cosmetics", href: "/private-label-cosmetics-manufacturer-india" },
+    { label: "Third Party Manufacturing", href: "/third-party-cosmetic-manufacturing-india" },
+    { label: "Request Quote", href: "/request-quote" }
+  ]
+});
+
+updateBlogPost("how-to-choose-cosmetic-manufacturer-india", {
+  links: [
+    { label: "Private Label Cosmetics", href: "/private-label-cosmetics-manufacturer-india" },
+    { label: "Third Party Manufacturing", href: "/third-party-cosmetic-manufacturing-india" },
+    { label: "Quality and Compliance", href: "/quality-and-compliance" },
+    { label: "Request Quote", href: "/request-quote" }
+  ]
+});
+
+updateBlogPost("face-wash-manufacturing-guide", {
+  links: [
+    { label: "Face Wash Manufacturer", href: "/face-wash-manufacturer" },
+    { label: "Packaging Options", href: "/packaging-options" },
+    { label: "Skincare Manufacturer", href: "/skincare-manufacturer-india" },
+    { label: "Request Quote", href: "/request-quote" }
+  ]
+});
+
+updateBlogPost("face-serum-manufacturing-guide", {
+  links: [
+    { label: "Face Serum Manufacturer", href: "/face-serum-manufacturer" },
+    { label: "Custom Skincare Formulation", href: "/custom-skincare-formulation" },
+    { label: "Packaging Options", href: "/packaging-options" },
+    { label: "Request Quote", href: "/request-quote" }
+  ]
+});
+
+updateBlogPost("sunscreen-manufacturing-guide", {
+  links: [
+    { label: "Sunscreen Manufacturer", href: "/sunscreen-manufacturer" },
+    { label: "Quality and Compliance", href: "/quality-and-compliance" },
+    { label: "Packaging Options", href: "/packaging-options" },
+    { label: "Request Quote", href: "/request-quote" }
+  ]
+});
+
+updateBlogPost("hair-serum-manufacturing-guide", {
+  links: [
+    { label: "Hair Serum Manufacturer", href: "/hair-serum-manufacturer" },
+    { label: "Haircare Manufacturer", href: "/haircare-manufacturer-india" },
+    { label: "Shampoo Manufacturer", href: "/shampoo-manufacturer" },
+    { label: "Request Quote", href: "/request-quote" }
+  ]
+});
+
+updateBlogPost("cosmetic-packaging-options-startups", {
+  links: [
+    { label: "Packaging Options", href: "/packaging-options" },
+    { label: "Face Wash Manufacturer", href: "/face-wash-manufacturer" },
+    { label: "Face Serum Manufacturer", href: "/face-serum-manufacturer" },
+    { label: "Request Quote", href: "/request-quote" }
+  ]
+});
+
 enrichBlogPost("documents-required-cosmetic-manufacturing-india", {
   seoTitle: "Documents for Cosmetic Manufacturing India | Kiora CosmoTech",
   readingTime: "9 min read",

@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KRAKEN Keyword Intelligence Dashboard | Kiora CosmoTech</title>
+  <style>
+    :root {
+      --bg: #f6f2ea;
+      --panel: #fffdf9;
+      --ink: #1f2933;
+      --muted: #667085;
+      --line: #e8ddcf;
+      --accent: #0f766e;
+      --accent-soft: #dff5f1;
+      --warn: #b54708;
+      --high: #b42318;
+      --med: #b54708;
+      --low: #0f766e;
+      --shadow: 0 18px 45px rgba(31, 41, 51, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fbf7ef 0%, #f3eee6 100%);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    .shell {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+    .nav {
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100vh;
+      padding: 28px 22px;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(10px);
+      border-right: 1px solid var(--line);
+    }
+    .nav h1 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+      line-height: 1.3;
+    }
+    .nav p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+    .nav input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      margin-bottom: 16px;
+    }
+    .nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .nav li a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: var(--ink);
+      background: transparent;
+    }
+    .nav li a:hover { background: var(--accent-soft); }
+    .main {
+      padding: 24px;
+    }
+    .sticky-summary {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 14px 18px;
+      background: rgba(255, 253, 249, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+    .summary-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+    .stats {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      margin-bottom: 22px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+    .score {
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 6px 0 4px;
+    }
+    .label {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.35rem;
+    }
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+    }
+    .two {
+      grid-template-columns: 1.3fr 1fr;
+      margin-bottom: 22px;
+    }
+    .list {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 12px 10px;
+      border-top: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .heat {
+      display: grid;
+      gap: 12px;
+    }
+    .heat-row {
+      display: grid;
+      grid-template-columns: 220px repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      align-items: center;
+    }
+    .heat-row span:first-child {
+      font-weight: 700;
+    }
+    .cell {
+      border-radius: 999px;
+      padding: 9px 10px;
+      text-align: center;
+      font-size: 0.88rem;
+      border: 1px solid var(--line);
+    }
+    .strong { background: #def7ec; color: #05603a; }
+    .good { background: #fdf6b2; color: #8e4b10; }
+    .weak { background: #fee4e2; color: #b42318; }
+    .issue {
+      border-left: 5px solid var(--high);
+      padding-left: 14px;
+      margin-bottom: 18px;
+    }
+    .issue.medium { border-left-color: var(--med); }
+    .issue.low { border-left-color: var(--low); }
+    .issue p {
+      margin: 6px 0;
+      color: var(--muted);
+    }
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f6efe7;
+      border: 1px solid var(--line);
+      font-size: 0.84rem;
+    }
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+    [data-filterable] { transition: opacity 0.2s ease; }
+    .hidden-by-search { display: none !important; }
+
+    @media (max-width: 1080px) {
+      .shell { grid-template-columns: 1fr; }
+      .nav {
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .two { grid-template-columns: 1fr; }
+      .heat-row { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .main { padding: 16px; }
+      .stats { grid-template-columns: 1fr; }
+      .sticky-summary { padding: 12px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .shell { display: block; }
+      .nav { display: none; }
+      .sticky-summary { position: static; box-shadow: none; }
+      .card { box-shadow: none; break-inside: avoid; }
+      a { color: #000; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="nav">
+      <h1>KRAKEN Keyword Intelligence</h1>
+      <p>Kiora CosmoTech live + source keyword audit dashboard.</p>
+      <input id="searchBox" type="search" placeholder="Search pages, issues, clusters..." />
+      <ul>
+        <li><a href="#summary">Executive Summary</a></li>
+        <li><a href="#scores">Scorecard</a></li>
+        <li><a href="#issues">Top Issues</a></li>
+        <li><a href="#coverage">Coverage Matrix</a></li>
+        <li><a href="#gaps">Gap Opportunities</a></li>
+        <li><a href="#cannibalization">Cannibalization</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <section id="summary" class="sticky-summary">
+        <div>
+          <strong>Kiora CosmoTech</strong>
+          <div class="label">Live URL: https://kiora-cosmotech-website.vercel.app</div>
+        </div>
+        <div class="summary-badges">
+          <span class="badge">Overall Score: 79/100</span>
+          <span class="badge">Missing Clusters: 15</span>
+          <span class="badge">Cannibalization Risks: 7</span>
+          <span class="badge">Priority Pages: 10</span>
+        </div>
+      </section>
+
+      <section id="scores" class="grid stats">
+        <article class="card"><div class="label">Keyword Relevance</div><div class="score">84</div><div class="label">Strong commercial fit</div></article>
+        <article class="card"><div class="label">Intent Alignment</div><div class="score">82</div><div class="label">Mostly well matched</div></article>
+        <article class="card"><div class="label">Freshness</div><div class="score">75</div><div class="label">Needs sharper modifiers</div></article>
+        <article class="card"><div class="label">Page Mapping</div><div class="score">74</div><div class="label">Overlap needs cleanup</div></article>
+        <article class="card"><div class="label">Cannibalization Control</div><div class="score">66</div><div class="label">Main strategic risk</div></article>
+      </section>
+
+      <section class="grid two">
+        <article class="card" data-filterable>
+          <h2>Top 5 Keyword Problems</h2>
+          <ol class="list">
+            <li>Private label and skincare service hubs still share too much keyword territory.</li>
+            <li>Third-party and contract manufacturing pages overlap semantically.</li>
+            <li>Hair serum live positioning and shared source positioning are misaligned.</li>
+            <li>Packaging, cost, MOQ, and quote-readiness commercial clusters are under-mapped.</li>
+            <li>Some manufacturing-guide blogs still sit too close to product money-page language.</li>
+          </ol>
+        </article>
+        <article class="card" data-filterable>
+          <h2>Fastest Wins</h2>
+          <ol class="list">
+            <li>Differentiate third-party vs contract page headings.</li>
+            <li>Differentiate private label vs skincare hub headings.</li>
+            <li>Strengthen quote page around what a buyer should submit.</li>
+            <li>Align hair serum shared data with the custom live route.</li>
+            <li>Upgrade packaging page with product-specific format sections.</li>
+          </ol>
+        </article>
+      </section>
+
+      <section id="issues" class="card">
+        <h2>Priority Issue Cards</h2>
+        <div class="issue" data-filterable>
+          <h3>High - Service Hub Overlap</h3>
+          <p><strong>Evidence:</strong> Live + Code Verified</p>
+          <p><strong>Affected:</strong> `/private-label-cosmetics-manufacturer-india`, `/skincare-manufacturer-india`, homepage</p>
+          <p><strong>Fix:</strong> Keep private-label page focused on launch model, packaging, customization, and startup suitability. Keep skincare page focused on category architecture and range navigation.</p>
+          <div class="pill-row"><span class="pill">Owner: SEO + Content</span><span class="pill">Effort: Medium</span><span class="pill">Confidence: 5/5</span></div>
+        </div>
+        <div class="issue" data-filterable>
+          <h3>High - Contract vs Third Party Overlap</h3>
+          <p><strong>Evidence:</strong> Verified in Code</p>
+          <p><strong>Affected:</strong> `/third-party-cosmetic-manufacturing-india`, `/contract-cosmetic-manufacturer-india`</p>
+          <p><strong>Fix:</strong> Make third-party page execution-led and contract page operating-model led. Stop treating them as interchangeable in primary headings.</p>
+          <div class="pill-row"><span class="pill">Owner: SEO + Content</span><span class="pill">Effort: Medium</span><span class="pill">Confidence: 5/5</span></div>
+        </div>
+        <div class="issue medium" data-filterable>
+          <h3>Medium - Blog vs Product Intent Drift</h3>
+          <p><strong>Evidence:</strong> Verified in Code</p>
+          <p><strong>Affected:</strong> face wash, face serum, sunscreen, hair serum guide articles</p>
+          <p><strong>Fix:</strong> Keep guides educational and let product pages own the conversion-intent keyword. Add clearer internal links.</p>
+          <div class="pill-row"><span class="pill">Owner: Content</span><span class="pill">Effort: Low</span><span class="pill">Confidence: 4/5</span></div>
+        </div>
+        <div class="issue" data-filterable>
+          <h3>High - Hair Serum Keyword Mismatch in Codebase</h3>
+          <p><strong>Evidence:</strong> Mismatch</p>
+          <p><strong>Affected:</strong> `app/hair-serum-manufacturer/page.tsx`, `data/products.ts`</p>
+          <p><strong>Fix:</strong> Treat the custom live page as source of truth and align shared data language to scalp-growth, peptide, and active-led positioning.</p>
+          <div class="pill-row"><span class="pill">Owner: Dev + Content</span><span class="pill">Effort: Low</span><span class="pill">Confidence: 5/5</span></div>
+        </div>
+      </section>
+
+      <section id="coverage" class="card" style="margin-top:22px;">
+        <h2>Page-to-Keyword Coverage Matrix</h2>
+        <div class="heat">
+          <div class="heat-row">
+            <span>Homepage</span>
+            <span class="cell strong">Master Commercial</span>
+            <span class="cell good">Private Label Support</span>
+            <span class="cell good">Third Party Support</span>
+            <span class="cell weak">Product Exact Match</span>
+          </div>
+          <div class="heat-row">
+            <span>Private Label</span>
+            <span class="cell strong">Private Label Ownership</span>
+            <span class="cell good">Startup Modifier</span>
+            <span class="cell good">Packaging Planning</span>
+            <span class="cell weak">Category Hub Role</span>
+          </div>
+          <div class="heat-row">
+            <span>Skincare Hub</span>
+            <span class="cell strong">Skincare Manufacturer</span>
+            <span class="cell strong">Category Routing</span>
+            <span class="cell good">Private Label Support</span>
+            <span class="cell weak">Intent Boundary</span>
+          </div>
+          <div class="heat-row">
+            <span>Third Party</span>
+            <span class="cell strong">Third Party Ownership</span>
+            <span class="cell good">Operational Language</span>
+            <span class="cell weak">Contract Separation</span>
+            <span class="cell good">Quote Routing</span>
+          </div>
+          <div class="heat-row">
+            <span>Hair Serum</span>
+            <span class="cell strong">Live Product Intent</span>
+            <span class="cell strong">Active-led Keywords</span>
+            <span class="cell weak">Shared Data Match</span>
+            <span class="cell good">Blog Support</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="gaps" class="grid two" style="margin-top:22px;">
+        <article class="card" data-filterable>
+          <h2>Missing Keyword Clusters</h2>
+          <table>
+            <thead>
+              <tr><th>Cluster</th><th>Intent</th><th>Priority</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Cosmetic manufacturing cost in India</td><td>Commercial investigation</td><td>High</td></tr>
+              <tr><td>Low MOQ cosmetic manufacturer in India</td><td>Commercial investigation</td><td>High</td></tr>
+              <tr><td>Packaging by product format</td><td>Commercial investigation</td><td>High</td></tr>
+              <tr><td>Request private label skincare quote</td><td>Transactional</td><td>Medium</td></tr>
+              <tr><td>Manufacturing timeline answer block</td><td>AI-answer</td><td>Medium</td></tr>
+            </tbody>
+          </table>
+        </article>
+        <article class="card" data-filterable>
+          <h2>Priority Pages</h2>
+          <table>
+            <thead>
+              <tr><th>Page</th><th>Main Need</th><th>Priority</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>/private-label-cosmetics-manufacturer-india</td><td>Intent boundary</td><td>High</td></tr>
+              <tr><td>/skincare-manufacturer-india</td><td>Category-hub strengthening</td><td>High</td></tr>
+              <tr><td>/third-party-cosmetic-manufacturing-india</td><td>Contract separation</td><td>High</td></tr>
+              <tr><td>/contract-cosmetic-manufacturer-india</td><td>Semantic differentiation</td><td>High</td></tr>
+              <tr><td>/request-quote</td><td>Quote-readiness keyword support</td><td>High</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+
+      <section id="cannibalization" class="card" style="margin-top:22px;">
+        <h2>Cannibalization Warnings</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Keyword</th>
+              <th>Conflicting Pages</th>
+              <th>Risk</th>
+              <th>Fix Strategy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>private label skincare manufacturer in India</td>
+              <td>/private-label-cosmetics-manufacturer-india<br>/skincare-manufacturer-india</td>
+              <td>Medium</td>
+              <td>Separate business-model intent from category-hub intent.</td>
+            </tr>
+            <tr>
+              <td>contract / third party cosmetic manufacturing in India</td>
+              <td>/third-party-cosmetic-manufacturing-india<br>/contract-cosmetic-manufacturer-india</td>
+              <td>High</td>
+              <td>Differentiate page purpose, language, and anchors.</td>
+            </tr>
+            <tr>
+              <td>hair serum positioning</td>
+              <td>custom live route<br>shared `data/products.ts` text</td>
+              <td>High</td>
+              <td>Sync shared data to active-led scalp-serum narrative.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="roadmap" class="grid two" style="margin-top:22px;">
+        <article class="card" data-filterable>
+          <h2>Implementation Roadmap</h2>
+          <ol class="list">
+            <li><strong>Phase 1:</strong> clarify service hub ownership and fix hair serum source mismatch.</li>
+            <li><strong>Phase 2:</strong> strengthen packaging and quote pages.</li>
+            <li><strong>Phase 3:</strong> route blogs into one primary commercial destination each.</li>
+            <li><strong>Phase 4:</strong> assess selective local and buyer-segment expansion.</li>
+            <li><strong>Phase 5:</strong> re-audit live vs code after implementation.</li>
+          </ol>
+        </article>
+        <article class="card" data-filterable>
+          <h2>Validation Notes</h2>
+          <ul class="list">
+            <li>Live host was intermittently unstable during this session.</li>
+            <li>Core live metadata and H1 checks were confirmed through the saved crawl snapshot and selective live checks.</li>
+            <li>No competitor benchmark data was supplied.</li>
+            <li>No Search Console data was supplied, so no ranking/volume claims are made.</li>
+          </ul>
+        </article>
+      </section>
+
+      <p class="footer-note">Generated for Kiora CosmoTech using the KRAKEN Keyword Intelligence workflow. This dashboard is print-ready and intentionally avoids fabricated traffic or ranking claims.</p>
+    </main>
+  </div>
+
+  <script>
+    const search = document.getElementById('searchBox');
+    const filterables = [...document.querySelectorAll('[data-filterable], table tbody tr, .heat-row')];
+    search.addEventListener('input', () => {
+      const q = search.value.trim().toLowerCase();
+      filterables.forEach((el) => {
+        const text = el.textContent.toLowerCase();
+        el.classList.toggle('hidden-by-search', q && !text.includes(q));
+      });
+    });
+  </script>
+</body>
+</html>

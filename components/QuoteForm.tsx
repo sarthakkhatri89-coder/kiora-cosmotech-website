@@ -121,6 +121,16 @@ export default function QuoteForm() {
         <p className="mt-2">
           If you prefer a faster discussion, share your product category, expected quantity, packaging preference and launch city on WhatsApp or call us directly.
         </p>
+        <p className="mt-3 text-xs leading-6 text-ink/62">
+          By sharing your enquiry, you agree to be contacted regarding your manufacturing requirement. Read our{" "}
+          <Link className="font-semibold text-teal underline decoration-teal/35 underline-offset-4" href="/privacy-policy">
+            Privacy Policy
+          </Link>{" "}
+          and{" "}
+          <Link className="font-semibold text-teal underline decoration-teal/35 underline-offset-4" href="/terms-and-conditions">
+            Terms &amp; Conditions
+          </Link>.
+        </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <a className="focus-ring inline-flex items-center rounded-full bg-charcoal px-5 py-3 font-semibold text-ivory transition hover:bg-teal" href={whatsappHref("Hello Kiora CosmoTech, I want to discuss a cosmetic manufacturing requirement.")}>
             Start Private Label Discussion
