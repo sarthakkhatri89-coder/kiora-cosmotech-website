@@ -8,6 +8,7 @@ import {
   Sparkles,
   Truck
 } from "lucide-react";
+import Image from "next/image";
 import HomeScrollReveal from "@/components/home/HomeScrollReveal";
 
 const processSteps = [
@@ -67,6 +68,21 @@ export default function LiquidProcessJourney() {
             review and dispatch planning for skincare, derma-cosmetic, haircare and personal care
             ranges.
           </p>
+        </HomeScrollReveal>
+
+        <HomeScrollReveal className="mt-10" delay={60}>
+          <div className="site-panel overflow-hidden rounded-[2rem] p-4 sm:p-5">
+            <div className="relative aspect-[16/7] overflow-hidden rounded-[1.5rem]">
+              <Image
+                src="/images/home/manufacturing-process-journey.webp"
+                alt="Cosmetic manufacturing process from formulation to filling and dispatch"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 1180px"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(58,40,48,0.06),rgba(58,40,48,0.18))]" />
+            </div>
+          </div>
         </HomeScrollReveal>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">

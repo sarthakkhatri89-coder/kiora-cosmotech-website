@@ -387,6 +387,18 @@ export default function HomePage() {
 
             <HomeScrollReveal delay={100}>
               <div className="site-panel-soft rounded-[2rem] p-5">
+                <div className="mb-5 overflow-hidden rounded-[1.5rem] border border-white/70 bg-white/68 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)]">
+                  <div className="relative aspect-[16/10]">
+                    <Image
+                      src="/images/home/formulation-packaging-support.webp"
+                      alt="Cosmetic formulation and packaging planning support"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(58,40,48,0.04),rgba(58,40,48,0.16))]" />
+                  </div>
+                </div>
                 <div className="mb-5 rounded-[1.5rem] border border-white/70 bg-white/68 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)]">
                   <p className="site-kicker">Launch planning overview</p>
                   <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.74)]">
@@ -422,6 +434,21 @@ export default function HomePage() {
                 The workflow stays grounded in practical quality conversations, documentation inputs
                 and launch readiness without relying on unverified certification claims.
               </p>
+            </HomeScrollReveal>
+
+            <HomeScrollReveal className="mt-10" delay={60}>
+              <div className="site-panel overflow-hidden rounded-[2rem] p-4 sm:p-5">
+                <div className="relative aspect-[16/7] overflow-hidden rounded-[1.5rem]">
+                  <Image
+                    src="/images/home/quality-focused-manufacturing.webp"
+                    alt="Quality-focused cosmetic manufacturing review and packaging checks"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 1180px"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(58,40,48,0.05),rgba(58,40,48,0.18))]" />
+                </div>
+              </div>
             </HomeScrollReveal>
 
             <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -524,7 +551,7 @@ export default function HomePage() {
                     Kiora CosmoTech will help you understand a practical manufacturing path for your
                     brand.
                   </p>
-                  <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                     <Link
                       className="focus-ring site-button-primary inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-center font-semibold text-ivory transition"
                       href="/request-quote"
@@ -540,25 +567,37 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="mt-8 lg:mt-0">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="rounded-[1.6rem] border border-white/70 bg-white/78 p-5 shadow-[0_18px_40px_rgba(87,60,70,0.06)]">
-                      <p className="site-kicker">Product brief</p>
-                      <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">
-                        Category, launch intent and target quantity help shape the next discussion.
-                      </p>
+                  <div className="site-panel overflow-hidden rounded-[1.8rem] p-4">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-[1.4rem]">
+                      <Image
+                        src="/images/home/launch-readiness-support.webp"
+                        alt="Launch-readiness support for private label cosmetic manufacturing"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 45vw"
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(58,40,48,0.04),rgba(58,40,48,0.16))]" />
                     </div>
-                    <div className="rounded-[1.6rem] border border-white/70 bg-white/78 p-5 shadow-[0_18px_40px_rgba(87,60,70,0.06)]">
-                      <p className="site-kicker">Packaging plan</p>
-                      <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">
-                        Tube, jar, bottle and pump direction can be discussed with cost and channel in mind.
-                      </p>
-                    </div>
-                    <div className="rounded-[1.6rem] border border-white/70 bg-white/78 p-5 shadow-[0_18px_40px_rgba(87,60,70,0.06)] sm:col-span-2">
-                      <p className="site-kicker">Launch readiness</p>
-                      <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">
-                        Formula direction, pack format, quality review and dispatch timing all move
-                        together when the early brief is clear.
-                      </p>
+                    <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                      <div className="rounded-[1.4rem] border border-[rgba(59,43,51,0.08)] bg-white/78 p-4 shadow-[0_14px_32px_rgba(87,60,70,0.06)]">
+                        <p className="site-kicker">Product brief</p>
+                        <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">
+                          Category, launch intent and target quantity help shape the next discussion.
+                        </p>
+                      </div>
+                      <div className="rounded-[1.4rem] border border-[rgba(59,43,51,0.08)] bg-white/78 p-4 shadow-[0_14px_32px_rgba(87,60,70,0.06)]">
+                        <p className="site-kicker">Packaging plan</p>
+                        <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">
+                          Tube, jar, bottle and pump direction can be discussed with cost and channel in mind.
+                        </p>
+                      </div>
+                      <div className="rounded-[1.4rem] border border-[rgba(59,43,51,0.08)] bg-white/78 p-4 shadow-[0_14px_32px_rgba(87,60,70,0.06)] sm:col-span-2">
+                        <p className="site-kicker">Launch readiness</p>
+                        <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">
+                          Formula direction, pack format, quality review and dispatch timing all move
+                          together when the early brief is clear.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
