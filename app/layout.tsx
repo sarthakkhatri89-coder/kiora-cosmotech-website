@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import type { Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
@@ -9,18 +8,6 @@ import { siteConfig } from "@/data/siteConfig";
 import { createMetadata } from "@/lib/seo";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap"
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap"
-});
 
 export const metadata: Metadata = {
   ...createMetadata({
@@ -40,7 +27,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN" className={`${inter.variable} ${playfair.variable}`}>
+    <html
+      lang="en-IN"
+      style={{
+        ["--font-inter" as string]: '"Inter", "Segoe UI", Arial, sans-serif',
+        ["--font-playfair" as string]: '"Iowan Old Style", "Palatino Linotype", Georgia, serif'
+      }}
+    >
       <body>
         <SchemaJsonLd data={[organizationSchema(), websiteSchema()]} />
         <Header />

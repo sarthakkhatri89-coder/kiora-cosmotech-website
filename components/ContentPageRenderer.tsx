@@ -1,5 +1,5 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
 import AnswerBlocks from "@/components/AnswerBlocks";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import CTASection from "@/components/CTASection";
 import FAQAccordion from "@/components/FAQAccordion";
 import InternalLinkGrid from "@/components/InternalLinkGrid";
@@ -32,7 +32,7 @@ export default function ContentPageRenderer({ page }: { page: ContentPage }) {
           breadcrumbSchema(crumbs),
           ...(page.kind !== "legal" ? [serviceSchema(page.h1, page.description, path)] : []),
           webPageSchema(page.title, page.description, path),
-          ...(page.faqs.length ? [faqSchema(page.faqs)] : [])
+          ...(page.faqs.length ? [faqSchema(page.faqs)] : []),
         ]}
       />
       <Breadcrumbs crumbs={crumbs} />
@@ -40,20 +40,22 @@ export default function ContentPageRenderer({ page }: { page: ContentPage }) {
       <main>
         <section className="py-16">
           <div className="container-padded grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-            <div className="rounded-3xl bg-charcoal p-7 text-ivory">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-champagne">Direct answer</p>
+            <div className="site-panel-dark rounded-[1.9rem] p-7 text-ivory">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[rgba(234,180,190,0.9)]">Direct answer</p>
               <h2 className="mt-4 text-2xl font-semibold">{page.directAnswer.question}</h2>
-              <p className="mt-4 leading-8 text-ivory/78">{page.directAnswer.answer}</p>
+              <p className="mt-4 leading-8 text-[rgba(255,238,232,0.72)]">{page.directAnswer.answer}</p>
             </div>
             <div className="grid gap-5">
               {page.sections.map((section) => (
-                <article className="rounded-3xl border border-charcoal/10 bg-ivory p-6 shadow-sm" key={section.heading}>
-                  <h2 className="text-2xl font-semibold text-charcoal">{section.heading}</h2>
-                  <p className="mt-3 leading-8 text-ink/75">{section.body}</p>
+                <article className="site-panel rounded-[1.75rem] p-6" key={section.heading}>
+                  <h2 className="text-2xl font-semibold text-[rgba(52,38,46,0.94)]">{section.heading}</h2>
+                  <p className="mt-3 leading-8 text-[rgba(64,50,58,0.76)]">{section.body}</p>
                   {section.points ? (
                     <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                       {section.points.map((point) => (
-                        <li className="rounded-2xl bg-mist px-4 py-3 text-sm font-semibold text-charcoal" key={point}>{point}</li>
+                        <li className="rounded-2xl bg-[rgba(255,241,236,0.7)] px-4 py-3 text-sm font-semibold text-[rgba(58,44,52,0.82)]" key={point}>
+                          {point}
+                        </li>
                       ))}
                     </ul>
                   ) : null}
@@ -64,7 +66,7 @@ export default function ContentPageRenderer({ page }: { page: ContentPage }) {
         </section>
 
         {page.kind === "service" ? (
-          <section className="section-y bg-mist">
+          <section className="site-band-soft section-y">
             <div className="container-padded">
               <SectionHeading eyebrow="AIO answers" title="Clear Answers for Manufacturing Decisions" />
               <AnswerBlocks />
@@ -97,7 +99,7 @@ export default function ContentPageRenderer({ page }: { page: ContentPage }) {
         ) : null}
 
         {page.slug === "manufacturing-process" ? (
-          <section className="section-y bg-mist">
+          <section className="site-band-soft section-y">
             <div className="container-padded">
               <SectionHeading title="Cosmetic Manufacturing Timeline" text="A clear sequence from product idea to dispatch helps founders make better decisions." />
               <ProcessTimeline />
@@ -106,17 +108,19 @@ export default function ContentPageRenderer({ page }: { page: ContentPage }) {
         ) : null}
 
         {page.slug === "request-quote" ? (
-          <section className="bg-mist py-16">
+          <section className="site-band-soft py-16">
             <div className="container-padded grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
               <div>
                 <SectionHeading eyebrow="Quote form" title="Share Your Requirement" text="Use the form for skincare, derma-cosmetic, haircare or personal care manufacturing enquiries." />
               </div>
-              <QuoteForm />
+              <div className="site-panel rounded-[1.9rem] p-2 sm:p-3">
+                <QuoteForm />
+              </div>
             </div>
           </section>
         ) : null}
 
-        <section className="bg-mist py-16">
+        <section className="site-band-soft py-16">
           <div className="container-padded">
             <SectionHeading eyebrow="Related pages" title="Continue Planning Your Product" />
             <InternalLinkGrid links={page.relatedLinks} />

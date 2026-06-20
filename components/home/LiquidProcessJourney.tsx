@@ -55,16 +55,14 @@ const processSteps = [
 
 export default function LiquidProcessJourney() {
   return (
-    <section className="section-y bg-mist">
+    <section className="site-band-soft section-y">
       <div className="container-padded">
         <HomeScrollReveal className="mx-auto max-w-4xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-teal">
-            Manufacturing process
-          </p>
-          <h2 className="section-title mt-3 font-display font-semibold text-charcoal">
+          <p className="site-kicker">Manufacturing process</p>
+          <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
             The Kiora Manufacturing Journey
           </h2>
-          <p className="mt-5 text-[1rem] leading-8 text-ink/74">
+          <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
             The process stays practical and transparent, from early product thinking to finished pack
             review and dispatch planning for skincare, derma-cosmetic, haircare and personal care
             ranges.
@@ -74,17 +72,17 @@ export default function LiquidProcessJourney() {
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {processSteps.map(({ title, text, icon: Icon }, index) => (
             <HomeScrollReveal delay={index * 55} key={title}>
-              <article className="rounded-[1.8rem] border border-charcoal/8 bg-white/78 p-5 shadow-[0_20px_48px_rgba(23,33,29,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_54px_rgba(23,33,29,0.09)]">
+              <article className="site-panel rounded-[1.8rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_58px_rgba(87,60,70,0.11)]">
                 <div className="flex items-center justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-charcoal text-ivory shadow-sm">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#3a2b35,#9a516b)] text-ivory shadow-[0_14px_28px_rgba(114,63,83,0.18)]">
                     <Icon size={18} aria-hidden="true" />
                   </div>
-                  <span className="text-xs font-semibold uppercase tracking-[0.18em] text-ink/48">
+                  <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgba(82,63,72,0.48)]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="mt-5 text-xl font-semibold text-charcoal">{title}</h3>
-                <p className="mt-3 text-sm leading-7 text-ink/72">{text}</p>
+                <h3 className="mt-5 text-xl font-semibold text-[rgba(52,38,46,0.94)]">{title}</h3>
+                <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">{text}</p>
               </article>
             </HomeScrollReveal>
           ))}

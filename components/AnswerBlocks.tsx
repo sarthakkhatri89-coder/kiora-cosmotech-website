@@ -30,9 +30,9 @@ export default function AnswerBlocks() {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
       {answers.map((item) => (
-        <article className="rounded-3xl border border-charcoal/10 bg-ivory p-5 shadow-sm" key={item.question}>
-          <h3 className="text-base font-semibold leading-6 text-charcoal">{item.question}</h3>
-          <p className="mt-3 text-sm leading-6 text-ink/72">{item.answer}</p>
+        <article className="site-panel rounded-[1.6rem] p-5" key={item.question}>
+          <h3 className="text-base font-semibold leading-6 text-[rgba(52,38,46,0.94)]">{item.question}</h3>
+          <p className="mt-3 text-sm leading-6 text-[rgba(64,50,58,0.72)]">{item.answer}</p>
         </article>
       ))}
     </div>

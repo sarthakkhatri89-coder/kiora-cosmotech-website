@@ -611,7 +611,7 @@ export default function Page() {
           }
           actions={
             <>
-              <Link className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-teal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-charcoal sm:min-w-[250px]" href="/request-quote">
+              <Link className="focus-ring site-button-primary inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-center font-semibold text-ivory transition sm:min-w-[250px]" href="/request-quote">
                 Request Face Serum Manufacturing Quote <ArrowRight size={18} aria-hidden="true" />
               </Link>
               <a className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-charcoal/12 bg-white/84 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-white sm:min-w-[220px]" href="#face-serum-concepts">
@@ -628,9 +628,9 @@ export default function Page() {
           titleClassName="font-display text-[clamp(2.35rem,9vw,6rem)] font-semibold leading-[0.94] text-charcoal"
         />
 
-        <section className="section-y bg-mist">
+        <section className="site-band-soft section-y">
           <div className="container-padded grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-            <article className="rounded-[1.6rem] bg-charcoal p-5 text-ivory shadow-sm sm:rounded-3xl sm:p-7">
+            <article className="site-panel-dark rounded-[1.6rem] p-5 text-ivory shadow-sm sm:rounded-3xl sm:p-7">
               <h2 className="text-[1.8rem] font-semibold leading-tight sm:text-3xl">Private Label Face Serum Manufacturing for Modern Skincare Brands</h2>
               <p className="mt-4 text-[0.98rem] leading-7 text-ivory/78 md:leading-8">
                 Kiora CosmoTech helps skincare brands develop premium face serum products based on trending cosmetic actives, derma-care ingredients, branded ingredient positioning, peptides, antioxidants, botanicals, hydration systems, skin barrier support and modern cosmeceutical concepts.
@@ -642,7 +642,7 @@ export default function Page() {
                 The emphasis stays on premium B2B outcomes: target audience fit, ingredient positioning, packaging style, target price, compliant claim language, batch planning and the broader serum architecture needed for modern skincare brand building in India.
               </p>
             </article>
-            <article className="rounded-[1.6rem] border border-charcoal/10 bg-ivory p-5 shadow-sm sm:rounded-3xl sm:p-7">
+            <article className="site-panel rounded-[1.6rem] p-5 shadow-sm sm:rounded-3xl sm:p-7">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal">Direct answer</p>
               <h2 className="mt-3 text-[1.8rem] font-semibold leading-tight text-charcoal sm:text-3xl">Face serum manufacturing for premium skin-care brand growth</h2>
               <p className="mt-4 text-[0.98rem] leading-7 text-ink/74 md:leading-8">
@@ -730,7 +730,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="section-y bg-mist">
+        <section className="site-band-soft section-y">
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal">Product grouping</p>
@@ -779,7 +779,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="section-y bg-charcoal text-ivory">
+        <section className="section-y text-ivory" style={{ background: "linear-gradient(160deg, rgba(41,30,37,1) 0%, rgba(31,28,31,1) 48%, rgba(46,31,39,1) 100%)" }}>
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-champagne">Why Kiora</p>
@@ -825,7 +825,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="section-y bg-mist">
+        <section className="site-band-soft section-y">
           <div className="container-padded">
             <div className="rounded-[1.8rem] border border-charcoal/10 bg-ivory p-5 shadow-sm sm:rounded-[2rem] sm:p-7">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal">Claim safety</p>
@@ -853,7 +853,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="section-y bg-charcoal text-ivory">
+        <section className="section-y text-ivory" style={{ background: "linear-gradient(160deg, rgba(41,30,37,1) 0%, rgba(31,28,31,1) 48%, rgba(46,31,39,1) 100%)" }}>
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-champagne">FAQ</p>
@@ -867,7 +867,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="section-y bg-mist">
+        <section className="site-band-soft section-y">
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal">Related product categories</p>
@@ -895,7 +895,7 @@ export default function Page() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-3 lg:items-end">
-                  <Link className="focus-ring inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-charcoal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-teal lg:max-w-[320px]" href="/request-quote">
+                  <Link className="focus-ring site-button-primary inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-center font-semibold text-ivory transition lg:max-w-[320px]" href="/request-quote">
                     Request Manufacturing Quote <ArrowRight size={18} aria-hidden="true" />
                   </Link>
                   <a className="focus-ring inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-charcoal/12 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-white/70 lg:max-w-[320px]" href={whatsappHref("Hello Kiora CosmoTech, I want to discuss face serum manufacturing for my brand.")}>

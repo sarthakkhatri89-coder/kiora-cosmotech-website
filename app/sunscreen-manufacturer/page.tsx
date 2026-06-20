@@ -712,7 +712,7 @@ export default function Page() {
           }
           actions={
             <>
-              <Link className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-teal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-charcoal sm:min-w-[250px]" href="/request-quote">
+              <Link className="focus-ring site-button-primary inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-center font-semibold text-ivory transition sm:min-w-[250px]" href="/request-quote">
                 Request Sunscreen Manufacturing Quote <ArrowRight size={18} aria-hidden="true" />
               </Link>
               <a className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-charcoal/12 bg-white/84 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-white sm:min-w-[220px]" href="#sunscreen-concepts">
@@ -731,9 +731,9 @@ export default function Page() {
           titleClassName="font-display text-[clamp(2.2rem,8vw,5.5rem)] font-semibold leading-[0.94] text-charcoal"
         />
 
-        <section className="section-y bg-mist">
+        <section className="site-band-soft section-y">
           <div className="container-padded grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-            <article className="rounded-[1.6rem] border border-charcoal/10 bg-charcoal p-5 text-ivory shadow-premium sm:rounded-3xl sm:p-7">
+            <article className="site-panel-dark rounded-[1.6rem] p-5 text-ivory shadow-premium sm:rounded-3xl sm:p-7">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-champagne">Private label sunscreen manufacturing for modern sun-care brands</p>
               <p className="mt-4 text-[0.98rem] leading-7 text-ivory/80 md:leading-8">
                 Kiora CosmoTech helps brands develop advanced sunscreen concepts based on modern UV filter systems, mineral filter systems, hybrid skincare positioning, tinted mineral formats, lightweight textures, matte finishes, body SPF, kids SPF, sport SPF, men's SPF, scalp SPF mist and lip SPF balm concepts.
@@ -742,7 +742,7 @@ export default function Page() {
                 Sunscreen development requires strong formulation expertise, sensory optimization, packaging compatibility, claim positioning and testing support. This is why founders exploring <Link className="font-semibold text-champagne underline decoration-champagne/40 underline-offset-4" href="/private-label-cosmetics-manufacturer-india">private label cosmetic manufacturing</Link> or <Link className="font-semibold text-champagne underline decoration-champagne/40 underline-offset-4" href="/third-party-cosmetic-manufacturing-india">third party skincare manufacturing</Link> should treat sunscreen as a more technical category than a routine cleanser or moisturizer launch.
               </p>
             </article>
-            <article className="rounded-[1.6rem] border border-charcoal/10 bg-ivory p-5 shadow-sm sm:rounded-3xl sm:p-7">
+            <article className="site-panel rounded-[1.6rem] p-5 shadow-sm sm:rounded-3xl sm:p-7">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal">Direct answer</p>
               <h2 className="mt-3 text-[1.8rem] font-semibold leading-tight text-charcoal sm:text-3xl">Advanced sun-care product development with testing-aware claim planning</h2>
               <p className="mt-4 text-[0.98rem] leading-7 text-ink/74 md:leading-8">
@@ -812,7 +812,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="section-y bg-charcoal text-ivory">
+        <section className="section-y text-ivory" style={{ background: "linear-gradient(160deg, rgba(41,30,37,1) 0%, rgba(31,28,31,1) 48%, rgba(46,31,39,1) 100%)" }}>
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-champagne">Product grouping</p>
@@ -882,7 +882,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="section-y bg-mist">
+        <section className="site-band-soft section-y">
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal">Filter and format customization</p>
@@ -922,7 +922,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="section-y bg-charcoal text-ivory">
+        <section className="section-y text-ivory" style={{ background: "linear-gradient(160deg, rgba(41,30,37,1) 0%, rgba(31,28,31,1) 48%, rgba(46,31,39,1) 100%)" }}>
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-champagne">Manufacturing process</p>
@@ -952,7 +952,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="section-y bg-mist">
+        <section className="site-band-soft section-y">
           <div className="container-padded">
             <div className="rounded-[1.8rem] border border-amber-300/40 bg-[linear-gradient(135deg,#fffef6_0%,#fff8dc_48%,#eef8ff_100%)] p-5 shadow-sm sm:rounded-[2rem] sm:p-7">
               <div className="flex items-start gap-3">
@@ -994,7 +994,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="section-y bg-charcoal text-ivory">
+        <section className="section-y text-ivory" style={{ background: "linear-gradient(160deg, rgba(41,30,37,1) 0%, rgba(31,28,31,1) 48%, rgba(46,31,39,1) 100%)" }}>
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-champagne">FAQ</p>
@@ -1008,7 +1008,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="section-y bg-mist">
+        <section className="site-band-soft section-y">
           <div className="container-padded">
             <div className="max-w-4xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal">Related product categories</p>
@@ -1036,7 +1036,7 @@ export default function Page() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-3 lg:items-end">
-                  <Link className="focus-ring inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-charcoal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-teal lg:max-w-[320px]" href="/request-quote">
+                  <Link className="focus-ring site-button-primary inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-center font-semibold text-ivory transition lg:max-w-[320px]" href="/request-quote">
                     Request Manufacturing Quote <ArrowRight size={18} aria-hidden="true" />
                   </Link>
                   <a className="focus-ring inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-charcoal/12 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-white/70 lg:max-w-[320px]" href={whatsappHref("Hello Kiora CosmoTech, I want to discuss sunscreen manufacturing for my brand.")}>

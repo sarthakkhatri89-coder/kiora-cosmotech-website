@@ -235,12 +235,12 @@ export default function HomePage() {
       <AnimatedSkincareHero />
 
       <main className="homepage-shell">
-        <section className="border-y border-charcoal/8 bg-white/70 py-5">
+        <section className="site-band py-5">
           <div className="container-padded">
             <HomeScrollReveal className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
               {capabilityStrip.map((item) => (
                 <div
-                  className="rounded-2xl border border-charcoal/8 bg-ivory px-4 py-4 text-sm font-medium leading-6 text-ink/74 shadow-[0_12px_30px_rgba(23,33,29,0.04)]"
+                  className="site-panel rounded-[1.35rem] px-4 py-4 text-sm font-medium leading-6 text-[rgba(64,50,58,0.76)]"
                   key={item}
                 >
                   {item}
@@ -250,16 +250,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section-y bg-mist">
+        <section className="site-band-soft section-y">
           <div className="container-padded">
             <HomeScrollReveal className="mx-auto max-w-4xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-teal">
-                Manufacturing categories
-              </p>
-              <h2 className="section-title mt-3 font-display font-semibold text-charcoal">
+              <p className="site-kicker">Manufacturing categories</p>
+              <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
                 Manufacturing Categories We Focus On
               </h2>
-              <p className="mt-5 text-[1rem] leading-8 text-ink/74">
+              <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
                 Skincare, derma-cosmetic, haircare and personal care categories are organized
                 around modern packaging, formula thinking and practical manufacturing discussion.
               </p>
@@ -273,9 +271,9 @@ export default function HomePage() {
 
                 return (
                   <HomeScrollReveal delay={index * 60} key={category.href}>
-                    <article className="rounded-[1.9rem] border border-charcoal/8 bg-ivory shadow-[0_22px_54px_rgba(23,33,29,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_rgba(23,33,29,0.09)]">
-                      <div className="rounded-t-[1.9rem] border-b border-charcoal/8 bg-[radial-gradient(circle_at_top_left,rgba(232,217,189,0.56),transparent_18rem),linear-gradient(135deg,rgba(255,253,247,0.98),rgba(245,239,229,0.9),rgba(143,174,155,0.18))] p-5">
-                        <div className="overflow-hidden rounded-[1.4rem] border border-white/70 bg-white/62 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
+                    <article className="site-panel overflow-hidden rounded-[1.9rem] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_rgba(87,60,70,0.12)]">
+                      <div className="rounded-t-[1.9rem] border-b border-[rgba(59,43,51,0.08)] bg-[radial-gradient(circle_at_top_left,rgba(255,231,223,0.68),transparent_18rem),linear-gradient(135deg,rgba(255,252,248,0.98),rgba(250,242,235,0.92),rgba(164,188,174,0.14))] p-5">
+                        <div className="overflow-hidden rounded-[1.4rem] border border-white/70 bg-white/68 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
                           <div className="relative aspect-[4/3]">
                             <Image
                               src={visual.image}
@@ -284,32 +282,27 @@ export default function HomePage() {
                               className="object-cover"
                               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
                             />
-                            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,33,29,0.08),rgba(23,33,29,0.14))]" />
+                            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(64,42,49,0.06),rgba(64,42,49,0.16))]" />
                           </div>
                           <div className="p-5">
-                          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
+                          <p className="site-kicker">
                             Category
                           </p>
-                          <h3 className="mt-3 text-2xl font-semibold text-charcoal">
+                          <h3 className="mt-3 text-2xl font-semibold text-[rgba(52,38,46,0.94)]">
                             {category.title}
                           </h3>
                         </div>
                         </div>
                       </div>
                       <div className="p-5">
-                        <p className="text-sm leading-7 text-ink/72">{visual.description}</p>
+                        <p className="text-sm leading-7 text-[rgba(64,50,58,0.72)]">{visual.description}</p>
                         <div className="mt-5 flex flex-wrap gap-2.5">
                           {visual.examples.map((example) => (
-                            <span
-                              className="rounded-full border border-charcoal/8 bg-white/78 px-3 py-1.5 text-[0.75rem] font-medium text-ink/70"
-                              key={example}
-                            >
-                              {example}
-                            </span>
+                            <span className="site-chip-soft" key={example}>{example}</span>
                           ))}
                         </div>
                         <Link
-                          className="focus-ring mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-charcoal px-5 py-3 text-sm font-semibold text-ivory transition hover:bg-teal"
+                          className="focus-ring site-button-primary mt-6 inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-ivory transition"
                           href={category.href}
                         >
                           Explore {category.title}
@@ -326,11 +319,11 @@ export default function HomePage() {
         <section className="section-y">
           <div className="container-padded">
             <HomeScrollReveal className="mx-auto max-w-4xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-teal">Services</p>
-              <h2 className="section-title mt-3 font-display font-semibold text-charcoal">
+              <p className="site-kicker">Services</p>
+              <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
                 Manufacturing Models for Beauty Brands
               </h2>
-              <p className="mt-5 text-[1rem] leading-8 text-ink/74">
+              <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
                 Choose the service path that fits your launch stage, product brief and commercial
                 structure while keeping manufacturing conversations clear for your team.
               </p>
@@ -339,14 +332,14 @@ export default function HomePage() {
             <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {serviceModels.map((service, index) => (
                 <HomeScrollReveal delay={index * 55} key={service.href}>
-                  <article className="rounded-[1.8rem] border border-charcoal/8 bg-white/78 p-5 shadow-[0_20px_48px_rgba(23,33,29,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_54px_rgba(23,33,29,0.09)]">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
+                  <article className="site-panel rounded-[1.8rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_54px_rgba(87,60,70,0.11)]">
+                    <p className="site-kicker">
                       Service
                     </p>
-                    <h3 className="mt-3 text-2xl font-semibold text-charcoal">{service.title}</h3>
-                    <p className="mt-4 text-sm leading-7 text-ink/72">{service.description}</p>
+                    <h3 className="mt-3 text-2xl font-semibold text-[rgba(52,38,46,0.94)]">{service.title}</h3>
+                    <p className="mt-4 text-sm leading-7 text-[rgba(64,50,58,0.72)]">{service.description}</p>
                     <Link
-                      className="focus-ring mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-charcoal px-5 py-3 text-sm font-semibold text-ivory transition hover:bg-teal"
+                      className="focus-ring site-button-primary mt-6 inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-ivory transition"
                       href={service.href}
                     >
                       Explore {service.title}
@@ -366,26 +359,24 @@ export default function HomePage() {
           <div className="container-padded grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
             <HomeScrollReveal>
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-teal">
-                  Formulation and packaging support
-                </p>
-                <h2 className="section-title mt-3 font-display font-semibold text-charcoal">
+                <p className="site-kicker">Formulation and packaging support</p>
+                <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
                   Formulation-Led Manufacturing for Modern Beauty Brands
                 </h2>
-                <p className="mt-5 text-[1rem] leading-8 text-ink/74">
+                <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
                   Kiora helps brands think through formula direction, skin feel, product
                   positioning, ingredient story, packaging format, MOQ practicality and launch
                   range planning before production is finalized.
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <Link
-                    className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full bg-charcoal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-teal"
+                    className="focus-ring site-button-primary inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-center font-semibold text-ivory transition"
                     href="/custom-skincare-formulation"
                   >
                     Discuss Your Product Idea
                   </Link>
                   <Link
-                    className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full border border-charcoal/12 bg-white/76 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-white"
+                    className="focus-ring site-button-secondary inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-center font-semibold text-[rgba(56,41,49,0.92)] transition"
                     href="/request-quote"
                   >
                     Request Manufacturing Quote
@@ -395,12 +386,10 @@ export default function HomePage() {
             </HomeScrollReveal>
 
             <HomeScrollReveal delay={100}>
-              <div className="rounded-[2rem] border border-charcoal/8 bg-[radial-gradient(circle_at_top_left,rgba(232,217,189,0.46),transparent_18rem),linear-gradient(180deg,rgba(255,253,247,0.94),rgba(248,244,236,0.9))] p-5 shadow-[0_24px_60px_rgba(23,33,29,0.07)]">
-                <div className="mb-5 rounded-[1.5rem] border border-white/70 bg-white/62 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)]">
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-teal">
-                    Launch planning overview
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-ink/74">
+              <div className="site-panel-soft rounded-[2rem] p-5">
+                <div className="mb-5 rounded-[1.5rem] border border-white/70 bg-white/68 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)]">
+                  <p className="site-kicker">Launch planning overview</p>
+                  <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.74)]">
                     Product story, actives, packaging direction and commercial practicality are
                     discussed together so the final range feels clear before manufacturing begins.
                   </p>
@@ -408,11 +397,11 @@ export default function HomePage() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   {formulationCards.map((item, index) => (
                     <HomeScrollReveal delay={index * 45} key={item.title}>
-                      <div className="rounded-[1.5rem] border border-charcoal/8 bg-white/72 p-4 shadow-[0_14px_34px_rgba(23,33,29,0.05)]">
-                        <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-teal">
+                      <div className="rounded-[1.5rem] border border-[rgba(59,43,51,0.08)] bg-white/76 p-4 shadow-[0_14px_34px_rgba(87,60,70,0.06)]">
+                        <p className="site-kicker">
                           {item.title}
                         </p>
-                        <p className="mt-3 text-sm leading-7 text-ink/72">{item.text}</p>
+                        <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">{item.text}</p>
                       </div>
                     </HomeScrollReveal>
                   ))}
@@ -422,16 +411,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section-y bg-mist">
+        <section className="site-band-soft section-y">
           <div className="container-padded">
             <HomeScrollReveal className="mx-auto max-w-4xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-teal">
-                Quality preview
-              </p>
-              <h2 className="section-title mt-3 font-display font-semibold text-charcoal">
+              <p className="site-kicker">Quality preview</p>
+              <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
                 Quality-Focused and Documentation-Aware Manufacturing Approach
               </h2>
-              <p className="mt-5 text-[1rem] leading-8 text-ink/74">
+              <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
                 The workflow stays grounded in practical quality conversations, documentation inputs
                 and launch readiness without relying on unverified certification claims.
               </p>
@@ -440,12 +427,12 @@ export default function HomePage() {
             <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {qualityItems.map(({ icon: Icon, title, text }, index) => (
                 <HomeScrollReveal delay={index * 50} key={title}>
-                  <article className="rounded-[1.8rem] border border-charcoal/8 bg-white/78 p-5 shadow-[0_20px_48px_rgba(23,33,29,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_54px_rgba(23,33,29,0.09)]">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-charcoal text-ivory shadow-sm">
+                  <article className="site-panel rounded-[1.8rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_54px_rgba(87,60,70,0.11)]">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#3a2b35,#9a516b)] text-ivory shadow-[0_14px_28px_rgba(114,63,83,0.18)]">
                       <Icon size={18} aria-hidden="true" />
                     </div>
-                    <h3 className="mt-4 text-lg font-semibold text-charcoal">{title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-ink/72">{text}</p>
+                    <h3 className="mt-4 text-lg font-semibold text-[rgba(52,38,46,0.94)]">{title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">{text}</p>
                   </article>
                 </HomeScrollReveal>
               ))}
@@ -456,13 +443,11 @@ export default function HomePage() {
         <section className="section-y">
           <div className="container-padded">
             <HomeScrollReveal className="mx-auto max-w-4xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-teal">
-                City-wise manufacturing support
-              </p>
-              <h2 className="section-title mt-3 font-display font-semibold text-charcoal">
+              <p className="site-kicker">City-wise manufacturing support</p>
+              <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
                 Pan-India Manufacturing Support for Beauty Brands
               </h2>
-              <p className="mt-5 text-[1rem] leading-8 text-ink/74">
+              <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
                 Explore the existing city pages for Delhi NCR, Mumbai, Bangalore, Hyderabad and
                 other business regions where beauty brands often need launch-oriented manufacturing
                 conversations.
@@ -470,9 +455,9 @@ export default function HomePage() {
             </HomeScrollReveal>
 
             <HomeScrollReveal className="mt-12" delay={80}>
-              <div className="rounded-[2rem] border border-charcoal/8 bg-white/76 p-5 shadow-[0_24px_58px_rgba(23,33,29,0.06)]">
-                <div className="mb-5 flex items-center gap-3 rounded-[1.3rem] border border-charcoal/8 bg-mist px-4 py-3 text-sm font-semibold text-charcoal">
-                  <MapPinned className="text-teal" size={20} aria-hidden="true" />
+              <div className="site-panel rounded-[2rem] p-5">
+                <div className="mb-5 flex items-center gap-3 rounded-[1.3rem] border border-[rgba(59,43,51,0.08)] bg-[rgba(255,241,236,0.7)] px-4 py-3 text-sm font-semibold text-[rgba(52,38,46,0.9)]">
+                  <MapPinned className="text-[rgba(148,84,109,0.92)]" size={20} aria-hidden="true" />
                   <span>City-Wise Manufacturing Support</span>
                 </div>
                 <CityGrid />
@@ -481,33 +466,31 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section-y bg-mist">
+        <section className="site-band-soft section-y">
           <div className="container-padded">
             <HomeScrollReveal className="mx-auto max-w-4xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-teal">
-                Direct answers
-              </p>
-              <h2 className="section-title mt-3 font-display font-semibold text-charcoal">
+              <p className="site-kicker">Direct answers</p>
+              <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
                 Direct Answers for Buyers and AI Search
               </h2>
-              <p className="mt-5 text-[1rem] leading-8 text-ink/74">
+              <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
                 Important manufacturing questions stay visible as real HTML content so buyers and
                 search systems can understand the offer without depending on visual treatment alone.
               </p>
             </HomeScrollReveal>
 
             <HomeScrollReveal className="mt-12" delay={80}>
-              <div className="rounded-[2rem] border border-charcoal/8 bg-white/76 p-5 shadow-[0_22px_54px_rgba(23,33,29,0.08)]">
+              <div className="site-panel rounded-[2rem] p-5">
                 <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                   {homepageAnswers.map((item) => (
                     <article
-                      className="rounded-[1.7rem] border border-charcoal/10 bg-ivory p-5 shadow-[0_18px_42px_rgba(0,0,0,0.12)]"
+                      className="site-panel-soft rounded-[1.7rem] p-5"
                       key={item.question}
                     >
-                      <h3 className="text-[1.02rem] font-semibold leading-7 text-charcoal">
+                      <h3 className="text-[1.02rem] font-semibold leading-7 text-[rgba(52,38,46,0.94)]">
                         {item.question}
                       </h3>
-                      <p className="mt-3 text-sm leading-7 text-ink/72">{item.answer}</p>
+                      <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">{item.answer}</p>
                     </article>
                   ))}
                 </div>
@@ -516,10 +499,10 @@ export default function HomePage() {
 
             <HomeScrollReveal className="mt-12" delay={120}>
               <div>
-                <h2 className="text-center text-[clamp(2rem,4vw,3.6rem)] font-display font-semibold text-charcoal">
+                <h2 className="text-center text-[clamp(2rem,4vw,3.6rem)] font-display font-semibold text-[rgba(50,36,45,0.96)]">
                   FAQ for Cosmetic Manufacturing
                 </h2>
-                <div className="mt-8 rounded-[2rem] border border-charcoal/8 bg-white/76 p-5 shadow-[0_22px_54px_rgba(23,33,29,0.08)]">
+                <div className="mt-8 rounded-[2rem] p-5">
                   <FAQAccordion faqs={coreFaqs} />
                 </div>
               </div>
@@ -530,28 +513,26 @@ export default function HomePage() {
         <section className="section-y">
           <div className="container-padded">
             <HomeScrollReveal>
-              <div className="overflow-hidden rounded-[2.2rem] border border-charcoal/8 bg-[radial-gradient(circle_at_top_left,rgba(232,217,189,0.52),transparent_18rem),radial-gradient(circle_at_bottom_right,rgba(143,174,155,0.24),transparent_16rem),linear-gradient(180deg,#fffdf8_0%,#f5efe4_100%)] p-6 shadow-[0_28px_68px_rgba(23,33,29,0.08)] lg:grid lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:gap-8">
+              <div className="site-panel-soft overflow-hidden rounded-[2.2rem] p-6 lg:grid lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:gap-8">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-teal">
-                    Request quote
-                  </p>
-                  <h2 className="section-title mt-3 font-display font-semibold text-charcoal">
+                  <p className="site-kicker">Request quote</p>
+                  <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
                     Ready to Launch Your Skincare or Cosmetic Brand?
                   </h2>
-                  <p className="mt-5 max-w-2xl text-[1rem] leading-8 text-ink/74">
+                  <p className="mt-5 max-w-2xl text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
                     Share your product category, quantity, packaging preference and launch plan.
                     Kiora CosmoTech will help you understand a practical manufacturing path for your
                     brand.
                   </p>
                   <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                     <Link
-                      className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full bg-charcoal px-6 py-3 text-center font-semibold text-ivory transition hover:bg-teal"
+                      className="focus-ring site-button-primary inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-center font-semibold text-ivory transition"
                       href="/request-quote"
                     >
                       Request Manufacturing Quote
                     </Link>
                     <a
-                      className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-charcoal/12 bg-white/78 px-6 py-3 text-center font-semibold text-charcoal transition hover:bg-white"
+                      className="focus-ring site-button-secondary inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-center font-semibold text-[rgba(56,41,49,0.92)] transition"
                       href={whatsappHref()}
                     >
                       <MessageCircle size={18} aria-hidden="true" /> Discuss on WhatsApp
@@ -560,27 +541,21 @@ export default function HomePage() {
                 </div>
                 <div className="mt-8 lg:mt-0">
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="rounded-[1.6rem] border border-white/70 bg-white/74 p-5 shadow-[0_18px_40px_rgba(23,33,29,0.06)]">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-teal">
-                        Product brief
-                      </p>
-                      <p className="mt-3 text-sm leading-7 text-ink/72">
+                    <div className="rounded-[1.6rem] border border-white/70 bg-white/78 p-5 shadow-[0_18px_40px_rgba(87,60,70,0.06)]">
+                      <p className="site-kicker">Product brief</p>
+                      <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">
                         Category, launch intent and target quantity help shape the next discussion.
                       </p>
                     </div>
-                    <div className="rounded-[1.6rem] border border-white/70 bg-white/74 p-5 shadow-[0_18px_40px_rgba(23,33,29,0.06)]">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-teal">
-                        Packaging plan
-                      </p>
-                      <p className="mt-3 text-sm leading-7 text-ink/72">
+                    <div className="rounded-[1.6rem] border border-white/70 bg-white/78 p-5 shadow-[0_18px_40px_rgba(87,60,70,0.06)]">
+                      <p className="site-kicker">Packaging plan</p>
+                      <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">
                         Tube, jar, bottle and pump direction can be discussed with cost and channel in mind.
                       </p>
                     </div>
-                    <div className="rounded-[1.6rem] border border-white/70 bg-white/74 p-5 shadow-[0_18px_40px_rgba(23,33,29,0.06)] sm:col-span-2">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-teal">
-                        Launch readiness
-                      </p>
-                      <p className="mt-3 text-sm leading-7 text-ink/72">
+                    <div className="rounded-[1.6rem] border border-white/70 bg-white/78 p-5 shadow-[0_18px_40px_rgba(87,60,70,0.06)] sm:col-span-2">
+                      <p className="site-kicker">Launch readiness</p>
+                      <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">
                         Formula direction, pack format, quality review and dispatch timing all move
                         together when the early brief is clear.
                       </p>
