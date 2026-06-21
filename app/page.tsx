@@ -14,13 +14,14 @@ import {
 } from "lucide-react";
 import AnimatedSkincareHero from "@/components/home/AnimatedSkincareHero";
 import FloatingProductShowcase from "@/components/home/FloatingProductShowcase";
+import HomeFlagshipScene from "@/components/home/HomeFlagshipScene";
 import HomeScrollReveal from "@/components/home/HomeScrollReveal";
 import LiquidProcessJourney from "@/components/home/LiquidProcessJourney";
 import CityGrid from "@/components/CityGrid";
 import FAQAccordion from "@/components/FAQAccordion";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import { coreFaqs } from "@/data/faqs";
-import { productCategories, productPages } from "@/data/products";
+import { productPages } from "@/data/products";
 import { whatsappHref } from "@/data/siteConfig";
 import { createMetadata } from "@/lib/seo";
 import {
@@ -49,59 +50,32 @@ const serviceModels = [
   {
     title: "Private Label Cosmetics",
     href: "/private-label-cosmetics-manufacturer-india",
+    focus: "Launch-ready brand build",
     description:
       "Launch skincare, haircare and personal care products under your own brand with launch-ready product selection, packaging planning and startup-friendly manufacturing guidance."
   },
   {
     title: "Third Party Manufacturing",
     href: "/third-party-cosmetic-manufacturing-india",
+    focus: "Operational production support",
     description:
       "Production, filling, packing and dispatch support for teams focused on sales, distribution, marketing and commercial scale."
   },
   {
     title: "Contract Manufacturing",
     href: "/contract-cosmetic-manufacturer-india",
+    focus: "Structured repeat-batch execution",
     description:
       "Structured manufacturing programs for approved concepts, specification-led batches, packaging coordination and repeat production planning."
   },
   {
     title: "Custom Skincare Formulation",
     href: "/custom-skincare-formulation",
+    focus: "Ownable formula direction",
     description:
       "Develop modern skincare concepts around active direction, packaging compatibility, market fit and premium product positioning."
   }
 ];
-
-const categoryHighlights = {
-  Skincare: {
-    description:
-      "Face wash, serum, sunscreen, moisturizer, creams and gels shaped for premium cosmetic launches.",
-    examples: ["Face wash", "Serum", "Sunscreen", "Moisturizer", "Creams", "Gels"],
-    image: "/images/skincare-formulation-lab.png",
-    alt: "Private label skincare manufacturing support"
-  },
-  "Derma Cosmetic": {
-    description:
-      "Acne care, barrier care, brightening, anti-ageing and soothing cosmetic concepts for modern active-led ranges.",
-    examples: ["Acne care", "Brightening", "Barrier repair", "Anti-ageing", "Soothing"],
-    image: "/images/derma-cosmetic-development.png",
-    alt: "Derma cosmetic product development and formulation"
-  },
-  Haircare: {
-    description:
-      "Shampoo, hair serum, hair oil and hair mask concepts for D2C, salon and performance-led haircare brands.",
-    examples: ["Shampoo", "Hair serum", "Hair oil", "Hair mask", "Scalp care"],
-    image: "/images/haircare-manufacturing.png",
-    alt: "Haircare product manufacturing for beauty brands"
-  },
-  "Personal Care": {
-    description:
-      "Body wash, hand wash, body lotion and daily-use hygiene categories with retail-ready packaging discussions.",
-    examples: ["Body wash", "Hand wash", "Body lotion", "Daily care", "Hygiene"],
-    image: "/images/personal-care-packaging.png",
-    alt: "Personal care packaging and manufacturing support"
-  }
-} satisfies Record<string, { description: string; examples: string[]; image: string; alt: string }>;
 
 const formulationCards = [
   {
@@ -201,6 +175,14 @@ const homepageAnswers = [
   }
 ];
 
+const quoteReadinessPoints = [
+  "Product category and first SKU set",
+  "Pack type and fill-size direction",
+  "Ready formula or custom formulation path",
+  "MOQ range and launch timeline",
+  "Target price band and channel"
+];
+
 const selectedProducts = [
   "face-wash-manufacturer",
   "face-serum-manufacturer",
@@ -250,108 +232,77 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="site-band-soft section-y">
-          <div className="container-padded">
-            <HomeScrollReveal className="mx-auto max-w-4xl text-center">
-              <p className="site-kicker">Manufacturing categories</p>
-              <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
-                Manufacturing Categories We Focus On
-              </h2>
-              <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
-                Skincare, derma-cosmetic, haircare and personal care categories are organized
-                around modern packaging, formula thinking and practical manufacturing discussion.
-              </p>
-            </HomeScrollReveal>
-
-            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {productCategories.map((category, index) => {
-                const visual =
-                  categoryHighlights[category.title as keyof typeof categoryHighlights] ??
-                  categoryHighlights.Skincare;
-
-                return (
-                  <HomeScrollReveal delay={index * 60} key={category.href}>
-                    <article className="site-panel overflow-hidden rounded-[1.9rem] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_rgba(87,60,70,0.12)]">
-                      <div className="rounded-t-[1.9rem] border-b border-[rgba(59,43,51,0.08)] bg-[radial-gradient(circle_at_top_left,rgba(255,231,223,0.68),transparent_18rem),linear-gradient(135deg,rgba(255,252,248,0.98),rgba(250,242,235,0.92),rgba(164,188,174,0.14))] p-5">
-                        <div className="overflow-hidden rounded-[1.4rem] border border-white/70 bg-white/68 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
-                          <div className="relative aspect-[4/3]">
-                            <Image
-                              src={visual.image}
-                              alt={visual.alt}
-                              fill
-                              className="object-cover"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                            />
-                            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(64,42,49,0.06),rgba(64,42,49,0.16))]" />
-                          </div>
-                          <div className="p-5">
-                          <p className="site-kicker">
-                            Category
-                          </p>
-                          <h3 className="mt-3 text-2xl font-semibold text-[rgba(52,38,46,0.94)]">
-                            {category.title}
-                          </h3>
-                        </div>
-                        </div>
-                      </div>
-                      <div className="p-5">
-                        <p className="text-sm leading-7 text-[rgba(64,50,58,0.72)]">{visual.description}</p>
-                        <div className="mt-5 flex flex-wrap gap-2.5">
-                          {visual.examples.map((example) => (
-                            <span className="site-chip-soft" key={example}>{example}</span>
-                          ))}
-                        </div>
-                        <Link
-                          className="focus-ring site-button-primary mt-6 inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-ivory transition"
-                          href={category.href}
-                        >
-                          Explore {category.title}
-                        </Link>
-                      </div>
-                    </article>
-                  </HomeScrollReveal>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
         <section className="section-y">
           <div className="container-padded">
-            <HomeScrollReveal className="mx-auto max-w-4xl text-center">
-              <p className="site-kicker">Services</p>
-              <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
-                Manufacturing Models for Beauty Brands
-              </h2>
-              <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
-                Choose the service path that fits your launch stage, product brief and commercial
-                structure while keeping manufacturing conversations clear for your team.
-              </p>
-            </HomeScrollReveal>
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+              <HomeScrollReveal>
+                <div className="max-w-[35rem]">
+                  <p className="site-kicker">Service models</p>
+                  <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
+                    Manufacturing pathways for founders, operators and scaling brands
+                  </h2>
+                  <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
+                    The homepage should make the difference between private label, third party,
+                    contract manufacturing and custom formulation feel immediately clear. Each path
+                    answers a different stage of commercial readiness.
+                  </p>
+                  <div className="site-panel-soft mt-8 rounded-[2rem] p-5">
+                    <p className="site-kicker">Quote-readiness checklist</p>
+                    <ul className="mt-4 space-y-3 text-sm leading-7 text-[rgba(64,50,58,0.74)]">
+                      {quoteReadinessPoints.map((point) => (
+                        <li className="flex gap-3" key={point}>
+                          <span className="mt-[0.6rem] h-1.5 w-1.5 rounded-full bg-[rgba(148,84,109,0.9)]" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                      <Link
+                        className="focus-ring site-button-primary inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-center font-semibold text-ivory transition"
+                        href="/request-quote"
+                      >
+                        Request a manufacturing quote
+                      </Link>
+                      <Link
+                        className="focus-ring site-button-secondary inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-center font-semibold text-[rgba(56,41,49,0.92)] transition"
+                        href="/private-label-cosmetics-manufacturer-india"
+                      >
+                        See private label route
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </HomeScrollReveal>
 
-            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {serviceModels.map((service, index) => (
-                <HomeScrollReveal delay={index * 55} key={service.href}>
-                  <article className="site-panel rounded-[1.8rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_54px_rgba(87,60,70,0.11)]">
-                    <p className="site-kicker">
-                      Service
-                    </p>
-                    <h3 className="mt-3 text-2xl font-semibold text-[rgba(52,38,46,0.94)]">{service.title}</h3>
-                    <p className="mt-4 text-sm leading-7 text-[rgba(64,50,58,0.72)]">{service.description}</p>
-                    <Link
-                      className="focus-ring site-button-primary mt-6 inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-ivory transition"
-                      href={service.href}
-                    >
-                      Explore {service.title}
-                    </Link>
-                  </article>
-                </HomeScrollReveal>
-              ))}
+              <div className="grid gap-5 md:grid-cols-2">
+                {serviceModels.map((service, index) => (
+                  <HomeScrollReveal delay={index * 55} key={service.href}>
+                    <article className="site-panel rounded-[1.9rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_54px_rgba(87,60,70,0.11)]">
+                      <p className="site-kicker">{service.focus}</p>
+                      <h3 className="mt-3 text-[1.5rem] font-semibold text-[rgba(52,38,46,0.94)]">
+                        {service.title}
+                      </h3>
+                      <p className="mt-4 text-sm leading-7 text-[rgba(64,50,58,0.72)]">
+                        {service.description}
+                      </p>
+                      <Link
+                        className="focus-ring mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[rgba(128,73,94,0.96)]"
+                        href={service.href}
+                      >
+                        Explore service
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    </article>
+                  </HomeScrollReveal>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         <FloatingProductShowcase products={selectedProducts} />
+
+        <HomeFlagshipScene />
 
         <LiquidProcessJourney />
 
@@ -425,44 +376,53 @@ export default function HomePage() {
 
         <section className="site-band-soft section-y">
           <div className="container-padded">
-            <HomeScrollReveal className="mx-auto max-w-4xl text-center">
-              <p className="site-kicker">Quality preview</p>
-              <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
-                Quality-Focused and Documentation-Aware Manufacturing Approach
-              </h2>
-              <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
-                The workflow stays grounded in practical quality conversations, documentation inputs
-                and launch readiness without relying on unverified certification claims.
-              </p>
-            </HomeScrollReveal>
-
-            <HomeScrollReveal className="mt-10" delay={60}>
-              <div className="site-panel overflow-hidden rounded-[2rem] p-4 sm:p-5">
-                <div className="relative aspect-[16/7] overflow-hidden rounded-[1.5rem]">
-                  <Image
-                    src="/images/home/quality-focused-manufacturing.webp"
-                    alt="Quality-focused cosmetic manufacturing review and packaging checks"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 1180px"
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(58,40,48,0.05),rgba(58,40,48,0.18))]" />
-                </div>
-              </div>
-            </HomeScrollReveal>
-
-            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {qualityItems.map(({ icon: Icon, title, text }, index) => (
-                <HomeScrollReveal delay={index * 50} key={title}>
-                  <article className="site-panel rounded-[1.8rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_54px_rgba(87,60,70,0.11)]">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#3a2b35,#9a516b)] text-ivory shadow-[0_14px_28px_rgba(114,63,83,0.18)]">
-                      <Icon size={18} aria-hidden="true" />
+            <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+              <HomeScrollReveal>
+                <div className="max-w-[35rem]">
+                  <p className="site-kicker">Quality preview</p>
+                  <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
+                    Quality-focused and documentation-aware manufacturing
+                  </h2>
+                  <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
+                    The workflow stays grounded in practical quality conversations, documentation
+                    inputs and launch readiness without relying on unverified certification claims.
+                  </p>
+                  <div className="site-panel mt-8 overflow-hidden rounded-[2rem] p-4 sm:p-5">
+                    <div className="relative aspect-[16/11] overflow-hidden rounded-[1.5rem]">
+                      <Image
+                        src="/images/home/quality-focused-manufacturing.webp"
+                        alt="Quality-focused cosmetic manufacturing review and packaging checks"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 40vw"
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(58,40,48,0.05),rgba(58,40,48,0.18))]" />
                     </div>
-                    <h3 className="mt-4 text-lg font-semibold text-[rgba(52,38,46,0.94)]">{title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">{text}</p>
-                  </article>
-                </HomeScrollReveal>
-              ))}
+                  </div>
+                </div>
+              </HomeScrollReveal>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                {qualityItems.map(({ icon: Icon, title, text }, index) => (
+                  <HomeScrollReveal delay={index * 45} key={title}>
+                    <article className="site-panel-soft rounded-[1.7rem] p-5">
+                      <div className="flex items-start gap-4">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#3a2b35,#9a516b)] text-ivory shadow-[0_14px_28px_rgba(114,63,83,0.18)]">
+                          <Icon size={18} aria-hidden="true" />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold text-[rgba(52,38,46,0.94)]">
+                            {title}
+                          </h3>
+                          <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">
+                            {text}
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+                  </HomeScrollReveal>
+                ))}
+              </div>
             </div>
           </div>
         </section>

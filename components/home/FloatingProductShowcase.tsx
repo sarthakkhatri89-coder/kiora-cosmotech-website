@@ -3,73 +3,109 @@ import type { ProductPage } from "@/data/products";
 import HomeScrollReveal from "@/components/home/HomeScrollReveal";
 
 export default function FloatingProductShowcase({ products }: { products: ProductPage[] }) {
+  const categoryMap = products.reduce<Record<string, ProductPage[]>>((acc, product) => {
+    acc[product.category] ??= [];
+    acc[product.category].push(product);
+    return acc;
+  }, {});
+
   return (
     <section className="section-y">
       <div className="container-padded">
-        <HomeScrollReveal className="mx-auto max-w-4xl text-center">
-          <p className="site-kicker">Product range</p>
-          <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
-            Buyer-Ready Product Manufacturing Pages
-          </h2>
-          <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
-            Explore product-specific pages with practical manufacturing context, formula directions,
-            packaging examples and direct quote paths for launch-ready beauty brands.
-          </p>
-        </HomeScrollReveal>
+        <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+          <HomeScrollReveal>
+            <div className="max-w-[34rem]">
+              <p className="site-kicker">Product universe</p>
+              <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
+                Buyer-ready category architecture for beauty brands
+              </h2>
+              <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
+                Instead of browsing a generic catalog, buyers can move through a structured set of
+                manufacturing pages for face care, derma-cosmetic, haircare and personal care
+                categories with practical formula and packaging context.
+              </p>
+              <div className="mt-8 grid gap-4">
+                {Object.entries(categoryMap).map(([category, items], index) => (
+                  <HomeScrollReveal delay={index * 55} key={category}>
+                    <article className="site-panel-soft rounded-[1.7rem] p-5">
+                      <div className="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                          <p className="site-kicker">{category}</p>
+                          <h3 className="mt-3 text-[1.45rem] font-semibold text-[rgba(52,38,46,0.94)]">
+                            {items.length} focused manufacturing pages
+                          </h3>
+                        </div>
+                        <div className="flex flex-wrap justify-end gap-2">
+                          {items.slice(0, 3).map((product) => (
+                            <span className="site-chip-soft" key={product.slug}>
+                              {product.name.replace(" Manufacturer", "")}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <p className="mt-4 text-sm leading-7 text-[rgba(64,50,58,0.72)]">
+                        {items[0]?.intro}
+                      </p>
+                    </article>
+                  </HomeScrollReveal>
+                ))}
+              </div>
+            </div>
+          </HomeScrollReveal>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {products.map((product, index) => (
-            <HomeScrollReveal delay={index * 40} key={product.slug}>
-              <article className="site-panel overflow-hidden rounded-[1.8rem] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_58px_rgba(87,60,70,0.12)]">
-                <div className="border-b border-[rgba(59,43,51,0.08)] bg-[radial-gradient(circle_at_top_left,rgba(255,231,223,0.72),transparent_18rem),linear-gradient(135deg,rgba(255,252,248,0.98),rgba(250,242,235,0.94),rgba(164,188,174,0.16))] p-5">
-                  <div className="rounded-[1.4rem] border border-white/70 bg-white/72 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.86)]">
-                    <p className="site-kicker">
-                      {product.category}
-                    </p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {product.formulaOptions.slice(0, 2).map((option) => (
-                        <span
-                          className="site-chip-soft"
-                          key={option}
-                        >
-                          {option}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="mt-4 rounded-2xl bg-[linear-gradient(135deg,rgba(255,242,236,0.82),rgba(255,255,255,0.78),rgba(164,188,174,0.14))] p-4">
-                      <p className="text-sm leading-7 text-[rgba(64,50,58,0.74)]">{product.packagingOptions}</p>
-                    </div>
-                  </div>
+          <HomeScrollReveal delay={80}>
+            <div className="home-product-universe-panel">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="site-kicker">Commercial destinations</p>
+                  <h3 className="mt-3 text-[1.8rem] font-semibold text-[rgba(52,38,46,0.95)]">
+                    Featured product manufacturing pages
+                  </h3>
                 </div>
-                <div className="p-5">
-                  <h3 className="text-2xl font-semibold text-[rgba(52,38,46,0.94)]">{product.name}</h3>
-                  <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">{product.intro}</p>
-                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl bg-[rgba(255,241,236,0.72)] p-3">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[rgba(148,84,109,0.86)]">
-                        Formula examples
+                <Link
+                  className="focus-ring site-button-secondary inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-[rgba(56,41,49,0.92)] transition"
+                  href="/skincare-manufacturer-india"
+                >
+                  Explore category hub
+                </Link>
+              </div>
+
+              <div className="mt-8 grid gap-4 md:grid-cols-2">
+                {products.map((product, index) => (
+                  <HomeScrollReveal delay={index * 35} key={product.slug}>
+                    <article className="home-product-link-card">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="site-chip-soft">{product.category}</span>
+                        {product.heroTags?.slice(0, 2).map((tag) => (
+                          <span className="home-inline-tag" key={tag}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <h4 className="mt-4 text-[1.2rem] font-semibold text-[rgba(52,38,46,0.95)]">
+                        {product.name}
+                      </h4>
+                      <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.74)]">
+                        {product.directAnswer}
                       </p>
-                      <p className="mt-2 text-sm leading-6 text-[rgba(64,50,58,0.72)]">
-                        {product.formulaOptions.slice(0, 3).join(", ")}
-                      </p>
-                    </div>
-                    <div className="rounded-2xl bg-[rgba(255,241,236,0.72)] p-3">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[rgba(148,84,109,0.86)]">
-                        Packaging examples
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-[rgba(64,50,58,0.72)]">{product.packagingOptions}</p>
-                    </div>
-                  </div>
-                  <Link
-                    className="focus-ring site-button-primary mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full px-5 py-3 text-center font-semibold text-ivory transition"
-                    href={`/${product.slug}`}
-                  >
-                    Explore {product.name}
-                  </Link>
-                </div>
-              </article>
-            </HomeScrollReveal>
-          ))}
+                      <div className="mt-4 rounded-[1.25rem] bg-[rgba(255,244,239,0.72)] px-4 py-3">
+                        <p className="text-sm leading-6 text-[rgba(64,50,58,0.72)]">
+                          {product.packagingOptions}
+                        </p>
+                      </div>
+                      <Link
+                        className="focus-ring mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[rgba(128,73,94,0.96)]"
+                        href={`/${product.slug}`}
+                      >
+                        Explore page
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    </article>
+                  </HomeScrollReveal>
+                ))}
+              </div>
+            </div>
+          </HomeScrollReveal>
         </div>
       </div>
     </section>

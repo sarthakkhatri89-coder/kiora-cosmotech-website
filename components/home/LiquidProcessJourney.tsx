@@ -58,50 +58,64 @@ export default function LiquidProcessJourney() {
   return (
     <section className="site-band-soft section-y">
       <div className="container-padded">
-        <HomeScrollReveal className="mx-auto max-w-4xl text-center">
-          <p className="site-kicker">Manufacturing process</p>
-          <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
-            The Kiora Manufacturing Journey
-          </h2>
-          <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
-            The process stays practical and transparent, from early product thinking to finished pack
-            review and dispatch planning for skincare, derma-cosmetic, haircare and personal care
-            ranges.
-          </p>
-        </HomeScrollReveal>
-
-        <HomeScrollReveal className="mt-10" delay={60}>
-          <div className="site-panel overflow-hidden rounded-[2rem] p-4 sm:p-5">
-            <div className="relative aspect-[16/7] overflow-hidden rounded-[1.5rem]">
-              <Image
-                src="/images/home/manufacturing-process-journey.webp"
-                alt="Cosmetic manufacturing process from formulation to filling and dispatch"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 1180px"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(58,40,48,0.06),rgba(58,40,48,0.18))]" />
-            </div>
-          </div>
-        </HomeScrollReveal>
-
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {processSteps.map(({ title, text, icon: Icon }, index) => (
-            <HomeScrollReveal delay={index * 55} key={title}>
-              <article className="site-panel rounded-[1.8rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_58px_rgba(87,60,70,0.11)]">
-                <div className="flex items-center justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#3a2b35,#9a516b)] text-ivory shadow-[0_14px_28px_rgba(114,63,83,0.18)]">
-                    <Icon size={18} aria-hidden="true" />
-                  </div>
-                  <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgba(82,63,72,0.48)]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+        <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
+          <HomeScrollReveal>
+            <div className="lg:sticky lg:top-24">
+              <p className="site-kicker">Manufacturing process</p>
+              <h2 className="section-title mt-3 font-display font-semibold text-[rgba(50,36,45,0.96)]">
+                The Kiora manufacturing journey
+              </h2>
+              <p className="mt-5 text-[1rem] leading-8 text-[rgba(64,50,58,0.76)]">
+                The process stays practical and transparent, from early product thinking to
+                finished pack review and dispatch planning for skincare, derma-cosmetic, haircare
+                and personal care ranges.
+              </p>
+              <div className="site-panel mt-8 overflow-hidden rounded-[2rem] p-4 sm:p-5">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
+                  <Image
+                    src="/images/home/manufacturing-process-journey.webp"
+                    alt="Cosmetic manufacturing process from formulation to filling and dispatch"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 36vw"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(58,40,48,0.06),rgba(58,40,48,0.2))]" />
                 </div>
-                <h3 className="mt-5 text-xl font-semibold text-[rgba(52,38,46,0.94)]">{title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.72)]">{text}</p>
-              </article>
-            </HomeScrollReveal>
-          ))}
+                <div className="mt-4 rounded-[1.35rem] border border-[rgba(59,43,51,0.08)] bg-white/78 p-4 shadow-[0_14px_32px_rgba(87,60,70,0.06)]">
+                  <p className="site-kicker">Why this matters</p>
+                  <p className="mt-3 text-sm leading-7 text-[rgba(64,50,58,0.74)]">
+                    A clear process helps buyers align sampling, packaging, production timing and
+                    dispatch expectations before the launch window gets compressed.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </HomeScrollReveal>
+
+          <div className="home-process-timeline">
+            {processSteps.map(({ title, text, icon: Icon }, index) => (
+              <HomeScrollReveal delay={index * 55} key={title}>
+                <article className="home-process-story-card">
+                  <div className="flex items-start gap-4">
+                    <div className="home-process-story-step">
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#3a2b35,#9a516b)] text-ivory shadow-[0_14px_28px_rgba(114,63,83,0.18)]">
+                          <Icon size={18} aria-hidden="true" />
+                        </div>
+                        <h3 className="text-[1.2rem] font-semibold text-[rgba(52,38,46,0.94)]">
+                          {title}
+                        </h3>
+                      </div>
+                      <p className="mt-4 text-sm leading-7 text-[rgba(64,50,58,0.72)]">{text}</p>
+                    </div>
+                  </div>
+                </article>
+              </HomeScrollReveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
